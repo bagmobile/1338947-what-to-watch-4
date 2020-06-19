@@ -5,7 +5,7 @@ import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 class MoviesList extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = null;
+    this.state = {movie: null};
   }
 
 
@@ -18,9 +18,8 @@ class MoviesList extends React.PureComponent {
           <SmallMovieCard
             key={index}
             movie={movie}
-            onClick={() => {}}
             onMouseHover={(currentMovie)=>{
-              this.setState(currentMovie);
+              this.setState({movie: currentMovie});
             }}
           />
         ))}

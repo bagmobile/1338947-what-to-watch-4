@@ -14,13 +14,11 @@ describe(`Main e2e component`, () => {
 
   it(`Movie card click`, () => {
     const onClick = jest.fn();
-    const onMouseHover = jest.fn();
 
     const movieCard = shallow(
         <SmallMovieCard
           movie={movie}
           onClick={onClick}
-          onMouseHover={onMouseHover}
         />
     );
 
@@ -34,13 +32,11 @@ describe(`Main e2e component`, () => {
   });
 
   it(`Movie card mouse select`, () => {
-    const onClick = jest.fn();
     const onMouseHover = jest.fn((currentMovie) => currentMovie);
 
     const movieCard = shallow(
         <SmallMovieCard
           movie={movie}
-          onClick={onClick}
           onMouseHover={onMouseHover}
         />
     );
