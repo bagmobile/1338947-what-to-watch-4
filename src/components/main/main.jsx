@@ -1,14 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import MoviesList from "../movies-list/movies-list.jsx";
+import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 
-const Main = ({description = {}, movies = [], onMovieCardClick}) => {
-  const {title, genre, year} = description;
+const Main = ({movies = [], promoMovie}) => {
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel"/>
+          <img src={promoMovie.img} alt="The Grand Budapest Hotel"/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -32,15 +32,14 @@ const Main = ({description = {}, movies = [], onMovieCardClick}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218"
-                height="327"/>
+              <img src={promoMovie.poster} alt={promoMovie.poster} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{title}</h2>
+              <h2 className="movie-card__title">{promoMovie.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{year}</span>
+                <span className="movie-card__genre">{promoMovie.genre}</span>
+                <span className="movie-card__year">{promoMovie.year}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -99,22 +98,7 @@ const Main = ({description = {}, movies = [], onMovieCardClick}) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {movies.map((movie, index) => (
-              <article key={index} className="small-movie-card catalog__movies-card">
-                <div className="small-movie-card__image">
-                  <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-                    alt={movie} width="280" height="175"/>
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a
-                    onClick={onMovieCardClick}
-                    className="small-movie-card__link" href="movie-page.html">{movie}</a>
-                </h3>
-              </article>)
-            )}
-
-          </div>
+          <MoviesList movies={movies}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -140,13 +124,8 @@ const Main = ({description = {}, movies = [], onMovieCardClick}) => {
 };
 
 Main.propTypes = {
-  description: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
-  }),
-  movies: PropTypes.arrayOf(PropTypes.string),
-  onMovieCardClick: PropTypes.func.isRequired
+  movies: MoviesList.propTypes.movies,
+  promoMovie: SmallMovieCard.propTypes.movie
 };
 
 export default Main;
