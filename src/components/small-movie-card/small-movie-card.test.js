@@ -1,17 +1,22 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
 import movies from "../../mocks/movies.js";
+import SmallMovieCard from "./small-movie-card";
 
-describe(`App component`, () => {
+const movie = movies[0];
+
+describe(`SmallMovieCard component`, () => {
 
   it(`Render`, () => {
     const tree = renderer
-      .create(<App
-        movies={movies}
+      .create(<SmallMovieCard
+        movie={movie}
+        onClick={() => {}}
+        onMouseHover={() => {}}
       />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
+
 });

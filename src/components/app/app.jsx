@@ -1,24 +1,19 @@
 import React from 'react';
 import Main from "../main/main.jsx";
+import {PromoMovie} from "../../mocks/promo-movie.js";
 
-const handlerMovieCardClick = () => {};
-
-const App = (props) => {
-  const {movieDescription, moviesList} = props;
+const App = ({movies}) => {
 
   return (
     <Main
-      description={movieDescription}
-      movies={moviesList}
-      onMovieCardClick={handlerMovieCardClick}
+      movies={movies}
+      promoMovie={PromoMovie}
     />
   );
 };
 
 App.propTypes = {
-  movieDescription: Main.propTypes.description,
-  moviesList: Main.propTypes.movies,
-  onMovieCardClick: Main.propTypes.onMovieCardClick
+  movies: Main.propTypes.movies
 };
 
 export default App;
