@@ -11,7 +11,7 @@ class App extends PureComponent {
     this.state = {movie: null};
   }
 
-  handlerSmallMovieCardClick(currentMovie) {
+  _handlerSmallMovieCardClick(currentMovie) {
     this.setState({movie: currentMovie});
   }
 
@@ -22,7 +22,7 @@ class App extends PureComponent {
       <Main
         movies={movies}
         promoMovie={PromoMovie}
-        onSmallMovieCardClick={this.handlerSmallMovieCardClick.bind(this)}
+        onSmallMovieCardClick={this._handlerSmallMovieCardClick.bind(this)}
       />
     );
   }
@@ -33,7 +33,7 @@ class App extends PureComponent {
       <MovieOverview
         movies={movies}
         movie={this.state.movie}
-        onSmallMovieCardClick={this.handlerSmallMovieCardClick.bind(this)}
+        onSmallMovieCardClick={this._handlerSmallMovieCardClick.bind(this)}
       />
     );
   }
