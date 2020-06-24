@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import Movie from "../movie/movie.jsx";
+import movieShape from "../movie/movie-shape.js";
 
 class MoviesList extends React.PureComponent {
 
@@ -32,7 +32,7 @@ class MoviesList extends React.PureComponent {
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(Movie.propTypes.movie),
+  movies: PropTypes.arrayOf(movieShape),
   onSmallMovieCardClick: PropTypes.func
 };
 

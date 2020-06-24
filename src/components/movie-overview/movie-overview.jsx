@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
-import Movie from "../movie/movie.jsx";
+import movieShape from "../movie/movie-shape.js";
 
 const RatingLevel = {
-  [`Bad`]: [0, 3],
-  [`Normal`]: [3, 5],
-  [`Good`]: [5, 8],
-  [`Very Good`]: [8, 10],
-  [`Awesome`]: [10, 10]
+  "Bad": [0, 3],
+  "Normal": [3, 5],
+  "Good": [5, 8],
+  "Very Good": [8, 10],
+  "Awesome": [10, 10]
 };
 
 const getRatingLevel = (ratingScore) => {
@@ -150,7 +150,7 @@ const MovieOverview = ({movies = [], movie, onSmallMovieCardClick}) => {
 
 MovieOverview.propTypes = {
   movies: MoviesList.propTypes.movies,
-  movie: Movie.propTypes.movie,
+  movie: movieShape,
   onSmallMovieCardClick: PropTypes.func
 };
 

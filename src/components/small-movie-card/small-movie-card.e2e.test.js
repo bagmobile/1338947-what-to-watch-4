@@ -22,16 +22,12 @@ describe(`SmallMovieCard e2e component`, () => {
         />
     );
 
-    const movieCardLink = movieCard.find(`a.small-movie-card__link`);
-    const movieCardImage = movieCard.find(`.small-movie-card__image`);
+    const movieCardArticle = movieCard.find(`.small-movie-card`);
 
-    movieCardLink.simulate(`click`);
-    movieCardImage.simulate(`click`);
+    movieCardArticle.simulate(`click`);
 
-    expect(onClick).toHaveBeenCalledTimes(2);
-
+    expect(onClick).toHaveBeenCalledTimes(1);
     expect(onClick.mock.results[0].value).toBe(movie);
-    expect(onClick.mock.results[1].value).toBe(movie);
   });
 
   it(`SmallMovieCard mouse hover`, () => {

@@ -20,22 +20,17 @@ describe(`MoviesList e2e component`, () => {
         />
     );
 
-    const smallMovieCartLinks = moviesList.find(`a.small-movie-card__link`);
-    const smallMovieCartImages = moviesList.find(`.small-movie-card__image`);
+    const smallMovieCartArticles = moviesList.find(`.small-movie-card`);
 
-    smallMovieCartLinks.forEach((movieCartLink) => {
+    smallMovieCartArticles.forEach((movieCartLink) => {
       movieCartLink.simulate(`click`);
     });
 
-    smallMovieCartImages.forEach((smallMovieCardImage)=>{
-      smallMovieCardImage.simulate(`click`);
-    });
-
     onClick.mock.calls.forEach((call, index) => {
-      expect(call[0]).toMatchObject([...movies, ...movies][index]);
+      expect(call[0]).toMatchObject(movies[index]);
     });
 
-    expect(onClick).toHaveBeenCalledTimes(smallMovieCartLinks.length + smallMovieCartImages.length);
+    expect(onClick).toHaveBeenCalledTimes(smallMovieCartArticles.length);
 
   });
 
