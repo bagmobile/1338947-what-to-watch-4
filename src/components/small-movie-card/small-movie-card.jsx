@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import Movie from "../movie/movie.jsx";
 
 const SmallMovieCard = ({movie, onClick, onMouseHover}) => {
 
@@ -12,26 +13,26 @@ const SmallMovieCard = ({movie, onClick, onMouseHover}) => {
         onMouseHover(null);
       }}
       className="small-movie-card catalog__movies-card">
-      <div className="small-movie-card__image">
+      <div
+        onClick={() => {
+          onClick(movie);
+        }}
+        className="small-movie-card__image">
         <img src={movie.poster} alt={movie.title} width="280" height="175"/>
       </div>
       <h3 className="small-movie-card__title">
         <a
-          onClick={onClick}
-          className="small-movie-card__link" href="movie-page.html">{movie.title}</a>
+          onClick={() => {
+            onClick(movie);
+          }}
+          className="small-movie-card__link" href="#">{movie.title}</a>
       </h3>
     </article>
   );
 };
 
 SmallMovieCard.propTypes = {
-  movie: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    img: PropTypes.string,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
-  }),
+  movie: Movie.propTypes.movie,
   onClick: PropTypes.func,
   onMouseHover: PropTypes.func
 };

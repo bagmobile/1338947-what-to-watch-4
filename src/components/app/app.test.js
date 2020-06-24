@@ -6,10 +6,9 @@ import movies from "../../mocks/movies.js";
 describe(`App component`, () => {
 
   it(`Render`, () => {
-    const tree = renderer
-      .create(<App
-        movies={movies}
-      />)
+    const tree = renderer.create(<App
+      movies={movies}
+    />)
       .toJSON();
 
     expect(tree).toMatchSnapshot();
