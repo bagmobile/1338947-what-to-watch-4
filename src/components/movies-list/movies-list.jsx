@@ -1,8 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
+import Movie from "../movie/movie.jsx";
 
 class MoviesList extends React.PureComponent {
+
   constructor(props) {
     super(props);
     this.state = {movie: null};
@@ -10,7 +12,7 @@ class MoviesList extends React.PureComponent {
 
 
   render() {
-    const {movies = []} = this.props;
+    const {movies = [], onSmallMovieCardClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -18,6 +20,7 @@ class MoviesList extends React.PureComponent {
           <SmallMovieCard
             key={index}
             movie={movie}
+            onClick={onSmallMovieCardClick}
             onMouseHover={(currentMovie)=>{
               this.setState({movie: currentMovie});
             }}
@@ -29,7 +32,8 @@ class MoviesList extends React.PureComponent {
 }
 
 MoviesList.propTypes = {
-  movies: PropTypes.arrayOf(SmallMovieCard.propTypes.movie)
+  movies: PropTypes.arrayOf(Movie.propTypes.movie),
+  onSmallMovieCardClick: PropTypes.func
 };
 
 export default MoviesList;

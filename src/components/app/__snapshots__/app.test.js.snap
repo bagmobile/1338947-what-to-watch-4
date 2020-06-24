@@ -69,7 +69,7 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="img/the-grand-budapest-hotel-poster.jpg"
+            alt="The Grand Budapest Hotel poster"
             height="327"
             src="img/the-grand-budapest-hotel-poster.jpg"
             width="218"
@@ -264,6 +264,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -277,7 +278,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -290,6 +292,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Bohemian Rhapsody"
@@ -303,7 +306,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -316,6 +320,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Macbeth"
@@ -329,7 +334,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -342,6 +348,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Aviator"
@@ -355,7 +362,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               Aviator
             </a>
@@ -368,6 +376,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="We need to talk about Kevin"
@@ -381,7 +390,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               We need to talk about Kevin
             </a>
@@ -394,6 +404,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Johnny English"
@@ -407,7 +418,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               Johnny English
             </a>
@@ -420,6 +432,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="What We Do in the Shadows"
@@ -433,7 +446,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               What We Do in the Shadows
             </a>
@@ -446,6 +460,7 @@ Array [
         >
           <div
             className="small-movie-card__image"
+            onClick={[Function]}
           >
             <img
               alt="Revenant"
@@ -459,7 +474,8 @@ Array [
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
+              onClick={[Function]}
             >
               Revenant
             </a>

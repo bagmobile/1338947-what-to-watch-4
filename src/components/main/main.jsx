@@ -1,14 +1,16 @@
-import React from 'react';
+import React from "react";
+import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 
-const Main = ({movies = [], promoMovie}) => {
+const Main = ({movies = [], promoMovie, onSmallMovieCardClick}) => {
+  const altPoster = `${promoMovie.title} poster`;
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={promoMovie.img} alt="The Grand Budapest Hotel"/>
+          <img src={promoMovie.img} alt={promoMovie.title}/>
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -32,7 +34,7 @@ const Main = ({movies = [], promoMovie}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={promoMovie.poster} alt={promoMovie.poster} width="218" height="327"/>
+              <img src={promoMovie.poster} alt={altPoster} width="218" height="327"/>
             </div>
 
             <div className="movie-card__desc">
@@ -98,7 +100,7 @@ const Main = ({movies = [], promoMovie}) => {
             </li>
           </ul>
 
-          <MoviesList movies={movies}/>
+          <MoviesList movies={movies} onSmallMovieCardClick={onSmallMovieCardClick}/>
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
@@ -125,7 +127,8 @@ const Main = ({movies = [], promoMovie}) => {
 
 Main.propTypes = {
   movies: MoviesList.propTypes.movies,
-  promoMovie: SmallMovieCard.propTypes.movie
+  promoMovie: SmallMovieCard.propTypes.movie,
+  onSmallMovieCardClick: PropTypes.func
 };
 
 export default Main;

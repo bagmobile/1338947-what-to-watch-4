@@ -9,7 +9,7 @@
     "eslint": "eslint --ext .jsx --ext .js src/",
     "esfix": "eslint --fix --ext .jsx --ext .js src/",
     "test.jest": "jest",
-     "test": "npm run eslint && npm run test.jest"
+    "test": "npm run eslint && npm run test.jest"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
@@ -34,6 +34,7 @@
   "dependencies": {
     "prop-types": "15.7.2",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0"
   }
 }
