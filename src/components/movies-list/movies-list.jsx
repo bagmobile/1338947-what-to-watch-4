@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import movieShape from "../movie/movie-shape.js";
+import withMouseHoverMovieCard from "../../hocs/with-mouse-hover-movie-card.js";
+
+const SmallMovieCardWrapped = withMouseHoverMovieCard(SmallMovieCard);
 
 class MoviesList extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    this.state = {movie: null};
   }
 
 
@@ -17,13 +19,10 @@ class MoviesList extends React.PureComponent {
     return (
       <div className="catalog__movies-list">
         {movies.map((movie, index) => (
-          <SmallMovieCard
+          <SmallMovieCardWrapped
             key={index}
             movie={movie}
             onClick={onSmallMovieCardClick}
-            onMouseHover={(currentMovie)=>{
-              this.setState({movie: currentMovie});
-            }}
           />
         ))}
       </div>

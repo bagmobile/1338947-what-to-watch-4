@@ -4,6 +4,7 @@ const movieShape = PropTypes.shape({
   title: PropTypes.string.isRequired,
   img: PropTypes.string,
   poster: PropTypes.string,
+  preview: PropTypes.string,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired,
   ratingScore: PropTypes.number,
