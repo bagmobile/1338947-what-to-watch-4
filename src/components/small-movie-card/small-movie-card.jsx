@@ -18,7 +18,7 @@ const SmallMovieCard = ({movie, onClick, isPlaying = false, onMouseHover}) => {
       }}
       className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
-        <VideoPlayer muted isPlaying={isPlaying} src={movie.preview} poster={movie.poster}/>
+        <VideoPlayer isPlaying={isPlaying} src={movie.preview} poster={movie.poster}/>
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="#">{movie.title}</a>

@@ -16,6 +16,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -44,6 +45,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/bohemian-rhapsody.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -72,6 +74,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/macbeth.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -100,6 +103,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/aviator.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -128,6 +132,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/we-need-to-talk-about-kevin.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -156,6 +161,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/johnny-english.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -184,6 +190,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/what-we-do-in-the-shadows.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"
@@ -212,6 +219,7 @@ exports[`MoviesList component Render 1`] = `
       <video
         height="175"
         loop={true}
+        muted={true}
         poster="img/revenant.jpg"
         src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
         width="280"

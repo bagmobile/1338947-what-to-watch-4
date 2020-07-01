@@ -6,29 +6,22 @@ import withMouseHoverMovieCard from "../../hocs/with-mouse-hover-movie-card.js";
 
 const SmallMovieCardWrapped = withMouseHoverMovieCard(SmallMovieCard);
 
-class MoviesList extends React.PureComponent {
+const MoviesList = (props) => {
 
-  constructor(props) {
-    super(props);
-  }
+  const {movies = [], onSmallMovieCardClick} = props;
 
-
-  render() {
-    const {movies = [], onSmallMovieCardClick} = this.props;
-
-    return (
-      <div className="catalog__movies-list">
-        {movies.map((movie, index) => (
-          <SmallMovieCardWrapped
-            key={index}
-            movie={movie}
-            onClick={onSmallMovieCardClick}
-          />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {movies.map((movie, index) => (
+        <SmallMovieCardWrapped
+          key={index}
+          movie={movie}
+          onClick={onSmallMovieCardClick}
+        />
+      ))}
+    </div>
+  );
+};
 
 MoviesList.propTypes = {
   movies: PropTypes.arrayOf(movieShape),

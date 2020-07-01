@@ -16,12 +16,13 @@ export default function withMouseHoverMovieCard(Component) {
     }
 
     _handleMouseHover(currentMovie) {
+
+      clearTimeout(this._timeout);
       if (currentMovie) {
         this._timeout = setTimeout(() => {
           this.setState({isHovered: true});
         }, 1000);
       } else {
-        clearTimeout(this._timeout);
         this.setState({isHovered: false});
       }
 

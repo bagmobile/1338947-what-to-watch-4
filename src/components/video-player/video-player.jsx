@@ -29,6 +29,7 @@ export default class VideoPlayer extends PureComponent {
         width="280"
         height="175"
         loop={true}
+        muted={true}
       >
       </video>
     );
