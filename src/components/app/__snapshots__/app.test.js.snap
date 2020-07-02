@@ -259,17 +259,19 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Fantastic Beasts: The Crimes of Grindelwald"
+            <video
               height="175"
-              src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              loop={true}
+              muted={true}
+              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -279,7 +281,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               Fantastic Beasts: The Crimes of Grindelwald
             </a>
@@ -287,17 +288,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Bohemian Rhapsody"
+            <video
               height="175"
-              src="img/bohemian-rhapsody.jpg"
+              loop={true}
+              muted={true}
+              poster="img/bohemian-rhapsody.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -307,7 +310,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               Bohemian Rhapsody
             </a>
@@ -315,17 +317,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Macbeth"
+            <video
               height="175"
-              src="img/macbeth.jpg"
+              loop={true}
+              muted={true}
+              poster="img/macbeth.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -335,7 +339,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               Macbeth
             </a>
@@ -343,17 +346,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Aviator"
+            <video
               height="175"
-              src="img/aviator.jpg"
+              loop={true}
+              muted={true}
+              poster="img/aviator.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -363,7 +368,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               Aviator
             </a>
@@ -371,17 +375,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="We need to talk about Kevin"
+            <video
               height="175"
-              src="img/we-need-to-talk-about-kevin.jpg"
+              loop={true}
+              muted={true}
+              poster="img/we-need-to-talk-about-kevin.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -391,7 +397,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               We need to talk about Kevin
             </a>
@@ -399,17 +404,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Johnny English"
+            <video
               height="175"
-              src="img/johnny-english.jpg"
+              loop={true}
+              muted={true}
+              poster="img/johnny-english.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -419,7 +426,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               Johnny English
             </a>
@@ -427,17 +433,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="What We Do in the Shadows"
+            <video
               height="175"
-              src="img/what-we-do-in-the-shadows.jpg"
+              loop={true}
+              muted={true}
+              poster="img/what-we-do-in-the-shadows.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -447,7 +455,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               What We Do in the Shadows
             </a>
@@ -455,17 +462,19 @@ Array [
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
-            onClick={[Function]}
           >
-            <img
-              alt="Revenant"
+            <video
               height="175"
-              src="img/revenant.jpg"
+              loop={true}
+              muted={true}
+              poster="img/revenant.jpg"
+              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
           </div>
@@ -475,7 +484,6 @@ Array [
             <a
               className="small-movie-card__link"
               href="#"
-              onClick={[Function]}
             >
               Revenant
             </a>

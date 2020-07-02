@@ -9,9 +9,10 @@ class App extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {movie: null};
+    this._handleSmallMovieCardClick = this._handleSmallMovieCardClick.bind(this);
   }
 
-  _handlerSmallMovieCardClick(currentMovie) {
+  _handleSmallMovieCardClick(currentMovie) {
     this.setState({movie: currentMovie});
   }
 
@@ -22,7 +23,7 @@ class App extends PureComponent {
       <Main
         movies={movies}
         promoMovie={PromoMovie}
-        onSmallMovieCardClick={this._handlerSmallMovieCardClick.bind(this)}
+        onSmallMovieCardClick={this._handleSmallMovieCardClick}
       />
     );
   }
@@ -33,20 +34,16 @@ class App extends PureComponent {
       <MovieOverview
         movies={movies}
         movie={this.state.movie}
-        onSmallMovieCardClick={this._handlerSmallMovieCardClick.bind(this)}
+        onSmallMovieCardClick={this._handleSmallMovieCardClick}
       />
     );
-  }
-
-  _render() {
-    return this.state.movie ? this._renderMovieOverview() : this._renderMain();
   }
 
   render() {
     return (<BrowserRouter>
       <Switch>
         <Route exact path="/">
-          {this._render()}
+          {this.state.movie ? this._renderMovieOverview() : this._renderMain()}
         </Route>
         <Route exact path="/movie-overview">
           {this._renderMovieOverview()}
@@ -54,7 +51,6 @@ class App extends PureComponent {
       </Switch>
     </BrowserRouter>);
   }
-
 
 }
 

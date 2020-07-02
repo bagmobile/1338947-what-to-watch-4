@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Movie from "../movie/movie.jsx";
+import movieShape from "../movie/movie-shape.js";
+import VideoPlayer from "../video-player/video-player.jsx";
 
-const SmallMovieCard = ({movie, onClick, onMouseHover}) => {
+const SmallMovieCard = ({movie, onClick, isPlaying = false, onMouseHover}) => {
 
   return (
     <article
@@ -12,28 +13,24 @@ const SmallMovieCard = ({movie, onClick, onMouseHover}) => {
       onMouseLeave={() => {
         onMouseHover(null);
       }}
+      onClick={() => {
+        onClick(movie);
+      }}
       className="small-movie-card catalog__movies-card">
-      <div
-        onClick={() => {
-          onClick(movie);
-        }}
-        className="small-movie-card__image">
-        <img src={movie.poster} alt={movie.title} width="280" height="175"/>
+      <div className="small-movie-card__image">
+        <VideoPlayer isPlaying={isPlaying} src={movie.preview} poster={movie.poster}/>
       </div>
       <h3 className="small-movie-card__title">
-        <a
-          onClick={() => {
-            onClick(movie);
-          }}
-          className="small-movie-card__link" href="#">{movie.title}</a>
+        <a className="small-movie-card__link" href="#">{movie.title}</a>
       </h3>
     </article>
   );
 };
 
 SmallMovieCard.propTypes = {
-  movie: Movie.propTypes.movie,
+  movie: movieShape,
   onClick: PropTypes.func,
+  isPlaying: PropTypes.bool,
   onMouseHover: PropTypes.func
 };
 
