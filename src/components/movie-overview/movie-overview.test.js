@@ -10,7 +10,6 @@ describe(`MovieOverview component`, () => {
   it(`Render`, () => {
     const tree = renderer
       .create(<MovieOverview
-        movies={movies}
         movie={movie}
       />)
       .toJSON();

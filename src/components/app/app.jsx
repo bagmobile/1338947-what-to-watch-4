@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import {PromoMovie} from "../../mocks/promo-movie.js";
-import MovieOverview from "../movie-overview/movie-overview.jsx";
+import MovieInfo from "../movie-info/movie-info.jsx";
 
 class App extends PureComponent {
 
@@ -28,12 +28,12 @@ class App extends PureComponent {
     );
   }
 
-  _renderMovieOverview() {
+  _renderMovieInfo() {
     const {movies} = this.props;
     return (
-      <MovieOverview
-        movies={movies}
-        movie={this.state.movie}
+      <MovieInfo
+        movies={movies.filter((item) => item !== this.state.movie)}
+        movie={this.state.movie} // TODO не работает сразу по маршруту
         onSmallMovieCardClick={this._handleSmallMovieCardClick}
       />
     );
@@ -43,10 +43,10 @@ class App extends PureComponent {
     return (<BrowserRouter>
       <Switch>
         <Route exact path="/">
-          {this.state.movie ? this._renderMovieOverview() : this._renderMain()}
+          {this.state.movie ? this._renderMovieInfo() : this._renderMain()}
         </Route>
         <Route exact path="/movie-overview">
-          {this._renderMovieOverview()}
+          {this._renderMovieInfo()}
         </Route>
       </Switch>
     </BrowserRouter>);
