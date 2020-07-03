@@ -1,5 +1,6 @@
 import React from "react";
 import {movieReviewShape} from "../movie/movie-shape.js";
+import moment from "moment";
 
 const MovieReview = ({review}) => {
 
@@ -10,7 +11,10 @@ const MovieReview = ({review}) => {
 
         <footer className="review__details">
           <cite className="review__author">{review.author}</cite>
-          <time className="review__date" dateTime={new Date(review.dateTime).toLocaleDateString()}>{review.dateTime}</time>
+          <time className="review__date"
+            dateTime={moment(review.dateTime).format(`YYYY-MM-DD`)}>
+            {moment(review.dateTime).format(`LL`)}
+          </time>
         </footer>
       </blockquote>
 
