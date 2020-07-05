@@ -8,9 +8,13 @@ export default class VideoPlayer extends PureComponent {
     this._videoRef = createRef();
   }
 
+  componentDidMount() {
+
+  }
+
   componentDidUpdate() {
     const video = this._videoRef.current;
-
+    video.muted = true;
     if (this.props.isPlaying) {
       video.play();
     } else {
@@ -29,7 +33,6 @@ export default class VideoPlayer extends PureComponent {
         width="280"
         height="175"
         loop={true}
-        muted={true}
       >
       </video>
     );

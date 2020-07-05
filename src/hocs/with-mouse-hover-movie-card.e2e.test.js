@@ -30,13 +30,15 @@ describe(`VideoPlayer e2e Component`, () => {
     movieCardWrapped.find(MockComponent).prop(`onMouseHover`)(null);
     movieCardWrapped.update();
     expect(movieCardWrapped.find(MockComponent).prop(`isPlaying`)).toEqual(false);
-    expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 0);
 
     movieCardWrapped.find(MockComponent).prop(`onMouseHover`)(movie);
     jest.advanceTimersByTime(1000);
     movieCardWrapped.update();
     expect(movieCardWrapped.find(MockComponent).prop(`isPlaying`)).toEqual(true);
 
+    movieCardWrapped.find(MockComponent).prop(`onMouseHover`)(null);
+    movieCardWrapped.update();
+    expect(movieCardWrapped.find(MockComponent).prop(`isPlaying`)).toEqual(false);
 
   });
 

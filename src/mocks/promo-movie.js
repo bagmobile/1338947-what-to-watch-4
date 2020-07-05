@@ -11,5 +11,6 @@ export const PromoMovie = {
     `Text2`
   ],
   director: `Director`,
-  starring: `Actors`
+  starring: `Actors`,
+  duration: `1h 25m`
 };
