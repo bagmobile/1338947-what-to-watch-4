@@ -138,6 +138,7 @@ exports[`MovieCard component Render with Add Review Button 1`] = `
             My list
           </span>
         </button>
+        <div />
       </div>
     </div>
   </div>
@@ -151,6 +152,7 @@ exports[`MovieCard component Render with poster 1`] = `
   <div
     className="movie-card__info"
   >
+    <div />
     <div
       className="movie-card__desc"
     >

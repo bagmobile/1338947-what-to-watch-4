@@ -6,7 +6,7 @@ import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
 import MovieCatalog from "../movie-catalog/movie-catalog.jsx";
-import {genres} from "../../settings.js";
+import {genres} from "../../mocks/movies.js";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
@@ -27,7 +27,7 @@ const Main = ({movies = [], promoMovie, onSmallMovieCardClick}) => {
 
         <MovieCard
           movie={promoMovie}
-          poster={() => <MoviePoster movie={promoMovie}/>}
+          renderPoster={() => <MoviePoster movie={promoMovie}/>}
         />
       </section>
 

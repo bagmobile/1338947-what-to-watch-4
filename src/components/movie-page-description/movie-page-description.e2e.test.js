@@ -1,23 +1,27 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import MovieInfoTab from "./movie-info-tab.jsx";
-import {Tab} from "../../settings.js";
+import MoviePageDescription from "./movie-page-description.jsx";
+import {Tab} from "./movie-page-description";
+import movies from "../../mocks/movies";
+
+const movie = movies[0];
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
-describe(`MovieInfoTab e2e component`, () => {
+describe(`MoviePageDescription e2e component`, () => {
 
   it(`Component onClick and Details is default`, () => {
     const onClick = jest.fn((currentTab) => currentTab);
     const customDefaultTab = Tab.DETAILS;
 
     const moveInfoTab = shallow(
-        <MovieInfoTab
+        <MoviePageDescription
+          movie={movie}
           activeTab={customDefaultTab}
-          onClickTab={onClick}
+          onTabClick={onClick}
         />
     );
 

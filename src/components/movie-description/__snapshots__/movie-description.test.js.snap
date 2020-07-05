@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`MovieDescription component Render 1`] = `
-<div
-  className="movie-card__desc"
-/>
-`;

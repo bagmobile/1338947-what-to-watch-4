@@ -1,24 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import movieShape from "../movie/movie-shape.js";
 import MovieReview from "../movie-review/movie-review.jsx";
+import {sliceArrayToColumn} from "../utils/util";
+import {movieReviewShape} from "../movie/movie-shape";
 
 const DEFAULT_COLUMN_COUNT = 2;
-
-const sliceToColumn = (data, columns) => {
-  let result = [];
-  let size = Math.ceil(data.length / columns);
-  for (let i = 0; i < data.length; i += size) {
-    result.push(data.slice(i, i + size));
-  }
-  return result;
-};
 
 const getReviewByColumn = (reviews, columns) => {
 
   return (
     <>
-      {sliceToColumn(reviews, columns).map((columnReviews, index) => {
+      {sliceArrayToColumn(reviews, columns).map((columnReviews, index) => {
         return (
           <div
             key={index}
@@ -35,16 +27,16 @@ const getReviewByColumn = (reviews, columns) => {
   );
 };
 
-const MovieReviews = ({movie, columns = DEFAULT_COLUMN_COUNT}) => {
+const MovieReviews = ({reviews, columns = DEFAULT_COLUMN_COUNT}) => {
   return (
     <div className="movie-card__reviews movie-card__row">
-      {getReviewByColumn(movie.reviews, columns)}
+      {getReviewByColumn(reviews, columns)}
     </div>
   );
 };
 
 MovieReviews.propTypes = {
-  movie: movieShape,
+  reviews: PropTypes.arrayOf(movieReviewShape),
   columns: PropTypes.number
 };
 

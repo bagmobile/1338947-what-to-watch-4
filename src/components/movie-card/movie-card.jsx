@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 import movieShape from "../movie/movie-shape";
 
 
-const MovieCard = ({movie, poster, addReviewButton}) => {
+const MovieCard = ({movie, renderPoster, renderReviewButton}) => {
 
   return (
     <div className="movie-card__wrap">
       <div className="movie-card__info">
-        {poster && poster()}
+        {renderPoster && renderPoster()}
         <div className="movie-card__desc">
           <h2 className="movie-card__title">{movie.title}</h2>
           <p className="movie-card__meta">
@@ -17,7 +17,7 @@ const MovieCard = ({movie, poster, addReviewButton}) => {
             <span className="movie-card__year">{movie.year}</span>
           </p>
           <MenuButton>
-            {addReviewButton && addReviewButton()}
+            {renderReviewButton && renderReviewButton()}
           </MenuButton>
         </div>
       </div>
@@ -27,8 +27,8 @@ const MovieCard = ({movie, poster, addReviewButton}) => {
 
 MovieCard.propTypes = {
   movie: movieShape,
-  poster: PropTypes.func,
-  addReviewButton: PropTypes.func
+  renderPoster: PropTypes.func,
+  renderReviewButton: PropTypes.func
 };
 
 export default MovieCard;

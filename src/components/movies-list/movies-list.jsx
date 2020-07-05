@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import movieShape from "../movie/movie-shape.js";
 import withMouseHoverMovieCard from "../../hocs/with-mouse-hover-movie-card.js";
-import {DEFAULT_MOVIE_LIST_SIZE} from "../../settings";
+
+const DEFAULT_MOVIE_LIST_SIZE = 8;
 
 const SmallMovieCardWrapped = withMouseHoverMovieCard(SmallMovieCard);
 

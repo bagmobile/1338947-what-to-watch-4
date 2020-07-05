@@ -17,7 +17,7 @@ const getRatingLevel = (ratingScore) => {
       return ratingLevelKey;
     }
   }
-  return ``;
+  return null;
 };
 
 const MovieOverview = ({movie}) => {
@@ -33,9 +33,7 @@ const MovieOverview = ({movie}) => {
       </div>
 
       <div className="movie-card__text">
-        <React.Fragment>
-          {movie.text.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
-        </React.Fragment>
+        {movie.text.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
         <p className="movie-card__director"><strong>{movie.director}</strong></p>
         <p className="movie-card__starring"><strong>
           {movie.starring.join(`, `)}

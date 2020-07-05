@@ -10,7 +10,7 @@ describe(`MovieReviews component`, () => {
   it(`Render with column count 0`, () => {
     const tree = renderer
       .create(<MovieReviews
-        movie={movie}
+        reviews={movie.reviews}
         columns={0}
       />)
       .toJSON();
@@ -21,7 +21,7 @@ describe(`MovieReviews component`, () => {
   it(`Render with column count 2`, () => {
     const tree = renderer
       .create(<MovieReviews
-        movie={movie}
+        reviews={movie.reviews}
         columns={2}
       />)
       .toJSON();

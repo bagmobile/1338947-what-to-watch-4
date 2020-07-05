@@ -2,17 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../movies-list/movies-list.jsx";
 import movieShape from "../movie/movie-shape.js";
-import MovieDescription from "../movie-description/movie-description.jsx";
-import withTabs from "../../hocs/with-tabs.js";
-import {MOVIE_LIST_BY_GENRE_SIZE} from "../../settings";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
+import withTabs from "../../hocs/with-tabs";
+import MoviePageDescription from "../movie-page-description/movie-page-description.jsx";
 
-const MovieDescriptionWithTabs = withTabs(MovieDescription);
+const MOVIE_LIST_BY_GENRE_SIZE = 4;
+const MoviePageDescriptionWithTab = withTabs(MoviePageDescription);
 
 const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
 
@@ -30,7 +30,7 @@ const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
 
           <MovieCard
             movie={movie}
-            addReviewButton={() => {
+            renderReviewButton={() => {
               return (<a href="add-review.html" className="btn movie-card__button">Add review</a>);
             }}
           />
@@ -41,7 +41,9 @@ const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
 
             <MoviePoster movie={movie}/>
 
-            <MovieDescriptionWithTabs movie={movie}/>
+            <div className="movie-card__desc">
+              <MoviePageDescriptionWithTab movie={movie}/>
+            </div>
 
           </div>
         </div>
@@ -51,8 +53,12 @@ const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <MoviesList movies={movies} onSmallMovieCardClick={onSmallMovieCardClick} listSize={MOVIE_LIST_BY_GENRE_SIZE}
-            genre={movie.genre}/>
+          <MoviesList
+            movies={movies}
+            onSmallMovieCardClick={onSmallMovieCardClick}
+            listSize={MOVIE_LIST_BY_GENRE_SIZE}
+            genre={movie.genre}
+          />
 
         </section>
 

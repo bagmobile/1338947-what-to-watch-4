@@ -189,7 +189,30 @@ const movies = [
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
     duration: `2h 35m`,
     reviews: mockReviews
+  },
+  {
+    title: `Movie`,
+    img: `img/revenant.jpg`,
+    poster: `img/revenant.jpg`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    genre: `Dramas`,
+    year: 2013,
+    ratingScore: 7.7,
+    ratingCount: 3,
+    text: [
+      `Text1.`,
+      `Text2`
+    ],
+    director: `Director`,
+    starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
+    duration: `2h 35m`,
+    reviews: mockReviews
   }
 ];
+
+export const genres = [...movies.reduce((acc, movie) => {
+  acc.add(movie.genre);
+  return acc;
+}, new Set([`All genres`]))];
 
 export default movies;

@@ -1,10 +1,6 @@
 import React from "react";
 import movieShape from "../components/movie/movie-shape";
-import {Tab} from "../settings.js";
-import MovieOverview from "../components/movie-overview/movie-overview.jsx";
-import MovieDetails from "../components/movie-details/movie-details.jsx";
-import MovieReviews from "../components/movie-reviews/movie-reviews.jsx";
-import MovieInfoTab from "../components/movie-info-tab/movie-info-tab.jsx";
+import {Tab} from "../components/movie-page-description/movie-page-description.jsx";
 
 const withTabs = (Component) => {
 
@@ -21,31 +17,13 @@ const withTabs = (Component) => {
       this.setState({activeTab: tab});
     }
 
-    _changeActiveTab() {
-      const {movie} = this.props;
-
-      switch (this.state.activeTab) {
-        case Tab.OVERVIEW:
-          return <MovieOverview movie={movie}/>;
-        case Tab.DETAILS:
-          return <MovieDetails movie={movie}/>;
-        case Tab.REVIEWS:
-          return <MovieReviews movie={movie}/>;
-        default:
-          return ``;
-      }
-    }
-
     render() {
       return (
         <Component
           {...this.props}
+          activeTab={this.state.activeTab}
+          onTabClick={this._handleTabClick}
         >
-          <MovieInfoTab
-            activeTab={this.state.activeTab}
-            onClickTab={this._handleTabClick}
-          />
-          {this._changeActiveTab()}
         </Component>
       );
     }

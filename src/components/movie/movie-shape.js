@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
 
 const movieReviewShape = PropTypes.shape({
-  author: PropTypes.string.isRequired,
+  author: PropTypes.string,
   dateTime: PropTypes.string.isRequired,
   quote: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired
+  rating: PropTypes.number
 });
 
 const movieShape = PropTypes.shape({
