@@ -1,14 +1,20 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import App from "./app.jsx";
-import movies from "../../mocks/movies.js";
+import configureStore from "redux-mock-store";
+import {App} from "./app.jsx";
+import {Provider} from "react-redux";
+import {initialState} from "../../reducer";
+
+const mockStore = configureStore([]);
 
 describe(`App component`, () => {
 
   it(`Render`, () => {
-    const tree = renderer.create(<App
-      movies={movies}
-    />)
+    const store = mockStore(initialState);
+    const tree = renderer.create(
+        <Provider store={store}>
+          <App/>
+        </Provider>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -160,6 +160,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             All genres
           </a>
@@ -170,6 +171,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Crime
           </a>
@@ -180,6 +182,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Documentary
           </a>
@@ -190,6 +193,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Comedies
           </a>
@@ -200,6 +204,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Sci-Fi
           </a>
@@ -210,6 +215,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Romance
           </a>
@@ -220,6 +226,7 @@ Array [
           <a
             className="catalog__genres-link"
             href="#"
+            onClick={[Function]}
           >
             Dramas
           </a>

@@ -1,6 +1,6 @@
 import React from "react";
 import movieShape from "../components/movie/movie-shape";
-import {Tab} from "../components/movie-page-description/movie-page-description.jsx";
+import PropTypes from "prop-types";
 
 const withTabs = (Component) => {
 
@@ -9,7 +9,7 @@ const withTabs = (Component) => {
     constructor(props) {
       super(props);
 
-      this.state = {activeTab: Tab.OVERVIEW};
+      this.state = {activeTab: props.initialActiveTab};
       this._handleTabClick = this._handleTabClick.bind(this);
     }
 
@@ -31,7 +31,8 @@ const withTabs = (Component) => {
   }
 
   WithTabs.propTypes = {
-    movie: movieShape
+    movie: movieShape,
+    initialActiveTab: PropTypes.string
   };
 
   return WithTabs;

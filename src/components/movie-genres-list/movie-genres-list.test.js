@@ -1,13 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCatalog from "./movie-catalog";
+import {MovieGenresList} from "./movie-genres-list";
 import {genres} from "../../mocks/movies.js";
 
-describe(`MovieCatalog component`, () => {
+describe(`MovieGenresList component`, () => {
 
   it(`Render`, () => {
     const tree = renderer
-      .create(<MovieCatalog
+      .create(<MovieGenresList
         genres={genres}
       />)
       .toJSON();

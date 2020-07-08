@@ -7,8 +7,9 @@ import withMouseHoverMovieCard from "./with-mouse-hover-movie-card.js";
 const movie = movies[0];
 
 function MockComponent() {
-  return <div />;
+  return <div/>;
 }
+
 const WrappedMockComponent = withMouseHoverMovieCard(MockComponent);
 
 Enzyme.configure({

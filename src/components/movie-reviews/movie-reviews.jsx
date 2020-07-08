@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MovieReview from "../movie-review/movie-review.jsx";
-import {sliceArrayToColumn} from "../utils/util";
+import {sliceArrayToColumn} from "../../utils/util";
 import {movieReviewShape} from "../movie/movie-shape";
 
 const DEFAULT_COLUMN_COUNT = 2;

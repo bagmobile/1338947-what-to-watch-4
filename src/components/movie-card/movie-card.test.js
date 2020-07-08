@@ -21,7 +21,7 @@ describe(`MovieCard component`, () => {
     const tree = renderer
       .create(<MovieCard
         movie={movie}
-        renderPoster={() => <div />}
+        renderPoster={() => <div/>}
       />)
       .toJSON();
 
@@ -32,7 +32,7 @@ describe(`MovieCard component`, () => {
     const tree = renderer
       .create(<MovieCard
         movie={movie}
-        renderReviewButton={() => <div />}
+        renderReviewButton={() => <div/>}
       />)
       .toJSON();
 

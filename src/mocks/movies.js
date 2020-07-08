@@ -210,9 +210,14 @@ const movies = [
   }
 ];
 
+export const MAX_GENRES_LIST_SIZE = 9;
+
+export const DEFAULT_GENRE = `All genres`;
+
 export const genres = [...movies.reduce((acc, movie) => {
   acc.add(movie.genre);
   return acc;
-}, new Set([`All genres`]))];
+}, new Set([DEFAULT_GENRE]))].slice(0, MAX_GENRES_LIST_SIZE);
+
 
 export default movies;

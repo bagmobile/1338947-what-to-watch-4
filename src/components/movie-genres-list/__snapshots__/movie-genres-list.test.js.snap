@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieCatalog component Render 1`] = `
+exports[`MovieGenresList component Render 1`] = `
 Array [
   <h2
     className="catalog__title visually-hidden"
@@ -11,7 +11,7 @@ Array [
     className="catalog__genres-list"
   >
     <li
-      className="catalog__genres-item catalog__genres-item--active"
+      className="catalog__genres-item false"
     >
       <a
         className="catalog__genres-link"

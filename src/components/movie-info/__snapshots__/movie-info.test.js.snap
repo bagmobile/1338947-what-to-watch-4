@@ -262,65 +262,8 @@ Array [
         More like this
       </h2>
       <div
-        className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="#"
-            >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onClick={[Function]}
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/macbeth.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="#"
-            >
-              Macbeth
-            </a>
-          </h3>
-        </article>
-      </div>
+        className="children-component"
+      />
     </section>
     <footer
       className="page-footer"

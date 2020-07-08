@@ -3,39 +3,27 @@ import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
 import {PromoMovie} from "../../mocks/promo-movie.js";
 import MovieInfo from "../movie-info/movie-info.jsx";
+import {connect} from "react-redux";
+import movieShape from "../movie/movie-shape";
+import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
+import {genres} from "../../mocks/movies";
+import MoviesList, {MOVIE_LIST_BY_GENRE_SIZE} from "../movies-list/movies-list.jsx";
 
 class App extends PureComponent {
 
-  constructor(props) {
-    super(props);
-    this.state = {movie: null};
-    this._handleSmallMovieCardClick = this._handleSmallMovieCardClick.bind(this);
-  }
-
-  _handleSmallMovieCardClick(currentMovie) {
-    this.setState({movie: currentMovie});
-  }
-
   _renderMain() {
-    const {movies} = this.props;
-
     return (
-      <Main
-        movies={movies}
-        promoMovie={PromoMovie}
-        onSmallMovieCardClick={this._handleSmallMovieCardClick}
-      />
-    );
+      <Main promoMovie={PromoMovie}>
+        <MovieGenresList genres={genres}/>
+        <MoviesList/>
+      </Main>);
   }
 
   _renderMovieInfo() {
-    const {movies} = this.props;
     return (
-      <MovieInfo
-        movies={movies.filter((item) => item !== this.state.movie)}
-        movie={this.state.movie} // TODO не работает сразу по маршруту
-        onSmallMovieCardClick={this._handleSmallMovieCardClick}
-      />
+      <MovieInfo>
+        <MoviesList listSize={MOVIE_LIST_BY_GENRE_SIZE}/>
+      </MovieInfo>
     );
   }
 
@@ -43,9 +31,9 @@ class App extends PureComponent {
     return (<BrowserRouter>
       <Switch>
         <Route exact path="/">
-          {this.state.movie ? this._renderMovieInfo() : this._renderMain()}
+          {this.props.movie ? this._renderMovieInfo() : this._renderMain()}
         </Route>
-        <Route exact path="/movie-overview">
+        <Route exact path="/movie-info">
           {this._renderMovieInfo()}
         </Route>
       </Switch>
@@ -55,7 +43,14 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  movies: Main.propTypes.movies
+  movie: movieShape,
+  promoMovie: movieShape
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  movie: state.activeMovie,
+  promoMovie: state.promoMovie
+});
+
+export {App};
+export default connect(mapStateToProps)(App);

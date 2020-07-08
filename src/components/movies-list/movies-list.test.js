@@ -1,15 +1,21 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import movies from "../../mocks/movies.js";
-import MoviesList from "./movies-list.jsx";
+import {MoviesList} from "./movies-list.jsx";
+import configureStore from "redux-mock-store";
+import {Provider} from "react-redux";
+
+const mockStore = configureStore([]);
+const store = mockStore({movies});
 
 describe(`MoviesList component`, () => {
 
   it(`Render`, () => {
     const tree = renderer
-      .create(<MoviesList
-        movies={movies}
-      />)
+      .create(
+          <Provider store={store}>
+            <MoviesList movies={movies}/>
+          </Provider>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

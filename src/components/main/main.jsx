@@ -1,18 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list.jsx";
-import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
-import MovieCatalog from "../movie-catalog/movie-catalog.jsx";
-import {genres} from "../../mocks/movies.js";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+import movieShape from "../movie/movie-shape";
+import {connect} from "react-redux";
 
-const Main = ({movies = [], promoMovie, onSmallMovieCardClick}) => {
+const Main = ({promoMovie, children}) => {
 
   return (
     <React.Fragment>
@@ -34,12 +32,7 @@ const Main = ({movies = [], promoMovie, onSmallMovieCardClick}) => {
       <div className="page-content">
         <section className="catalog">
 
-          <MovieCatalog genres={genres}/>
-
-          <MoviesList
-            movies={movies}
-            onSmallMovieCardClick={onSmallMovieCardClick}
-          />
+          {children}
 
           <ShowMoreButton/>
         </section>
@@ -55,9 +48,18 @@ const Main = ({movies = [], promoMovie, onSmallMovieCardClick}) => {
 };
 
 Main.propTypes = {
-  movies: MoviesList.propTypes.movies,
-  promoMovie: SmallMovieCard.propTypes.movie,
-  onSmallMovieCardClick: PropTypes.func
+  children: PropTypes.oneOfType(
+      [
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+      ]
+  ),
+  promoMovie: movieShape
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  promoMovie: state.promoMovie
+});
+
+export {Main};
+export default connect(mapStateToProps)(Main);

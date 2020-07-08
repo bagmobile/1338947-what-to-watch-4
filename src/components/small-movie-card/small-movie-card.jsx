@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import movieShape from "../movie/movie-shape.js";
 import VideoPlayer from "../video-player/video-player.jsx";
+import {ActionCreator} from "../../reducer";
+import {connect} from "react-redux";
 
 const SmallMovieCard = ({movie, onClick, isPlaying = false, onMouseHover}) => {
 
@@ -34,4 +36,15 @@ SmallMovieCard.propTypes = {
   onMouseHover: PropTypes.func
 };
 
-export default SmallMovieCard;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick(movie) {
+    dispatch(ActionCreator.selectMovie(movie));
+    dispatch(ActionCreator.filterMovies(movie.genre, movie));
+  }
+});
+
+
+export {SmallMovieCard};
+export default connect(mapStateToProps, mapDispatchToProps)(SmallMovieCard);

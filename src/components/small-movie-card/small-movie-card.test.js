@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import movies from "../../mocks/movies.js";
-import SmallMovieCard from "./small-movie-card.jsx";
+import {SmallMovieCard} from "./small-movie-card.jsx";
 
 const movie = movies[0];
 
