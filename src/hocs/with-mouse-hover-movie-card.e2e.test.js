@@ -18,7 +18,7 @@ Enzyme.configure({
 
 jest.useFakeTimers();
 
-describe(`VideoPlayer e2e Component`, () => {
+describe(`WithMouseHover e2e Component`, () => {
 
   it(`MouseHover action to play video`, () => {
 

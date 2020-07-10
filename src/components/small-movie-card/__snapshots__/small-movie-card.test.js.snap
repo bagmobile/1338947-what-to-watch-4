@@ -3,7 +3,6 @@
 exports[`SmallMovieCard component Render 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
-  onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
@@ -23,7 +22,8 @@ exports[`SmallMovieCard component Render 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="#"
+      href="/movies/0"
+      onClick={[Function]}
     >
       Fantastic Beasts: The Crimes of Grindelwald
     </a>

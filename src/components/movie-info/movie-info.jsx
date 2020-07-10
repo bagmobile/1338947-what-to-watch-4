@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import movieShape from "../movie/movie-shape.js";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
@@ -9,11 +10,12 @@ import Copyright from "../copyright/copyright.jsx";
 import withTabs from "../../hocs/with-tabs";
 import MoviePageDescription, {Tab} from "../movie-page-description/movie-page-description.jsx";
 import {connect} from "react-redux";
-import PropTypes from "prop-types";
+import MoviesList from "../movies-list/movies-list.jsx";
+import {getMovieById, getMoviesLike} from "../../selectors";
 
 const MoviePageDescriptionWithTab = withTabs(MoviePageDescription);
 
-const MovieInfo = ({movie, children}) => {
+const MovieInfo = ({movies, movie}) => {
 
   return (
     <React.Fragment>
@@ -50,9 +52,10 @@ const MovieInfo = ({movie, children}) => {
 
       <div className="page-content">
         <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
 
-          {children}
+          <MoviesList movies={movies}>
+            <h2 className="catalog__title">More like this</h2>
+          </MoviesList>
 
         </section>
 
@@ -67,18 +70,17 @@ const MovieInfo = ({movie, children}) => {
 };
 
 MovieInfo.propTypes = {
-  movie: movieShape,
-  children: PropTypes.oneOfType(
-      [
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-      ]
-  ),
+  movies: PropTypes.arrayOf(movieShape),
+  movie: movieShape
 };
 
-const mapStateToProps = (state) => ({
-  movie: state.activeMovie
-});
+const mapStateToProps = (state, ownProps) => {
+  const movie = ownProps.movie || getMovieById(state, Number(ownProps.match.params.id));
+  return {
+    movies: getMoviesLike(state, movie),
+    movie
+  };
+};
 
 export {MovieInfo};
 export default connect(mapStateToProps)(MovieInfo);

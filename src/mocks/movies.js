@@ -47,6 +47,7 @@ const mockReviews = [
 
 const movies = [
   {
+    id: 0,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     poster: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -65,6 +66,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 1,
     title: `Bohemian Rhapsody`,
     img: `img/bohemian-rhapsody.jpg`,
     poster: `img/bohemian-rhapsody.jpg`,
@@ -83,6 +85,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 2,
     title: `Macbeth`,
     img: `img/macbeth.jpg`,
     poster: `img/macbeth.jpg`,
@@ -101,6 +104,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 3,
     title: `Aviator`,
     img: `img/aviator.jpg`,
     poster: `img/aviator.jpg`,
@@ -119,6 +123,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 4,
     title: `We need to talk about Kevin`,
     img: `img/we-need-to-talk-about-kevin.jpg`,
     poster: `img/we-need-to-talk-about-kevin.jpg`,
@@ -137,6 +142,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 5,
     title: `Johnny English`,
     img: `img/johnny-english.jpg`,
     poster: `img/johnny-english.jpg`,
@@ -155,6 +161,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 6,
     title: `What We Do in the Shadows`,
     img: `img/what-we-do-in-the-shadows.jpg`,
     poster: `img/what-we-do-in-the-shadows.jpg`,
@@ -173,6 +180,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 8,
     title: `Revenant`,
     img: `img/revenant.jpg`,
     poster: `img/revenant.jpg`,
@@ -191,6 +199,7 @@ const movies = [
     reviews: mockReviews
   },
   {
+    id: 9,
     title: `Movie`,
     img: `img/revenant.jpg`,
     poster: `img/revenant.jpg`,
@@ -210,14 +219,6 @@ const movies = [
   }
 ];
 
-export const MAX_GENRES_LIST_SIZE = 9;
-
-export const DEFAULT_GENRE = `All genres`;
-
-export const genres = [...movies.reduce((acc, movie) => {
-  acc.add(movie.genre);
-  return acc;
-}, new Set([DEFAULT_GENRE]))].slice(0, MAX_GENRES_LIST_SIZE);
-
+export const genres = [`All genres`, `Dramas`, `Comedies`, `Romance`, `Sci-Fi`, `Crime`, `Documentary`];
 
 export default movies;

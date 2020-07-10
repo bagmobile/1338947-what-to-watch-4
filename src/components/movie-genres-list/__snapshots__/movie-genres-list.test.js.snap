@@ -11,11 +11,12 @@ Array [
     className="catalog__genres-list"
   >
     <li
-      className="catalog__genres-item false"
+      className="catalog__genres-item catalog__genres-item--active"
     >
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
         All genres
       </a>
@@ -26,8 +27,9 @@ Array [
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        Crime
+        Dramas
       </a>
     </li>
     <li
@@ -36,16 +38,7 @@ Array [
       <a
         className="catalog__genres-link"
         href="#"
-      >
-        Documentary
-      </a>
-    </li>
-    <li
-      className="catalog__genres-item false"
-    >
-      <a
-        className="catalog__genres-link"
-        href="#"
+        onClick={[Function]}
       >
         Comedies
       </a>
@@ -56,16 +49,7 @@ Array [
       <a
         className="catalog__genres-link"
         href="#"
-      >
-        Sci-Fi
-      </a>
-    </li>
-    <li
-      className="catalog__genres-item false"
-    >
-      <a
-        className="catalog__genres-link"
-        href="#"
+        onClick={[Function]}
       >
         Romance
       </a>
@@ -76,8 +60,31 @@ Array [
       <a
         className="catalog__genres-link"
         href="#"
+        onClick={[Function]}
       >
-        Dramas
+        Sci-Fi
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item false"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Crime
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item false"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Documentary
       </a>
     </li>
   </ul>,

@@ -1,55 +1,51 @@
 import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Main from "../main/main.jsx";
-import {PromoMovie} from "../../mocks/promo-movie.js";
 import MovieInfo from "../movie-info/movie-info.jsx";
 import {connect} from "react-redux";
 import movieShape from "../movie/movie-shape";
 import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
-import {genres} from "../../mocks/movies";
-import MoviesList, {MOVIE_LIST_BY_GENRE_SIZE} from "../movies-list/movies-list.jsx";
+import MoviesList from "../movies-list/movies-list.jsx";
+import PropTypes from "prop-types";
+import {getFilteredMoviesByGenre, getMoviesGenres, getPromoMovie} from "../../selectors";
 
 class App extends PureComponent {
 
   _renderMain() {
+
     return (
-      <Main promoMovie={PromoMovie}>
-        <MovieGenresList genres={genres}/>
-        <MoviesList/>
+      <Main promoMovie={this.props.promoMovie}>
+        <MovieGenresList genres={this.props.genres}/>
+        <MoviesList movies={this.props.movies}/>
       </Main>);
   }
 
-  _renderMovieInfo() {
-    return (
-      <MovieInfo>
-        <MoviesList listSize={MOVIE_LIST_BY_GENRE_SIZE}/>
-      </MovieInfo>
-    );
-  }
-
   render() {
-    return (<BrowserRouter>
-      <Switch>
-        <Route exact path="/">
-          {this.props.movie ? this._renderMovieInfo() : this._renderMain()}
-        </Route>
-        <Route exact path="/movie-info">
-          {this._renderMovieInfo()}
-        </Route>
-      </Switch>
-    </BrowserRouter>);
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderMain()}
+          </Route>
+          <Route exact path="/movies/:id" component={MovieInfo}>
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
   }
 
 }
 
 App.propTypes = {
-  movie: movieShape,
+  movies: PropTypes.arrayOf(movieShape),
+  genres: PropTypes.arrayOf(PropTypes.string),
   promoMovie: movieShape
 };
 
 const mapStateToProps = (state) => ({
-  movie: state.activeMovie,
-  promoMovie: state.promoMovie
+  movies: getFilteredMoviesByGenre(state),
+  genres: getMoviesGenres(state),
+  promoMovie: getPromoMovie(state)
 });
 
 export {App};

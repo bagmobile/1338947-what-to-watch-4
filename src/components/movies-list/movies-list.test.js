@@ -1,9 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import movies from "../../mocks/movies.js";
-import {MoviesList} from "./movies-list.jsx";
+import MoviesList from "./movies-list.jsx";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
+import {BrowserRouter, Route} from "react-router-dom";
 
 const mockStore = configureStore([]);
 const store = mockStore({movies});
@@ -14,8 +15,13 @@ describe(`MoviesList component`, () => {
     const tree = renderer
       .create(
           <Provider store={store}>
-            <MoviesList movies={movies}/>
-          </Provider>)
+            <BrowserRouter>
+              <Route>
+                <MoviesList movies={movies}/>
+              </Route>
+            </BrowserRouter>
+          </Provider>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();
@@ -23,8 +29,11 @@ describe(`MoviesList component`, () => {
 
   it(`Render if empty movies`, () => {
     const tree = renderer
-      .create(<MoviesList
-      />)
+      .create(
+          <Provider store={store}>
+            <MoviesList
+            />
+          </Provider>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

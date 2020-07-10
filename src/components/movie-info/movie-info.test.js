@@ -1,19 +1,28 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import movies from "../../mocks/movies.js";
-import {MovieInfo} from "./movie-info.jsx";
+import MovieInfo from "./movie-info.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import {BrowserRouter, Route} from "react-router-dom";
 
 const movie = movies[0];
+const mockStore = configureStore([]);
+const store = mockStore({movies});
 
 describe(`MovieInfo component`, () => {
 
   it(`Render`, () => {
     const tree = renderer
-      .create(<MovieInfo
-        movie={movie}
-      >
-        <div className="children-component"/>
-      </MovieInfo>)
+      .create(
+          <Provider store={store}>
+            <BrowserRouter>
+              <Route>
+                <MovieInfo movie={movie}/>
+              </Route>
+            </BrowserRouter>
+          </Provider>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -8,7 +8,6 @@ import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import movieShape from "../movie/movie-shape";
-import {connect} from "react-redux";
 
 const Main = ({promoMovie, children}) => {
 
@@ -57,9 +56,5 @@ Main.propTypes = {
   promoMovie: movieShape
 };
 
-const mapStateToProps = (state) => ({
-  promoMovie: state.promoMovie
-});
+export default Main;
 
-export {Main};
-export default connect(mapStateToProps)(Main);

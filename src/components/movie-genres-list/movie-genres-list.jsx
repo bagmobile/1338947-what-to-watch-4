@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer";
 import {connect} from "react-redux";
+import {getActiveGenre} from "../../selectors";
 
 
 const MovieGenresList = ({genres, activeGenre, onClick}) => {
@@ -14,7 +15,9 @@ const MovieGenresList = ({genres, activeGenre, onClick}) => {
           key={index}
           className={`catalog__genres-item ` + ((genre === activeGenre) && `catalog__genres-item--active`)}>
           <a
-            onClick={onClick}
+            onClick={() => {
+              onClick(genre);
+            }}
             href="#"
             className="catalog__genres-link">{genre}</a>
         </li>)}
@@ -25,19 +28,18 @@ const MovieGenresList = ({genres, activeGenre, onClick}) => {
 };
 
 MovieGenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string),
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   activeGenre: PropTypes.string.isRequired,
   onClick: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
-  activeGenre: state.activeGenre
+  activeGenre: getActiveGenre(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClick(evt) {
-    dispatch(ActionCreator.changeGenre(evt.target.text));
-    dispatch(ActionCreator.filterMovies(evt.target.text));
+  onClick(genre) {
+    dispatch(ActionCreator.changeGenre(genre));
   }
 });
 

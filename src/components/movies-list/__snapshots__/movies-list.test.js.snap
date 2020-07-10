@@ -6,7 +6,6 @@ exports[`MoviesList component Render 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -26,7 +25,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/0"
+        onClick={[Function]}
       >
         Fantastic Beasts: The Crimes of Grindelwald
       </a>
@@ -34,7 +34,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -54,7 +53,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/1"
+        onClick={[Function]}
       >
         Bohemian Rhapsody
       </a>
@@ -62,7 +62,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -82,7 +81,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/2"
+        onClick={[Function]}
       >
         Macbeth
       </a>
@@ -90,7 +90,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -110,7 +109,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/3"
+        onClick={[Function]}
       >
         Aviator
       </a>
@@ -118,7 +118,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -138,7 +137,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/4"
+        onClick={[Function]}
       >
         We need to talk about Kevin
       </a>
@@ -146,7 +146,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -166,7 +165,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/5"
+        onClick={[Function]}
       >
         Johnny English
       </a>
@@ -174,7 +174,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -194,7 +193,8 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/6"
+        onClick={[Function]}
       >
         What We Do in the Shadows
       </a>
@@ -202,7 +202,6 @@ exports[`MoviesList component Render 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
@@ -222,9 +221,38 @@ exports[`MoviesList component Render 1`] = `
     >
       <a
         className="small-movie-card__link"
-        href="#"
+        href="/movies/8"
+        onClick={[Function]}
       >
         Revenant
+      </a>
+    </h3>
+  </article>
+  <article
+    className="small-movie-card catalog__movies-card"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+  >
+    <div
+      className="small-movie-card__image"
+    >
+      <video
+        height="175"
+        loop={true}
+        poster="img/revenant.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <a
+        className="small-movie-card__link"
+        href="/movies/9"
+        onClick={[Function]}
+      >
+        Movie
       </a>
     </h3>
   </article>
