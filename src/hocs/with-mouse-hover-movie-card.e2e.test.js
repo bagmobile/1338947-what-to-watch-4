@@ -7,8 +7,9 @@ import withMouseHoverMovieCard from "./with-mouse-hover-movie-card.js";
 const movie = movies[0];
 
 function MockComponent() {
-  return <div />;
+  return <div/>;
 }
+
 const WrappedMockComponent = withMouseHoverMovieCard(MockComponent);
 
 Enzyme.configure({
@@ -17,7 +18,7 @@ Enzyme.configure({
 
 jest.useFakeTimers();
 
-describe(`VideoPlayer e2e Component`, () => {
+describe(`WithMouseHover e2e Component`, () => {
 
   it(`MouseHover action to play video`, () => {
 

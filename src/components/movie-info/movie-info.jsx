@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MoviesList from "../movies-list/movies-list.jsx";
 import movieShape from "../movie/movie-shape.js";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
@@ -9,12 +8,14 @@ import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
 import withTabs from "../../hocs/with-tabs";
-import MoviePageDescription from "../movie-page-description/movie-page-description.jsx";
+import MoviePageDescription, {Tab} from "../movie-page-description/movie-page-description.jsx";
+import {connect} from "react-redux";
+import MoviesList from "../movies-list/movies-list.jsx";
+import {getMovieById, getMoviesLike} from "../../selectors";
 
-const MOVIE_LIST_BY_GENRE_SIZE = 4;
 const MoviePageDescriptionWithTab = withTabs(MoviePageDescription);
 
-const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
+const MovieInfo = ({movies, movie}) => {
 
   return (
     <React.Fragment>
@@ -42,7 +43,7 @@ const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
             <MoviePoster movie={movie}/>
 
             <div className="movie-card__desc">
-              <MoviePageDescriptionWithTab movie={movie}/>
+              <MoviePageDescriptionWithTab movie={movie} initialActiveTab={Tab.OVERVIEW}/>
             </div>
 
           </div>
@@ -51,14 +52,10 @@ const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
 
       <div className="page-content">
         <section className="catalog catalog--like-this">
-          <h2 className="catalog__title">More like this</h2>
 
-          <MoviesList
-            movies={movies}
-            onSmallMovieCardClick={onSmallMovieCardClick}
-            listSize={MOVIE_LIST_BY_GENRE_SIZE}
-            genre={movie.genre}
-          />
+          <MoviesList movies={movies}>
+            <h2 className="catalog__title">More like this</h2>
+          </MoviesList>
 
         </section>
 
@@ -73,9 +70,17 @@ const MovieInfo = ({movies = [], movie, onSmallMovieCardClick}) => {
 };
 
 MovieInfo.propTypes = {
-  movies: MoviesList.propTypes.movies,
-  movie: movieShape,
-  onSmallMovieCardClick: PropTypes.func
+  movies: PropTypes.arrayOf(movieShape),
+  movie: movieShape
 };
 
-export default MovieInfo;
+const mapStateToProps = (state, ownProps) => {
+  const movie = ownProps.movie || getMovieById(state, Number(ownProps.match.params.id));
+  return {
+    movies: getMoviesLike(state, movie),
+    movie
+  };
+};
+
+export {MovieInfo};
+export default connect(mapStateToProps)(MovieInfo);

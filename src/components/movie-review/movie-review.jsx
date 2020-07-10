@@ -5,6 +5,7 @@ import {ANONYMOUS_AUTHOR} from "../../settings";
 
 const MovieReview = ({review}) => {
   const {quote, author = ANONYMOUS_AUTHOR, dateTime, rating = 0} = review;
+
   return (
     <div className="review">
       <blockquote className="review__quote">
