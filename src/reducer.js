@@ -16,7 +16,7 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  changeGenre: (genre = DEFAULT_GENRE) => ({
+  changeGenre: (genre) => ({
     type: ActionType.CHANGE_GENRE,
     payload: genre
   }),

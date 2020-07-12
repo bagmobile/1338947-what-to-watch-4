@@ -36,7 +36,11 @@ const MoviePageDescription = ({movie, activeTab = Tab.OVERVIEW, onTabClick}) => 
             return (
               <li
                 key={`nav-` + index}
-                onClick={() => (activeTab !== Tab[key]) && onTabClick(Tab[key])}
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  return (activeTab !== Tab[key]) && onTabClick(Tab[key]);
+                }
+                }
                 className={`movie-nav__item  ${activeTabClass}`}>
                 <a href="#" className="movie-nav__link">{Tab[key]}</a>
               </li>);

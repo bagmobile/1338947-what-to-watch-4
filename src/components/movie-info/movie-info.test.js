@@ -5,10 +5,11 @@ import MovieInfo from "./movie-info.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {BrowserRouter, Route} from "react-router-dom";
+import {initialState} from "../../reducer";
 
 const movie = movies[0];
 const mockStore = configureStore([]);
-const store = mockStore({movies});
+const store = mockStore(initialState);
 
 describe(`MovieInfo component`, () => {
 

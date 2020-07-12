@@ -20,23 +20,33 @@ describe(`Reducer component`, () => {
       });
   });
 
+  it(`Reducer show more action`, () => {
+    expect(reducer(initialState, ActionCreator.showMoreMovies(0)))
+      .toEqual({
+        movies,
+        promoMovie: PromoMovie,
+        activeGenre: DEFAULT_GENRE,
+        currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE
+      });
+  });
+
 });
 
 describe(`ActionCreator works correctly`, () => {
-
-  it(`ActionCreator change genre by default`, () => {
-    expect(ActionCreator.changeGenre())
-      .toEqual({
-        type: ActionType.CHANGE_GENRE,
-        payload: DEFAULT_GENRE
-      });
-  });
 
   it(`ActionCreator change genre with param`, () => {
     expect(ActionCreator.changeGenre(genres[1]))
       .toEqual({
         type: ActionType.CHANGE_GENRE,
         payload: genres[1]
+      });
+  });
+
+  it(`ActionCreator show more with param`, () => {
+    expect(ActionCreator.showMoreMovies(5))
+      .toEqual({
+        type: ActionType.SHOW_MORE_MOVIES,
+        payload: DEFAULT_MOVIE_LIST_SIZE + 5
       });
   });
 

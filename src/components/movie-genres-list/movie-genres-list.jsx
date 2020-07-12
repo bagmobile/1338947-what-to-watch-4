@@ -13,13 +13,9 @@ const MovieGenresList = ({genres, activeGenre, onClick}) => {
       <ul className="catalog__genres-list">
         {genres.map((genre, index) => <li
           key={index}
+          onClick={() => activeGenre !== genre && onClick(genre)}
           className={`catalog__genres-item ` + ((genre === activeGenre) && `catalog__genres-item--active`)}>
-          <a
-            onClick={() => {
-              onClick(genre);
-            }}
-            href="#"
-            className="catalog__genres-link">{genre}</a>
+          <a href="#" className="catalog__genres-link">{genre}</a>
         </li>)}
       </ul>
     </>

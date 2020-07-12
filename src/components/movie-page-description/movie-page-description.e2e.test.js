@@ -11,6 +11,10 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const mockEvent = {
+  preventDefault() {}
+};
+
 describe(`MoviePageDescription e2e component`, () => {
 
   it(`Component onClick and Details is default`, () => {
@@ -28,7 +32,7 @@ describe(`MoviePageDescription e2e component`, () => {
     const tabItems = moveInfoTab.find(`.movie-nav__item`);
 
     tabItems.forEach((tabItem) => {
-      tabItem.simulate(`click`);
+      tabItem.simulate(`click`, mockEvent);
     });
 
     expect(onClick).not.toHaveBeenCalledWith(Tab.DETAILS);
