@@ -29,7 +29,7 @@ describe(`MoviePageDescription e2e component`, () => {
         />
     );
 
-    const tabItems = moveInfoTab.find(`.movie-nav__item`);
+    const tabItems = moveInfoTab.find(`.movie-nav__link`);
 
     tabItems.forEach((tabItem) => {
       tabItem.simulate(`click`, mockEvent);

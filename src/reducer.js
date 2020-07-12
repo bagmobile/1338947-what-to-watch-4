@@ -12,7 +12,8 @@ const initialState = {
 
 const ActionType = {
   CHANGE_GENRE: `CHANGE GENRE`,
-  SHOW_MORE_MOVIES: `SHOW MORE MOVIES`
+  SHOW_MORE_MOVIES: `SHOW MORE MOVIES`,
+  SET_CURRENT_MOVIE_LIST_SIZE: `SET CURRENT MOVIE LIST SIZE`
 };
 
 const ActionCreator = {
@@ -20,9 +21,13 @@ const ActionCreator = {
     type: ActionType.CHANGE_GENRE,
     payload: genre
   }),
-  showMoreMovies: (currentMovieListSize) => ({
+  showMoreMovies: () => ({
     type: ActionType.SHOW_MORE_MOVIES,
-    payload: currentMovieListSize + DEFAULT_MOVIE_LIST_SIZE
+    payload: DEFAULT_MOVIE_LIST_SIZE
+  }),
+  setCurrentMovieListSize: (size) => ({
+    type: ActionType.SET_CURRENT_MOVIE_LIST_SIZE,
+    payload: size
   })
 };
 
@@ -32,6 +37,8 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_GENRE:
       return extend(state, {activeGenre: action.payload});
     case ActionType.SHOW_MORE_MOVIES:
+      return extend(state, {currentMovieListSize: state.currentMovieListSize + action.payload});
+    case ActionType.SET_CURRENT_MOVIE_LIST_SIZE:
       return extend(state, {currentMovieListSize: action.payload});
   }
   return state;

@@ -21,12 +21,12 @@ describe(`Reducer component`, () => {
   });
 
   it(`Reducer show more action`, () => {
-    expect(reducer(initialState, ActionCreator.showMoreMovies(0)))
+    expect(reducer(initialState, ActionCreator.showMoreMovies()))
       .toEqual({
         movies,
         promoMovie: PromoMovie,
         activeGenre: DEFAULT_GENRE,
-        currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE
+        currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE + DEFAULT_MOVIE_LIST_SIZE
       });
   });
 
@@ -43,10 +43,10 @@ describe(`ActionCreator works correctly`, () => {
   });
 
   it(`ActionCreator show more with param`, () => {
-    expect(ActionCreator.showMoreMovies(5))
+    expect(ActionCreator.showMoreMovies())
       .toEqual({
         type: ActionType.SHOW_MORE_MOVIES,
-        payload: DEFAULT_MOVIE_LIST_SIZE + 5
+        payload: DEFAULT_MOVIE_LIST_SIZE
       });
   });
 

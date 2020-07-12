@@ -31,7 +31,6 @@ MoviesList.propTypes = {
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
       ]),
-  // currentMovieListSize: PropTypes.number,
   movies: PropTypes.arrayOf(movieShape)
 };
 

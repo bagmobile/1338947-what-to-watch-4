@@ -21,7 +21,7 @@ describe(`MovieGenresList e2e component`, () => {
         />
     );
 
-    const genreItems = moveGenresList.find(`.catalog__genres-item`);
+    const genreItems = moveGenresList.find(`.catalog__genres-link`);
 
     genreItems.forEach((genreItem) => {
       genreItem.simulate(`click`);
