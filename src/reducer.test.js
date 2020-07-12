@@ -2,7 +2,7 @@ import {ActionCreator, initialState, reducer} from "./reducer.js";
 import movies, {genres} from "./mocks/movies";
 import {PromoMovie} from "./mocks/promo-movie";
 import {ActionType} from "./reducer";
-import {DEFAULT_GENRE} from "./selectors";
+import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "./selectors";
 
 describe(`Reducer component`, () => {
 
@@ -15,7 +15,8 @@ describe(`Reducer component`, () => {
       .toEqual({
         movies,
         promoMovie: PromoMovie,
-        activeGenre: `genre`
+        activeGenre: `genre`,
+        currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE
       });
   });
 

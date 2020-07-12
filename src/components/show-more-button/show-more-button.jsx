@@ -1,11 +1,30 @@
 import React from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer";
 
-const ShowMoreButton = () => {
+const ShowMoreButton = ({onClick, currentMovieListSize}) => {
   return (
     <div className="catalog__more">
-      <button className="catalog__button" type="button">Show more</button>
+      <button
+        onClick={() => onClick(currentMovieListSize)}
+        className="catalog__button" type="button">Show more
+      </button>
     </div>
   );
 };
 
-export default ShowMoreButton;
+ShowMoreButton.propTypes = {
+  onClick: PropTypes.func,
+  currentMovieListSize: PropTypes.number
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onClick(currentMovieListSize) {
+    dispatch(ActionCreator.showMoreMovies(currentMovieListSize));
+  }
+});
+
+export {ShowMoreButton};
+export default connect(null, mapDispatchToProps)(ShowMoreButton);
+

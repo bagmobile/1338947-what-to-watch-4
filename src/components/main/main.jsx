@@ -6,7 +6,6 @@ import MovieCard from "../movie-card/movie-card.jsx";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import movieShape from "../movie/movie-shape";
 
 const Main = ({promoMovie, children}) => {
@@ -33,7 +32,6 @@ const Main = ({promoMovie, children}) => {
 
           {children}
 
-          <ShowMoreButton/>
         </section>
 
         <footer className="page-footer">

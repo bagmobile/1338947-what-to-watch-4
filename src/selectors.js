@@ -1,4 +1,4 @@
-const DEFAULT_MOVIE_LIST_SIZE = 8;
+export const DEFAULT_MOVIE_LIST_SIZE = 3;
 const MOVIE_LIST_BY_GENRE_SIZE = 4;
 const MAX_GENRES_LIST_SIZE = 9;
 export const DEFAULT_GENRE = `All genres`;
@@ -10,6 +10,9 @@ export const getMovieById = (state, id) => getMoviesList(state).filter((movie) =
 export const getPromoMovie = (state) => state.promoMovie;
 
 export const getActiveGenre = (state) => state.activeGenre;
+
+export const getVisibilityShowMoreButton = (state) =>
+  (state.movies.length >= DEFAULT_MOVIE_LIST_SIZE) && (state.currentMovieListSize < state.movies.length);
 
 export const getMoviesGenres = (state) => [...state.movies.reduce((acc, movie) => {
   acc.add(movie.genre);
