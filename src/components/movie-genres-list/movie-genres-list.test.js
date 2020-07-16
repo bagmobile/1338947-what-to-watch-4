@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {MovieGenresList} from "./movie-genres-list";
+import MovieGenresList from "./movie-genres-list";
 import {genres} from "../../mocks/movies.js";
 
 describe(`MovieGenresList component`, () => {
@@ -9,7 +9,7 @@ describe(`MovieGenresList component`, () => {
     const tree = renderer
       .create(<MovieGenresList
         genres={genres}
-        activeGenre={genres[0]}
+        activePage={genres[0]}
       />)
       .toJSON();
 

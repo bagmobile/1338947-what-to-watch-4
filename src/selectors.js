@@ -1,6 +1,6 @@
 import {createSelector} from "reselect";
 
-export const DEFAULT_MOVIE_LIST_SIZE = 2;
+export const DEFAULT_MOVIE_LIST_SIZE = 8;
 const MOVIE_LIST_BY_GENRE_SIZE = 4;
 const MAX_GENRES_LIST_SIZE = 9;
 export const DEFAULT_GENRE = `All genres`;
@@ -25,9 +25,12 @@ export const getMoviesLike = (state, activeMovie, size = MOVIE_LIST_BY_GENRE_SIZ
   .filter((movie) => movie.id !== activeMovie.id)
   .slice(0, size);
 
-
-export const getFilteredMoviesByGenre = (state) => state.movies
-  .filter((movie) => state.activeGenre === DEFAULT_GENRE ? true : movie.genre === state.activeGenre);
+export const getFilteredMoviesByGenre = createSelector(
+    [getMoviesList, getActiveGenre],
+    (moviesList, activeGenre) => moviesList.filter((movie) => activeGenre === DEFAULT_GENRE
+      ? true
+      : movie.genre === activeGenre)
+);
 
 export const getPartFilteredMoviesByGenre = createSelector(
     [getFilteredMoviesByGenre, getCurrentMovieListSize],

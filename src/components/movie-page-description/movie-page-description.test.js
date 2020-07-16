@@ -18,11 +18,11 @@ describe(`MoviePageDescription component`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`Render with custom activeTab`, () => {
+  it(`Render with custom activePage`, () => {
     const tree = renderer
       .create(<MoviePageDescription
         movie={movie}
-        activeTab={Tab.REVIEWS}
+        activePage={Tab.REVIEWS}
       />)
       .toJSON();
 

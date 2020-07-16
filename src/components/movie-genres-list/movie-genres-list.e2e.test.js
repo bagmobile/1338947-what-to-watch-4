@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {MovieGenresList} from "./movie-genres-list";
+import MovieGenresList from "./movie-genres-list";
 import {genres} from "../../mocks/movies";
 
 Enzyme.configure({
@@ -16,8 +16,9 @@ describe(`MovieGenresList e2e component`, () => {
     const moveGenresList = mount(
         <MovieGenresList
           genres={genres}
-          activeGenre={genres[0]}
+          activePage={genres[0]}
           onClick={onClick}
+          onChangeGenre={()=>{}}
         />
     );
 

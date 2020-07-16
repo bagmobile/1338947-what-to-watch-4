@@ -93,7 +93,7 @@ Array [
 ]
 `;
 
-exports[`MoviePageDescription component Render with custom activeTab 1`] = `
+exports[`MoviePageDescription component Render with custom activePage 1`] = `
 Array [
   <nav
     className="movie-nav movie-card__nav"
