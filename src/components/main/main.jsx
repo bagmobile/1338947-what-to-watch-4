@@ -9,6 +9,8 @@ import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
 import movieShape from "../movie/movie-shape";
 import {
+  DEFAULT_GENRE,
+  DEFAULT_MOVIE_LIST_SIZE,
   getMoviesGenres,
   getPartFilteredMoviesByGenre,
   getPromoMovie,
@@ -18,8 +20,12 @@ import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import {ActionCreator} from "../../reducer";
+import withActivePage from "../../hocs/with-active-page";
 
-const Main = ({promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreButtonClick}) => {
+const MoviesGenresListWithActivePage = withActivePage(MovieGenresList);
+
+const Main = (props) => {
+  const {promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreButtonClick, onChangeGenre} = props;
 
   return (
     <React.Fragment>
@@ -41,7 +47,10 @@ const Main = ({promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreBu
       <div className="page-content">
         <section className="catalog">
 
-          <MovieGenresList genres={genres}/>
+          <MoviesGenresListWithActivePage
+            genres={genres}
+            initialActivePage={DEFAULT_GENRE}
+            onChangeGenre={onChangeGenre}/>
           <MoviesList movies={movies}/>
           {isVisibleShowMoreButton && <ShowMoreButton onClick={onShowMoreButtonClick}/>}
 
@@ -63,7 +72,8 @@ Main.propTypes = {
   promoMovie: movieShape,
   currentMovieListSize: PropTypes.number,
   isVisibleShowMoreButton: PropTypes.bool,
-  onShowMoreButtonClick: PropTypes.func
+  onShowMoreButtonClick: PropTypes.func,
+  onChangeGenre: PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -79,6 +89,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreButtonClick() {
     dispatch(ActionCreator.showMoreMovies());
+  },
+  onChangeGenre(genre) {
+    if (genre === DEFAULT_GENRE) {
+      dispatch(ActionCreator.setCurrentMovieListSize(DEFAULT_MOVIE_LIST_SIZE));
+    }
+    dispatch(ActionCreator.changeGenre(genre));
   }
 });
 

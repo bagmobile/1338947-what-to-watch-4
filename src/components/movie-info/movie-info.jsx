@@ -7,13 +7,13 @@ import MovieCard from "../movie-card/movie-card.jsx";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
-import withTabs from "../../hocs/with-tabs";
+import withActivePage from "../../hocs/with-active-page";
 import MoviePageDescription, {Tab} from "../movie-page-description/movie-page-description.jsx";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
 import {getMovieById, getMoviesLike} from "../../selectors";
 
-const MoviePageDescriptionWithTab = withTabs(MoviePageDescription);
+const MoviePageDescriptionWithActivePage = withActivePage(MoviePageDescription);
 
 const MovieInfo = ({movies, movie}) => {
 
@@ -43,7 +43,7 @@ const MovieInfo = ({movies, movie}) => {
             <MoviePoster movie={movie}/>
 
             <div className="movie-card__desc">
-              <MoviePageDescriptionWithTab movie={movie} initialActiveTab={Tab.OVERVIEW}/>
+              <MoviePageDescriptionWithActivePage movie={movie} initialActivePage={Tab.OVERVIEW}/>
             </div>
 
           </div>

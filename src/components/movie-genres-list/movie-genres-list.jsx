@@ -1,11 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../reducer";
-import {connect} from "react-redux";
-import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE, getActiveGenre} from "../../selectors";
+import {DEFAULT_GENRE} from "../../selectors";
 
 
-const MovieGenresList = ({genres, activeGenre, onClick}) => {
+const MovieGenresList = ({genres, activePage = DEFAULT_GENRE, onClick, onChangeGenre}) => {
 
   return (
     <>
@@ -13,9 +11,15 @@ const MovieGenresList = ({genres, activeGenre, onClick}) => {
       <ul className="catalog__genres-list">
         {genres.map((genre, index) => <li
           key={index}
-          className={`catalog__genres-item ` + ((genre === activeGenre) && `catalog__genres-item--active`)}>
+          className={`catalog__genres-item ` + ((genre === activePage) && `catalog__genres-item--active`)}>
           <a
-            onClick={() => activeGenre !== genre && onClick(genre)}
+            onClick={(evt) => {
+              evt.preventDefault();
+              if (activePage !== genre) {
+                onClick(genre);
+                onChangeGenre(genre);
+              }
+            }}
             href="#"
             className="catalog__genres-link">{genre}</a>
         </li>)}
@@ -27,22 +31,9 @@ const MovieGenresList = ({genres, activeGenre, onClick}) => {
 
 MovieGenresList.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onClick: PropTypes.func
+  activePage: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+  onChangeGenre: PropTypes.func
 };
 
-const mapStateToProps = (state) => ({
-  activeGenre: getActiveGenre(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onClick(genre) {
-    if (genre === DEFAULT_GENRE) {
-      dispatch(ActionCreator.setCurrentMovieListSize(DEFAULT_MOVIE_LIST_SIZE));
-    }
-    dispatch(ActionCreator.changeGenre(genre));
-  }
-});
-
-export {MovieGenresList};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieGenresList);
+export default MovieGenresList;

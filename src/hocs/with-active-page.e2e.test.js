@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import withTabs from "./with-tabs.js";
+import withActivePage from "./with-active-page.js";
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -11,7 +11,7 @@ function MockComponent() {
   return <div/>;
 }
 
-const WrappedMockComponent = withTabs(MockComponent);
+const WrappedMockComponent = withActivePage(MockComponent);
 
 describe(`WithTabs e2e component`, () => {
 
@@ -21,13 +21,13 @@ describe(`WithTabs e2e component`, () => {
 
     const wrappedComponent = mount(
         <WrappedMockComponent
-          initialActiveTab={`Initial`}
-          onTabClick={onClick}
+          initialActivePage={`Initial`}
+          onClick={onClick}
         />
     );
 
-    wrappedComponent.find(MockComponent).prop(`onTabClick`)(`New`);
-    expect(wrappedComponent.state(`activeTab`)).toEqual(`New`);
+    wrappedComponent.find(MockComponent).prop(`onClick`)(`New`);
+    expect(wrappedComponent.state(`activePage`)).toEqual(`New`);
 
   });
 });

@@ -24,8 +24,8 @@ describe(`MoviePageDescription e2e component`, () => {
     const moveInfoTab = shallow(
         <MoviePageDescription
           movie={movie}
-          activeTab={customDefaultTab}
-          onTabClick={onClick}
+          activePage={customDefaultTab}
+          onClick={onClick}
         />
     );
 

@@ -11,9 +11,9 @@ export const Tab = {
   REVIEWS: `Reviews`
 };
 
-const changeActiveTab = (movie, activeTab) => {
+const changeActivePage = (movie, activePage) => {
 
-  switch (activeTab) {
+  switch (activePage) {
     case Tab.OVERVIEW:
       return <MovieOverview movie={movie}/>;
     case Tab.DETAILS:
@@ -25,22 +25,22 @@ const changeActiveTab = (movie, activeTab) => {
   }
 };
 
-const MoviePageDescription = ({movie, activeTab = Tab.OVERVIEW, onTabClick}) => {
+const MoviePageDescription = ({movie, activePage = Tab.OVERVIEW, onClick}) => {
 
   return (
     <>
       <nav className="movie-nav movie-card__nav">
         <ul className="movie-nav__list">
           {Object.keys(Tab).map((key, index) => {
-            const activeTabClass = (activeTab === Tab[key]) && `movie-nav__item--active`;
+            const activePageClass = (activePage === Tab[key]) && `movie-nav__item--active`;
             return (
               <li
                 key={`nav-` + index}
-                className={`movie-nav__item  ${activeTabClass}`}>
+                className={`movie-nav__item  ${activePageClass}`}>
                 <a
                   onClick={(evt) => {
                     evt.preventDefault();
-                    return (activeTab !== Tab[key]) && onTabClick(Tab[key]);
+                    return (activePage !== Tab[key]) && onClick(Tab[key]);
                   }}
                   href="#"
                   className="movie-nav__link">{Tab[key]}</a>
@@ -49,15 +49,15 @@ const MoviePageDescription = ({movie, activeTab = Tab.OVERVIEW, onTabClick}) => 
           )}
         </ul>
       </nav>
-      {changeActiveTab(movie, activeTab)}
+      {changeActivePage(movie, activePage)}
     </>
   );
 };
 
 MoviePageDescription.propTypes = {
   movie: movieShape,
-  activeTab: PropTypes.oneOf(Object.values(Tab)),
-  onTabClick: PropTypes.func
+  activePage: PropTypes.oneOf(Object.values(Tab)),
+  onClick: PropTypes.func
 };
 
 export default MoviePageDescription;
