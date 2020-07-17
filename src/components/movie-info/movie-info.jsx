@@ -11,7 +11,8 @@ import withActivePage from "../../hocs/with-active-page";
 import MoviePageDescription, {Tab} from "../movie-page-description/movie-page-description.jsx";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
-import {getMovieById, getMoviesLike} from "../../selectors";
+import {getMovieById} from "../../reducer/data/selectors";
+import {getMoviesLike} from "../../reducer/movies-list/selectors";
 
 const MoviePageDescriptionWithActivePage = withActivePage(MoviePageDescription);
 

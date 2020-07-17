@@ -16,9 +16,8 @@ describe(`MovieGenresList e2e component`, () => {
     const moveGenresList = mount(
         <MovieGenresList
           genres={genres}
-          activePage={genres[0]}
-          onClick={onClick}
-          onChangeGenre={()=>{}}
+          activeGenre={genres[0]}
+          onChangeGenre={onClick}
         />
     );
 

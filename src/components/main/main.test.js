@@ -5,10 +5,15 @@ import {PromoMovie} from "../../mocks/promo-movie.js";
 import {BrowserRouter, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {initialState} from "../../reducer";
+import NameSpace from "../../reducer/name-space";
+import {initialState as dataState} from "../../reducer/data/data";
+import {initialState as moviesListState} from "../../reducer/movies-list/movies-list";
 
 const mockStore = configureStore([]);
-const store = mockStore(initialState);
+const store = mockStore({
+  [NameSpace.DATA]: dataState,
+  [NameSpace.MOVIES_LIST]: moviesListState
+});
 
 describe(`Main component`, () => {
 

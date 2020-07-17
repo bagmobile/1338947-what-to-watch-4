@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import {DEFAULT_GENRE} from "../../selectors";
 
 
-const MovieGenresList = ({genres, activePage = DEFAULT_GENRE, onClick, onChangeGenre}) => {
+const MovieGenresList = ({genres, activeGenre = DEFAULT_GENRE, onChangeGenre}) => {
 
   return (
     <>
@@ -11,12 +11,11 @@ const MovieGenresList = ({genres, activePage = DEFAULT_GENRE, onClick, onChangeG
       <ul className="catalog__genres-list">
         {genres.map((genre, index) => <li
           key={index}
-          className={`catalog__genres-item ` + ((genre === activePage) && `catalog__genres-item--active`)}>
+          className={`catalog__genres-item ` + ((genre === activeGenre) && `catalog__genres-item--active`)}>
           <a
             onClick={(evt) => {
               evt.preventDefault();
-              if (activePage !== genre) {
-                onClick(genre);
+              if (activeGenre !== genre) {
                 onChangeGenre(genre);
               }
             }}
@@ -31,8 +30,7 @@ const MovieGenresList = ({genres, activePage = DEFAULT_GENRE, onClick, onChangeG
 
 MovieGenresList.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  activePage: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
+  activeGenre: PropTypes.string.isRequired,
   onChangeGenre: PropTypes.func
 };
 

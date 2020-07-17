@@ -1,8 +1,8 @@
 import {createSelector} from "reselect";
 
 export const DEFAULT_MOVIE_LIST_SIZE = 8;
-const MOVIE_LIST_BY_GENRE_SIZE = 4;
-const MAX_GENRES_LIST_SIZE = 9;
+export const MOVIE_LIST_BY_GENRE_SIZE = 4;
+export const MAX_GENRES_LIST_SIZE = 9;
 export const DEFAULT_GENRE = `All genres`;
 
 export const getMoviesList = (state) => state.movies;
