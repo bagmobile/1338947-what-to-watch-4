@@ -1,5 +1,5 @@
 import React from "react";
-import movieShape from "../movie/movie-shape.js";
+import movieShape from "../../types/movie";
 
 const RatingLevel = {
   "Bad": [0, 3],
@@ -33,7 +33,7 @@ const MovieOverview = ({movie}) => {
       </div>
 
       <div className="movie-card__text">
-        {movie.text.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+        <p>{movie.description}</p>
         <p className="movie-card__director"><strong>{movie.director}</strong></p>
         <p className="movie-card__starring"><strong>
           {movie.starring.join(`, `)}

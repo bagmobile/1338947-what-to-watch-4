@@ -1,10 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MoviePageDescription from "./movie-page-description.jsx";
-import movies from "../../mocks/movies";
-import {Tab} from "./movie-page-description";
+import {mockMovies} from "../../mocks/movies";
+import {Tab} from "../../consts";
+import {mockReviews} from "../../mocks/movie-review";
 
-const movie = movies[0];
+const movie = mockMovies[0];
 
 describe(`MoviePageDescription component`, () => {
 
@@ -23,6 +24,7 @@ describe(`MoviePageDescription component`, () => {
       .create(<MoviePageDescription
         movie={movie}
         activePage={Tab.REVIEWS}
+        reviews={mockReviews}
       />)
       .toJSON();
 

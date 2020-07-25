@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import SmallMovieCard from "../small-movie-card/small-movie-card.jsx";
-import movieShape from "../movie/movie-shape.js";
 import withMouseHoverMovieCard from "../../hocs/with-mouse-hover-movie-card.js";
+import movieShape from "../../types/movie";
 
 const SmallMovieCardWrapped = withMouseHoverMovieCard(SmallMovieCard);
 

@@ -1,17 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import movieShape from "../movie/movie-shape";
 import MovieOverview from "../movie-overview/movie-overview.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 import MovieReviews from "../movie-reviews/movie-reviews.jsx";
+import {Tab} from "../../consts";
+import movieShape from "../../types/movie";
+import movieReviewShape from "../../types/movie-review";
 
-export const Tab = {
-  OVERVIEW: `Overview`,
-  DETAILS: `Details`,
-  REVIEWS: `Reviews`
-};
-
-const changeActivePage = (movie, activePage) => {
+const changeActivePage = (movie, activePage, reviews) => {
 
   switch (activePage) {
     case Tab.OVERVIEW:
@@ -19,13 +15,13 @@ const changeActivePage = (movie, activePage) => {
     case Tab.DETAILS:
       return <MovieDetails movie={movie}/>;
     case Tab.REVIEWS:
-      return <MovieReviews reviews={movie.reviews}/>;
+      return <MovieReviews reviews={reviews}/>;
     default:
       return null;
   }
 };
 
-const MoviePageDescription = ({movie, activePage = Tab.OVERVIEW, onClick}) => {
+const MoviePageDescription = ({movie, activePage = Tab.OVERVIEW, onClick, reviews}) => {
 
   return (
     <>
@@ -49,13 +45,14 @@ const MoviePageDescription = ({movie, activePage = Tab.OVERVIEW, onClick}) => {
           )}
         </ul>
       </nav>
-      {changeActivePage(movie, activePage)}
+      {changeActivePage(movie, activePage, reviews)}
     </>
   );
 };
 
 MoviePageDescription.propTypes = {
   movie: movieShape,
+  reviews: PropTypes.arrayOf(movieReviewShape),
   activePage: PropTypes.oneOf(Object.values(Tab)),
   onClick: PropTypes.func
 };

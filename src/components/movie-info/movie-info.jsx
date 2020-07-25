@@ -1,6 +1,5 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import movieShape from "../movie/movie-shape.js";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.jsx";
 import MovieCard from "../movie-card/movie-card.jsx";
@@ -8,80 +7,110 @@ import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
 import withActivePage from "../../hocs/with-active-page";
-import MoviePageDescription, {Tab} from "../movie-page-description/movie-page-description.jsx";
+import MoviePageDescription from "../movie-page-description/movie-page-description.jsx";
 import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
-import {getMovieById} from "../../reducer/data/selectors";
+import {getMovieById, getReviews} from "../../reducer/data/selectors";
 import {getMoviesLike} from "../../reducer/movies-list/selectors";
+import {Tab} from "../../consts";
+import movieShape from "../../types/movie";
+import {Operation} from "../../reducer/data/data";
+import movieReviewShape from "../../types/movie-review";
 
 const MoviePageDescriptionWithActivePage = withActivePage(MoviePageDescription);
 
-const MovieInfo = ({movies, movie}) => {
+class MovieInfo extends PureComponent {
 
-  return (
-    <React.Fragment>
-      <section className="movie-card movie-card--full">
-        <div className="movie-card__hero">
+  componentDidMount() {
+    const {loadReviews, movie} = this.props;
+    loadReviews(movie.id);
+  }
 
-          <MovieHeader movie={movie}/>
+  componentDidUpdate(prevProps) {
+    const {loadReviews, movie} = this.props;
+    if (prevProps.movie.id !== movie.id) {
+      loadReviews(movie.id);
+    }
+  }
 
-          <header className="page-header movie-card__head">
-            <Logo/>
-            <UserBlock/>
-          </header>
+  render() {
+    const {movies, movie, reviews} = this.props;
 
-          <MovieCard
-            movie={movie}
-            renderReviewButton={() => {
-              return (<a href="add-review.html" className="btn movie-card__button">Add review</a>);
-            }}
-          />
-        </div>
+    return (
+      <React.Fragment>
+        <section className="movie-card movie-card--full">
+          <div className="movie-card__hero">
 
-        <div className="movie-card__wrap movie-card__translate-top">
-          <div className="movie-card__info">
+            <MovieHeader movie={movie}/>
 
-            <MoviePoster movie={movie}/>
+            <header className="page-header movie-card__head">
+              <Logo/>
+              <UserBlock/>
+            </header>
 
-            <div className="movie-card__desc">
-              <MoviePageDescriptionWithActivePage movie={movie} initialActivePage={Tab.OVERVIEW}/>
-            </div>
-
+            <MovieCard
+              movie={movie}
+              renderReviewButton={() => {
+                return (<a href="#" className="btn movie-card__button">Add review</a>);
+              }}
+            />
           </div>
-        </div>
-      </section>
 
-      <div className="page-content">
-        <section className="catalog catalog--like-this">
+          <div className="movie-card__wrap movie-card__translate-top">
+            <div className="movie-card__info">
 
-          <MoviesList movies={movies}>
-            <h2 className="catalog__title">More like this</h2>
-          </MoviesList>
+              <MoviePoster movie={movie}/>
 
+              <div className="movie-card__desc">
+                <MoviePageDescriptionWithActivePage movie={movie} initialActivePage={Tab.OVERVIEW} reviews={reviews}/>
+              </div>
+
+            </div>
+          </div>
         </section>
 
-        <footer className="page-footer">
-          <Logo/>
-          <Copyright/>
-        </footer>
+        <div className="page-content">
+          <section className="catalog catalog--like-this">
 
-      </div>
-    </React.Fragment>
-  );
-};
+            <MoviesList movies={movies}>
+              <h2 className="catalog__title">More like this</h2>
+            </MoviesList>
+
+          </section>
+
+          <footer className="page-footer">
+            <Logo/>
+            <Copyright/>
+          </footer>
+
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
 
 MovieInfo.propTypes = {
   movies: PropTypes.arrayOf(movieShape),
-  movie: movieShape
+  movie: movieShape,
+  reviews: PropTypes.arrayOf(movieReviewShape),
+  loadReviews: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {
   const movie = ownProps.movie || getMovieById(state, Number(ownProps.match.params.id));
   return {
     movies: getMoviesLike(state, movie),
-    movie
+    movie,
+    reviews: getReviews(state)
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  loadReviews: (movieId) => {
+    dispatch(Operation.loadReviews(movieId));
+  }
+});
+
 export {MovieInfo};
-export default connect(mapStateToProps)(MovieInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

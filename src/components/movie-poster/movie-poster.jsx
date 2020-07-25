@@ -1,5 +1,5 @@
 import React from "react";
-import movieShape from "../movie/movie-shape";
+import movieShape from "../../types/movie";
 
 const MoviePoster = ({movie}) => {
   const altPoster = `${movie.title} poster`;

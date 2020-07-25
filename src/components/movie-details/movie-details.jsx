@@ -1,6 +1,6 @@
 import React from "react";
-import movieShape from "../movie/movie-shape.js";
-import {EMPTY_FIELD_VALUE} from "../../settings";
+import {EMPTY_FIELD_VALUE} from "../../consts";
+import movieShape from "../../types/movie";
 
 const MovieDetails = ({movie}) => {
   const {director = EMPTY_FIELD_VALUE, starring, duration, genre, year} = movie;

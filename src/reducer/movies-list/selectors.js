@@ -1,6 +1,6 @@
 import {createSelector} from "reselect";
-import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE, MOVIE_LIST_BY_GENRE_SIZE} from "../../selectors";
 import NameSpace from "../name-space";
+import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE, MOVIE_LIST_BY_GENRE_SIZE} from "../../consts";
 
 const getCurrentMovieListSize = (state) => state[NameSpace.MOVIES_LIST].currentMovieListSize;
 

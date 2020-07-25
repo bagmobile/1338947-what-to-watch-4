@@ -9,7 +9,7 @@ describe(`MovieGenresList component`, () => {
     const tree = renderer
       .create(<MovieGenresList
         genres={genres}
-        activePage={genres[0]}
+        activeGenre={genres[0]}
       />)
       .toJSON();
 

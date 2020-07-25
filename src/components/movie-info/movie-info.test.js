@@ -1,20 +1,17 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import movies from "../../mocks/movies.js";
-import MovieInfo from "./movie-info.jsx";
+import {mockMovies} from "../../mocks/movies.js";
+import {MovieInfo} from "./movie-info.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {BrowserRouter, Route} from "react-router-dom";
-import NameSpace from "../../reducer/name-space";
-import {initialState as dataState} from "../../reducer/data/data";
-import {initialState as moviesListState} from "../../reducer/movies-list/movies-list";
+import {mockReviews} from "../../mocks/movie-review";
+import {testStore} from "../../mocks/store";
 
-const movie = movies[0];
+const movie = mockMovies[0];
 const mockStore = configureStore([]);
-const store = mockStore({
-  [NameSpace.DATA]: dataState,
-  [NameSpace.MOVIES_LIST]: moviesListState
-});
+const store = mockStore(testStore);
+
 
 describe(`MovieInfo component`, () => {
 
@@ -24,7 +21,12 @@ describe(`MovieInfo component`, () => {
           <Provider store={store}>
             <BrowserRouter>
               <Route>
-                <MovieInfo movie={movie}/>
+                <MovieInfo
+                  movie={movie}
+                  reviews={mockReviews}
+                  loadReviews={() => {
+                  }}
+                />
               </Route>
             </BrowserRouter>
           </Provider>

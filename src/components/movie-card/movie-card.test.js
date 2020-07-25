@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieCard from "./movie-card";
-import movies from "../../mocks/movies";
+import {mockMovies} from "../../mocks/movies";
 
-const movie = movies[0];
+const movie = mockMovies[0];
 
 describe(`MovieCard component`, () => {
 

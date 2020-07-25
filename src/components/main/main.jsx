@@ -7,7 +7,6 @@ import MovieCard from "../movie-card/movie-card.jsx";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
-import movieShape from "../movie/movie-shape";
 import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
@@ -18,6 +17,7 @@ import {
   getVisibilityShowMoreButton
 } from "../../reducer/movies-list/selectors";
 import {getMoviesGenres, getPromoMovie} from "../../reducer/data/selectors";
+import movieShape from "../../types/movie";
 
 
 const Main = (props) => {

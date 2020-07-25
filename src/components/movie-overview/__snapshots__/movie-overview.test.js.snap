@@ -28,12 +28,7 @@ Array [
   <div
     className="movie-card__text"
   >
-    <p>
-      Text1.
-    </p>
-    <p>
-      Text2
-    </p>
+    <p />
     <p
       className="movie-card__director"
     >

@@ -1,51 +1,6 @@
-const mockReviews = [
-  {
-    author: `Kate Muir`,
-    dateTime: `2020-03-07T14:34:25.500Z`,
-    quote: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious
-              Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in
-              years.`,
-    rating: 8.8
-  },
-  {
-    author: `Bill Goodykoontz`,
-    dateTime: `2020-03-07T14:34:25.500Z`,
-    quote: `Anderson's films are too precious for some, but for those of us willing to lose
-              ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added
-              a hint of gravitas to the mix, improving the recipe.`,
-    rating: 8.9
-  },
-  {
-    author: `Matthew Lickona`,
-    dateTime: `2020-03-07T14:34:25.500Z`,
-    quote: `The mannered, madcap proceedings are often delightful, occasionally silly, and
-              here and there, gruesome and/or heartbreaking.`,
-    rating: 3.9
-  },
-  {
-    author: `Amanda Greever`,
-    dateTime: `2020-03-07T14:34:25.500Z`,
-    quote: `I didn't find it amusing, and while I can appreciate the creativity, it's an
-              hour and 40 minutes I wish I could take back.`,
-    rating: 5
-  },
-  {
-    author: `Paula Fleri-Soler`,
-    dateTime: `2020-03-07T14:34:25.500Z`,
-    quote: `It is certainly a magical and childlike way of storytelling, even if the content
-              is a little more adult.`,
-    rating: 6.7
-  },
-  {
-    author: `Paula Fleri-Soler`,
-    dateTime: `2020-03-07T14:34:25.500Z`,
-    quote: `It is certainly a magical and childlike way of storytelling, even if the content
-              is a little more adult.`,
-    rating: 8.9
-  }
-];
+import {mockReviews} from "./movie-review";
 
-const movies = [
+export const mockMovies = [
   {
     id: 0,
     title: `Fantastic Beasts: The Crimes of Grindelwald`,
@@ -62,7 +17,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `1h 25m`,
+    duration: 134,
     reviews: mockReviews
   },
   {
@@ -81,7 +36,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `1h 35m`,
+    duration: 54,
     reviews: mockReviews
   },
   {
@@ -100,7 +55,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `1h 50m`,
+    duration: 234,
     reviews: mockReviews
   },
   {
@@ -119,7 +74,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `1h 35m`,
+    duration: 65,
     reviews: mockReviews
   },
   {
@@ -138,7 +93,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `1h 15m`,
+    duration: 77,
     reviews: mockReviews
   },
   {
@@ -157,7 +112,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `45m`,
+    duration: 76,
     reviews: mockReviews
   },
   {
@@ -176,7 +131,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `1h 15m`,
+    duration: 111,
     reviews: mockReviews
   },
   {
@@ -195,7 +150,7 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `2h 35m`,
+    duration: 123,
     reviews: mockReviews
   },
   {
@@ -214,11 +169,9 @@ const movies = [
     ],
     director: `Director`,
     starring: [`Star 1`, `Star 2`, `Star 3`, `Star 4`, `Star 5`, `Star 6`, `Star 7`, `Star 8`],
-    duration: `2h 35m`,
+    duration: 231,
     reviews: mockReviews
   }
 ];
 
 export const genres = [`All genres`, `Dramas`, `Comedies`, `Romance`, `Sci-Fi`, `Crime`, `Documentary`];
-
-export default movies;

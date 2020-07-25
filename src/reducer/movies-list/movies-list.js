@@ -1,4 +1,4 @@
-import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../../selectors";
+import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../../consts";
 import {extend} from "../../utils/util";
 
 const initialState = {
@@ -32,8 +32,6 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SHOW_MORE_MOVIES:
       return extend(state, {currentMovieListSize: state.currentMovieListSize + action.payload});
-    case ActionType.SET_CURRENT_MOVIE_LIST_SIZE:
-      return extend(state, {currentMovieListSize: action.payload});
   }
   return state;
 };

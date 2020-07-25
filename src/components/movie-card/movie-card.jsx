@@ -1,7 +1,7 @@
 import MenuButton from "../menu-button/menu-button.jsx";
 import React from "react";
 import PropTypes from "prop-types";
-import movieShape from "../movie/movie-shape";
+import movieShape from "../../types/movie";
 
 
 const MovieCard = ({movie, renderPoster, renderReviewButton}) => {

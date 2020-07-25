@@ -3,10 +3,10 @@ import renderer from "react-test-renderer";
 import ShowMoreButton from "./show-more-button";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {initialState} from "../../reducer";
+import {testStore} from "../../mocks/store";
 
 const mockStore = configureStore([]);
-const store = mockStore(initialState);
+const store = mockStore(testStore);
 
 describe(`ShowMoreButton component`, () => {
 

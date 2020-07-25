@@ -1,13 +1,8 @@
 import PropTypes from "prop-types";
-
-const movieReviewShape = PropTypes.shape({
-  author: PropTypes.string,
-  dateTime: PropTypes.string.isRequired,
-  quote: PropTypes.string.isRequired,
-  rating: PropTypes.number
-});
+import movieReviewShape from "./movie-review";
 
 const movieShape = PropTypes.shape({
+  id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   img: PropTypes.string,
   poster: PropTypes.string,
@@ -19,10 +14,8 @@ const movieShape = PropTypes.shape({
   text: PropTypes.arrayOf.string,
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf.string,
-  duration: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
   reviews: PropTypes.arrayOf(movieReviewShape)
 });
 
-export {movieReviewShape};
 export default movieShape;
-

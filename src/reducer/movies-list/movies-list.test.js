@@ -1,10 +1,8 @@
-import {ActionCreator, initialState, reducer} from "./reducer.js";
-import movies, {genres} from "./mocks/movies";
-import {PromoMovie} from "./mocks/promo-movie";
-import {ActionType} from "./reducer";
-import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "./selectors";
+import {ActionCreator, ActionType, initialState, reducer} from "./movies-list";
+import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../../consts";
 
-describe(`Reducer component`, () => {
+
+describe(`Reducer movies list component`, () => {
 
   it(`Reducer should return initial state`, () => {
     expect(reducer(void 0, {})).toEqual(initialState);
@@ -13,9 +11,18 @@ describe(`Reducer component`, () => {
   it(`Reducer change genre action`, () => {
     expect(reducer(initialState, ActionCreator.changeGenre(`genre`)))
       .toEqual({
-        movies,
-        promoMovie: PromoMovie,
         activeGenre: `genre`,
+        currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE
+      });
+  });
+
+  it(`Reducer change genre action with reset current list size if default genre`, () => {
+    expect(reducer({
+      activeGenre: `genre`,
+      currentMovieListSize: 100
+    }, ActionCreator.changeGenre(DEFAULT_GENRE)))
+      .toEqual({
+        activeGenre: DEFAULT_GENRE,
         currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE
       });
   });
@@ -23,22 +30,21 @@ describe(`Reducer component`, () => {
   it(`Reducer show more action`, () => {
     expect(reducer(initialState, ActionCreator.showMoreMovies()))
       .toEqual({
-        movies,
-        promoMovie: PromoMovie,
         activeGenre: DEFAULT_GENRE,
         currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE + DEFAULT_MOVIE_LIST_SIZE
       });
   });
+
 
 });
 
 describe(`ActionCreator works correctly`, () => {
 
   it(`ActionCreator change genre with param`, () => {
-    expect(ActionCreator.changeGenre(genres[1]))
+    expect(ActionCreator.changeGenre(`genre`))
       .toEqual({
         type: ActionType.CHANGE_GENRE,
-        payload: genres[1]
+        payload: `genre`
       });
   });
 
@@ -51,5 +57,3 @@ describe(`ActionCreator works correctly`, () => {
   });
 
 });
-
-
