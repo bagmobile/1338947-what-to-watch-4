@@ -1,12 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Logo component Render 1`] = `
+exports[`Logo component Render logo default 1`] = `
+<div
+  className="logo"
+>
+  <a
+    className="logo__link"
+    href="/"
+    onClick={[Function]}
+  >
+    <span
+      className="logo__letter logo__letter--1"
+    >
+      W
+    </span>
+    <span
+      className="logo__letter logo__letter--2"
+    >
+      T
+    </span>
+    <span
+      className="logo__letter logo__letter--3"
+    >
+      W
+    </span>
+  </a>
+</div>
+`;
+
+exports[`Logo component Render logo with light 1`] = `
 <div
   className="logo"
 >
   <a
     className="logo__link logo__link--light"
     href="/"
+    onClick={[Function]}
   >
     <span
       className="logo__letter logo__letter--1"

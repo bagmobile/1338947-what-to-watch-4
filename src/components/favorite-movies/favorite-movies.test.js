@@ -1,28 +1,28 @@
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {testFilms, testFilmStore, testUserStore} from "@utils/test-data";
-import NameSpace from "@reducer/name-space";
-import {MemoryRouter} from 'react-router-dom';
-import MyList from "@components/my-list/my-list";
+import {BrowserRouter, Route} from 'react-router-dom';
+import {testStore} from "../../mocks/store";
+import React from "react";
+import {mockMovies} from "../../mocks/movies";
+import renderer from "react-test-renderer";
+import FavoriteMovies from "./favorite-movies";
+
 
 const mockStore = configureStore([]);
 
 it(`Should My List render correctly`, () => {
-  const store = mockStore({
-    [NameSpace.FILMS]: testFilmStore,
-    [NameSpace.USER]: testUserStore,
-  });
+  const store = mockStore(testStore);
 
-  let tree;
-
-  window.act(() => {
-    tree = window.create(
-        <MemoryRouter>
-          <Provider store={store}>
-            <MyList films={testFilms} loadFavoriteFilms={() => ({})}/>
-          </Provider>
-        </MemoryRouter>
-    );
-  });
-  expect(tree.toJSON()).toMatchSnapshot();
+  const tree = renderer
+    .create(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Route>
+              <FavoriteMovies movies={mockMovies} loadFavoriteMovies={() => {}}/>
+            </Route>
+          </BrowserRouter>
+        </Provider>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });

@@ -1,16 +1,15 @@
 import {createSelector} from "reselect";
 import NameSpace from "../name-space";
 import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE, MOVIE_LIST_BY_GENRE_SIZE} from "../../consts";
+import {getMoviesList} from "../data/selectors";
 
-const getCurrentMovieListSize = (state) => state[NameSpace.MOVIES_LIST].currentMovieListSize;
+const NAME_SPACE = NameSpace.MOVIES_LIST;
 
-const getMoviesList = (state) => {
-  return state[NameSpace.DATA].movies;
-};
+const getCurrentMovieListSize = (state) => state[NAME_SPACE].currentMovieListSize;
 
-export const getActiveGenre = (state) => state[NameSpace.MOVIES_LIST].activeGenre;
+export const getActiveGenre = (state) => state[NAME_SPACE].activeGenre;
 
-export const getMoviesLike = (state, activeMovie, size = MOVIE_LIST_BY_GENRE_SIZE) => state[NameSpace.DATA].movies
+export const getMoviesLike = (state, activeMovie, size = MOVIE_LIST_BY_GENRE_SIZE) => getMoviesList(state)
   .filter((movie) => movie.genre === activeMovie.genre)
   .filter((movie) => movie.id !== activeMovie.id)
   .slice(0, size);

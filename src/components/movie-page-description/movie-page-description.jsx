@@ -7,7 +7,7 @@ import {Tab} from "../../consts";
 import movieShape from "../../types/movie";
 import movieReviewShape from "../../types/movie-review";
 
-const changeActivePage = (movie, activePage, reviews) => {
+const renderActivePage = (movie, activePage, reviews) => {
 
   switch (activePage) {
     case Tab.OVERVIEW:
@@ -45,7 +45,7 @@ const MoviePageDescription = ({movie, activePage = Tab.OVERVIEW, onClick, review
           )}
         </ul>
       </nav>
-      {changeActivePage(movie, activePage, reviews)}
+      {renderActivePage(movie, activePage, reviews)}
     </>
   );
 };

@@ -5,7 +5,7 @@ import {LinkPath} from "../../consts";
 
 const PrivateRoute = (props) => {
   const {isAuthorized} = props;
-  console.log(isAuthorized);
+
   if (isAuthorized) {
     return <Route {...props}/>;
   }

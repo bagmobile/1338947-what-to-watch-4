@@ -27,7 +27,7 @@ const UserBlock = ({isAuthorized, userProfile}) => {
 
 UserBlock.propTypes = {
   isAuthorized: PropTypes.bool.isRequired,
-  userProfile: PropTypes.instanceOf(UserProfile).isRequired,
+  userProfile: PropTypes.instanceOf(UserProfile),
 };
 
 export default UserBlock;

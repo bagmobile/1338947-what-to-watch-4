@@ -17,4 +17,4 @@ export const getAuthorizationErrorMessage = (state) => {
 
 export const getUserProfile = (state) => {
   return state[NAME_SPACE].userProfile;
-}
+};

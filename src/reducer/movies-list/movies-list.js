@@ -7,8 +7,8 @@ const initialState = {
 };
 
 const ActionType = {
-  CHANGE_GENRE: `CHANGE GENRE`,
-  SHOW_MORE_MOVIES: `SHOW MORE MOVIES`
+  CHANGE_GENRE: `CHANGE_GENRE`,
+  SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`
 };
 
 const ActionCreator = {

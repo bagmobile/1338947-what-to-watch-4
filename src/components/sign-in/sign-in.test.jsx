@@ -1,25 +1,24 @@
 import configureStore from "redux-mock-store";
-import NameSpace from "@reducer/name-space";
-import {testUserStore} from "@utils/test-data";
 import {Provider} from "react-redux";
-import SignIn from "@components/sign-in/sign-in.connect";
-import {MemoryRouter} from "react-router-dom";
+import SignIn from "./sign-in.connect";
+import {BrowserRouter, Route} from "react-router-dom";
+import {testStore} from "../../mocks/store";
+import renderer from "react-test-renderer";
+import React from "react";
 
 it(`Should SignIn render correctly`, () => {
   const mockStore = configureStore([]);
-  const store = mockStore({
-    [NameSpace.USER]: testUserStore
-  });
-  let tree;
-
-  window.act(() => {
-    tree = window.create(
-        <MemoryRouter>
-          <Provider store={store}>
-            <SignIn/>
-          </Provider>
-        </MemoryRouter>
-    );
-  });
-  expect(tree.toJSON()).toMatchSnapshot();
+  const store = mockStore(testStore);
+  const tree = renderer
+    .create(
+        <Provider store={store}>
+          <BrowserRouter>
+            <Route>
+              <SignIn/>
+            </Route>
+          </BrowserRouter>
+        </Provider>
+    )
+    .toJSON();
+  expect(tree).toMatchSnapshot();
 });

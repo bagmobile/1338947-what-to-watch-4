@@ -13,7 +13,7 @@ describe(`App component`, () => {
   it(`Render`, () => {
     const tree = renderer.create(
         <Provider store={store}>
-          <App/>
+          <App init={() => {}}/>
         </Provider>)
       .toJSON();
 
