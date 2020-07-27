@@ -12,3 +12,29 @@ export const Tab = {
   DETAILS: `Details`,
   REVIEWS: `Reviews`
 };
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`,
+};
+
+export const ErrorMessage = {
+  INVALID_EMAIL: `Invalid email`,
+  INVALID_PASSWORD: `Invalid password`,
+  INVALID_USER_DATA: `Invalid user data`,
+};
+
+export const LinkPath = {
+  INDEX: `/`,
+  VIEW_MOVIE: `/movies/:id`,
+  LOGIN: `/login`,
+  FAVORITE_MOVIES: `/favorite-movies`
+};
+
+export const APIPath = {
+  MOVIES: `/films`,
+  REVIEWS: `/comments`,
+  FAVORITE: `favorite`,
+  PROMO: `/films/promo`,
+  LOGIN: `/login`,
+};

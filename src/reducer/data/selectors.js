@@ -7,6 +7,8 @@ export const getMovieById = (state, id) => getMoviesList(state).filter((movie) =
 
 export const getPromoMovie = (state) => state[NameSpace.DATA].promoMovie;
 
+export const getFavoriteMovies = (state) => state[NameSpace.DATA].favoriteMovies;
+
 export const getMoviesGenres = (state) => [...state[NameSpace.DATA].movies.reduce((acc, movie) => {
   acc.add(movie.genre);
   return acc;

@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import Logo from "../logo/logo.jsx";
-import UserBlock from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block.connect";
 import MovieCard from "../movie-card/movie-card.jsx";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";

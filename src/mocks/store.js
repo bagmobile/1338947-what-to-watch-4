@@ -1,8 +1,7 @@
 import NameSpace from "../reducer/name-space";
 import {mockMovies} from "./movies";
 import {mockReviews} from "./movie-review";
-import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../consts";
-import {AuthorizationStatus} from "../reducer/user/user";
+import {AuthorizationStatus, DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../consts";
 
 export const testStore = {
   [NameSpace.DATA]: {
