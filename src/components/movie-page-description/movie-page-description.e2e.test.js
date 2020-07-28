@@ -2,10 +2,10 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MoviePageDescription from "./movie-page-description.jsx";
-import {Tab} from "./movie-page-description";
-import movies from "../../mocks/movies";
+import {mockMovies} from "../../mocks/movies";
+import {Tab} from "../../consts";
 
-const movie = movies[0];
+const movie = mockMovies[0];
 
 Enzyme.configure({
   adapter: new Adapter(),

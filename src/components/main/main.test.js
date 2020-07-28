@@ -1,14 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Main from "./main.jsx";
-import {PromoMovie} from "../../mocks/promo-movie.js";
 import {BrowserRouter, Route} from "react-router-dom";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {initialState} from "../../reducer";
+import {testStore} from "../../mocks/store";
 
 const mockStore = configureStore([]);
-const store = mockStore(initialState);
+const store = mockStore(testStore);
 
 describe(`Main component`, () => {
 
@@ -18,7 +17,7 @@ describe(`Main component`, () => {
           <Provider store={store}>
             <BrowserRouter>
               <Route>
-                <Main promoMovie={PromoMovie}/>
+                <Main/>
               </Route>
             </BrowserRouter>
           </Provider>

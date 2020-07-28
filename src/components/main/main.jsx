@@ -2,30 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import Logo from "../logo/logo.jsx";
-import UserBlock from "../user-block/user-block.jsx";
+import UserBlock from "../user-block/user-block.connect";
 import MovieCard from "../movie-card/movie-card.jsx";
 import MovieHeader from "../movie-header/movie-header.jsx";
 import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
-import movieShape from "../movie/movie-shape";
-import {
-  DEFAULT_GENRE,
-  DEFAULT_MOVIE_LIST_SIZE,
-  getMoviesGenres,
-  getPartFilteredMoviesByGenre,
-  getPromoMovie,
-  getVisibilityShowMoreButton
-} from "../../selectors";
 import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import {ActionCreator} from "../../reducer";
-import withActivePage from "../../hocs/with-active-page";
+import {ActionCreator} from "../../reducer/movies-list/movies-list";
+import {
+  getActiveGenre,
+  getPartFilteredMoviesByGenre,
+  getVisibilityShowMoreButton
+} from "../../reducer/movies-list/selectors";
+import {getMoviesGenres, getPromoMovie} from "../../reducer/data/selectors";
+import movieShape from "../../types/movie";
 
-const MoviesGenresListWithActivePage = withActivePage(MovieGenresList);
 
 const Main = (props) => {
-  const {promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreButtonClick, onChangeGenre} = props;
+  const {promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreButtonClick, onChangeGenre, activeGenre} = props;
 
   return (
     <React.Fragment>
@@ -47,9 +43,9 @@ const Main = (props) => {
       <div className="page-content">
         <section className="catalog">
 
-          <MoviesGenresListWithActivePage
+          <MovieGenresList
             genres={genres}
-            initialActivePage={DEFAULT_GENRE}
+            activeGenre={activeGenre}
             onChangeGenre={onChangeGenre}/>
           <MoviesList movies={movies}/>
           {isVisibleShowMoreButton && <ShowMoreButton onClick={onShowMoreButtonClick}/>}
@@ -69,6 +65,7 @@ const Main = (props) => {
 Main.propTypes = {
   movies: PropTypes.arrayOf(movieShape),
   genres: PropTypes.arrayOf(PropTypes.string),
+  activeGenre: PropTypes.string,
   promoMovie: movieShape,
   currentMovieListSize: PropTypes.number,
   isVisibleShowMoreButton: PropTypes.bool,
@@ -77,10 +74,10 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-
   return {
     movies: getPartFilteredMoviesByGenre(state),
     genres: getMoviesGenres(state),
+    activeGenre: getActiveGenre(state),
     promoMovie: getPromoMovie(state),
     isVisibleShowMoreButton: getVisibilityShowMoreButton(state)
   };
@@ -91,9 +88,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(ActionCreator.showMoreMovies());
   },
   onChangeGenre(genre) {
-    if (genre === DEFAULT_GENRE) {
-      dispatch(ActionCreator.setCurrentMovieListSize(DEFAULT_MOVIE_LIST_SIZE));
-    }
     dispatch(ActionCreator.changeGenre(genre));
   }
 });

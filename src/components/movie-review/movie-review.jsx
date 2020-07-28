@@ -1,10 +1,11 @@
 import React from "react";
-import {movieReviewShape} from "../movie/movie-shape.js";
 import moment from "moment";
-import {ANONYMOUS_AUTHOR} from "../../settings";
+import {ANONYMOUS_AUTHOR} from "../../consts";
+import movieReviewShape from "../../types/movie-review";
 
 const MovieReview = ({review}) => {
-  const {quote, author = ANONYMOUS_AUTHOR, dateTime, rating = 0} = review;
+  const {quote, user, dateTime, rating = 0} = review;
+  const {name: authorName = ANONYMOUS_AUTHOR} = user;
 
   return (
     <div className="review">
@@ -12,7 +13,7 @@ const MovieReview = ({review}) => {
         <p className="review__text">{quote}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{author}</cite>
+          <cite className="review__author">{authorName}</cite>
           <time className="review__date"
             dateTime={moment(dateTime).format(`YYYY-MM-DD`)}>
             {moment(dateTime).format(`LL`)}

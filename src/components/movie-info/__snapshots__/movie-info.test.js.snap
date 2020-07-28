@@ -13,7 +13,6 @@ Array [
       >
         <img
           alt="Fantastic Beasts: The Crimes of Grindelwald"
-          src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
         />
       </div>
       <h1
@@ -28,8 +27,9 @@ Array [
           className="logo"
         >
           <a
-            className="logo__link logo__link--light"
+            className="logo__link"
             href="/"
+            onClick={[Function]}
           >
             <span
               className="logo__letter logo__letter--1"
@@ -51,16 +51,13 @@ Array [
         <div
           className="user-block"
         >
-          <div
-            className="user-block__avatar"
+          <a
+            className="user-block__link"
+            href="/login"
+            onClick={[Function]}
           >
-            <img
-              alt="User avatar"
-              height="63"
-              src="img/avatar.jpg"
-              width="63"
-            />
-          </div>
+            Sign in
+          </a>
         </div>
       </header>
       <div
@@ -130,7 +127,7 @@ Array [
               </button>
               <a
                 className="btn movie-card__button"
-                href="add-review.html"
+                href="#"
               >
                 Add review
               </a>
@@ -225,12 +222,7 @@ Array [
           <div
             className="movie-card__text"
           >
-            <p>
-              Text1.
-            </p>
-            <p>
-              Text2
-            </p>
+            <p />
             <p
               className="movie-card__director"
             >
@@ -256,43 +248,9 @@ Array [
     <section
       className="catalog catalog--like-this"
     >
-      <h2
-        className="catalog__title"
-      >
-        More like this
-      </h2>
       <div
         className="catalog__movies-list"
-      >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/macbeth.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/movies/2"
-              onClick={[Function]}
-            >
-              Macbeth
-            </a>
-          </h3>
-        </article>
-      </div>
+      />
     </section>
     <footer
       className="page-footer"
@@ -301,8 +259,9 @@ Array [
         className="logo"
       >
         <a
-          className="logo__link logo__link--light"
+          className="logo__link"
           href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"

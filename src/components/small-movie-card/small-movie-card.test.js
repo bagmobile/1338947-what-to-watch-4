@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import movies from "../../mocks/movies.js";
+import {mockMovies} from "../../mocks/movies.js";
 import SmallMovieCard from "./small-movie-card.jsx";
 import {StaticRouter} from "react-router-dom";
 
-const movie = movies[0];
+const movie = mockMovies[0];
 
 describe(`SmallMovieCard component`, () => {
 

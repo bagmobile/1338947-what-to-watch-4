@@ -1,10 +1,10 @@
 import React from 'react';
 import Enzyme, {mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import movies from "../mocks/movies.js";
+import {mockMovies} from "../mocks/movies.js";
 import withMouseHoverMovieCard from "./with-mouse-hover-movie-card.js";
 
-const movie = movies[0];
+const movie = mockMovies[0];
 
 function MockComponent() {
   return <div/>;

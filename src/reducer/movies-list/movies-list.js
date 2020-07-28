@@ -1,19 +1,14 @@
-import movies from "./mocks/movies";
-import {extend} from "./utils/util";
-import {PromoMovie} from "./mocks/promo-movie";
-import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "./selectors";
+import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../../consts";
+import {extend} from "../../utils/util";
 
 const initialState = {
-  movies,
-  promoMovie: PromoMovie,
   activeGenre: DEFAULT_GENRE,
   currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE
 };
 
 const ActionType = {
-  CHANGE_GENRE: `CHANGE GENRE`,
-  SHOW_MORE_MOVIES: `SHOW MORE MOVIES`,
-  SET_CURRENT_MOVIE_LIST_SIZE: `SET CURRENT MOVIE LIST SIZE`
+  CHANGE_GENRE: `CHANGE_GENRE`,
+  SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`
 };
 
 const ActionCreator = {
@@ -24,10 +19,6 @@ const ActionCreator = {
   showMoreMovies: () => ({
     type: ActionType.SHOW_MORE_MOVIES,
     payload: DEFAULT_MOVIE_LIST_SIZE
-  }),
-  setCurrentMovieListSize: (size) => ({
-    type: ActionType.SET_CURRENT_MOVIE_LIST_SIZE,
-    payload: size
   })
 };
 
@@ -35,11 +26,12 @@ const reducer = (state = initialState, action) => {
 
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
-      return extend(state, {activeGenre: action.payload});
+      return extend(state, {
+        activeGenre: action.payload,
+        currentMovieListSize: action.payload === DEFAULT_GENRE ? DEFAULT_MOVIE_LIST_SIZE : state.currentMovieListSize
+      });
     case ActionType.SHOW_MORE_MOVIES:
       return extend(state, {currentMovieListSize: state.currentMovieListSize + action.payload});
-    case ActionType.SET_CURRENT_MOVIE_LIST_SIZE:
-      return extend(state, {currentMovieListSize: action.payload});
   }
   return state;
 };
