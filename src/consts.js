@@ -1,6 +1,6 @@
 
 export const DEFAULT_GENRE = `All genres`;
-export const MAX_GENRES_LIST_SIZE = 9;
+export const MAX_GENRES_LIST_SIZE = 10;
 export const DEFAULT_MOVIE_LIST_SIZE = 8;
 export const MOVIE_LIST_BY_GENRE_SIZE = 4;
 
@@ -28,13 +28,14 @@ export const LinkPath = {
   INDEX: `/`,
   VIEW_MOVIE: `/movies/:id`,
   LOGIN: `/login`,
-  FAVORITE_MOVIES: `/favorite-movies`
+  FAVORITE_MOVIES: `/favorite-movies`,
+  PLAYER: `/player/:id`
 };
 
 export const APIPath = {
   MOVIES: `/films`,
   REVIEWS: `/comments`,
-  FAVORITE: `favorite`,
+  FAVORITE: `/favorite`,
   PROMO: `/films/promo`,
   LOGIN: `/login`,
 };

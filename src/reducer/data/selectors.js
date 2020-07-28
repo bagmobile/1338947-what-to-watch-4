@@ -21,3 +21,7 @@ export const getMoviesGenres = createSelector(
 );
 
 export const getReviews = (state) => state[NAME_SPACE].reviews;
+
+export const isFetchingMovies = (state) => getMoviesList(state).length === 0;
+
+export const isFetchingPromoMovie = (state) => getPromoMovie(state) === null;

@@ -2,12 +2,13 @@ import {extend} from "../../utils/util";
 import MovieModel from "../../models/movie";
 import ReviewModel from "../../models/review";
 import {APIPath} from "../../consts";
+import {getMovieById} from "./selectors";
 
 
 export const initialState = {
   movies: [],
   reviews: [],
-  promoMovie: {},
+  promoMovie: null,
   favoriteMovies: []
 };
 
@@ -15,7 +16,8 @@ const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
-  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`
+  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`,
+  UPDATE_MOVIE: `UPDATE_MOVIE`,
 };
 
 const ActionCreator = {
@@ -27,6 +29,7 @@ const ActionCreator = {
   },
   loadReviews: (reviews) => {
     return {
+
       type: ActionType.LOAD_REVIEWS,
       payload: reviews
     };
@@ -41,6 +44,12 @@ const ActionCreator = {
     return {
       type: ActionType.LOAD_FAVORITE_MOVIES,
       payload: movies
+    };
+  },
+  updateMovie: (movie) => {
+    return {
+      type: ActionType.UPDATE_MOVIE,
+      payload: movie
     };
   }
 };
@@ -83,7 +92,19 @@ const Operation = {
       .catch((err) => {
         throw err;
       });
-  }
+  },
+  toggleFavorite: (movieId) => (dispatch, getState, api) => {
+    const movie = getMovieById(getState(), movieId);
+    const newStatus = Number(!movie.isFavorite);
+
+    return api.post(`${APIPath.FAVORITE}/${movieId}/${newStatus}`)
+      .then((response) => {
+        dispatch(ActionCreator.updateMovie(MovieModel.parseMovie(response.data)));
+      })
+      .catch((err) => {
+        throw err;
+      });
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -104,6 +125,12 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FAVORITE_MOVIES:
       return extend(state, {
         favoriteMovies: action.payload,
+      });
+    case ActionType.UPDATE_MOVIE:
+      const movie = state.movies.find((targetMovie) => targetMovie.id === action.payload.id);
+      movie.isFavorite = action.payload.isFavorite;
+      return extend(state, {
+        movies: state.movies,
       });
   }
   return state;

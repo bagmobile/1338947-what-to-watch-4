@@ -3,7 +3,7 @@ import UserProfile from "../../models/user-profile";
 import {extend} from "../../utils/util";
 
 export const initialState = {
-  userProfile: new UserProfile({}),
+  userProfile: null,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   authorizationErrorMessage: ``,
 };

@@ -8,37 +8,40 @@ import MoviePoster from "../movie-poster/movie-poster.jsx";
 import Copyright from "../copyright/copyright.jsx";
 import withActivePage from "../../hocs/with-active-page";
 import MoviePageDescription from "../movie-page-description/movie-page-description.jsx";
-import {connect} from "react-redux";
 import MoviesList from "../movies-list/movies-list.jsx";
-import {getMovieById, getReviews} from "../../reducer/data/selectors";
-import {getMoviesLike} from "../../reducer/movies-list/selectors";
 import {Tab} from "../../consts";
 import movieShape from "../../types/movie";
-import {Operation} from "../../reducer/data/data";
 import movieReviewShape from "../../types/movie-review";
+import MenuButton from "../menu-button/menu-button.jsx";
 
 const MoviePageDescriptionWithActivePage = withActivePage(MoviePageDescription);
 
 class MovieInfo extends PureComponent {
 
   componentDidMount() {
-    const {loadReviews, movie} = this.props;
-    loadReviews(movie.id);
+    const {loadReviews, movieId} = this.props;
+    loadReviews(movieId);
   }
 
   componentDidUpdate(prevProps) {
-    const {loadReviews, movie} = this.props;
-    if (prevProps.movie.id !== movie.id) {
-      loadReviews(movie.id);
+    const {loadReviews, movieId} = this.props;
+    if (prevProps.movie && prevProps.movie.id !== movieId) {
+      loadReviews(movieId);
     }
   }
 
   render() {
-    const {movies, movie, reviews} = this.props;
+    const {movies, movie, reviews, isAuthorized, isFetching, toggleFavorite} = this.props;
+
+    if (isFetching) {
+      return (`Please wait ...`);
+    }
+
+    const {backgroundColor} = movie;
 
     return (
       <React.Fragment>
-        <section className="movie-card movie-card--full">
+        <section className="movie-card movie-card--full" style={{backgroundColor}}>
           <div className="movie-card__hero">
 
             <MovieHeader movie={movie}/>
@@ -48,12 +51,11 @@ class MovieInfo extends PureComponent {
               <UserBlock/>
             </header>
 
-            <MovieCard
-              movie={movie}
-              renderReviewButton={() => {
-                return (<a href="#" className="btn movie-card__button">Add review</a>);
-              }}
-            />
+            <MovieCard movie={movie}>
+              <MenuButton movieId={movie.id} isFavorite={movie.isFavorite} toggleFavorite={toggleFavorite}>
+                {isAuthorized && <a href="#" className="btn movie-card__button">Add review</a>}
+              </MenuButton>
+            </MovieCard>
           </div>
 
           <div className="movie-card__wrap movie-card__translate-top">
@@ -94,23 +96,13 @@ MovieInfo.propTypes = {
   movies: PropTypes.arrayOf(movieShape),
   movie: movieShape,
   reviews: PropTypes.arrayOf(movieReviewShape),
-  loadReviews: PropTypes.func
+  loadReviews: PropTypes.func,
+  isAuthorized: PropTypes.bool,
+  loadMovies: PropTypes.func,
+  isFetching: PropTypes.bool,
+  movieId: PropTypes.number,
+  toggleFavorite: PropTypes.func,
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const movie = ownProps.movie || getMovieById(state, Number(ownProps.match.params.id));
-  return {
-    movies: getMoviesLike(state, movie),
-    movie,
-    reviews: getReviews(state)
-  };
-};
+export default MovieInfo;
 
-const mapDispatchToProps = (dispatch) => ({
-  loadReviews: (movieId) => {
-    dispatch(Operation.loadReviews(movieId));
-  }
-});
-
-export {MovieInfo};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieInfo);

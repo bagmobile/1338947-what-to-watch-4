@@ -14,18 +14,33 @@ import {ActionCreator} from "../../reducer/movies-list/movies-list";
 import {
   getActiveGenre,
   getPartFilteredMoviesByGenre,
-  getVisibilityShowMoreButton
+  getVisibilityShowMoreButton,
 } from "../../reducer/movies-list/selectors";
-import {getMoviesGenres, getPromoMovie} from "../../reducer/data/selectors";
+import {getMoviesGenres, getPromoMovie, isFetchingMovies, isFetchingPromoMovie} from "../../reducer/data/selectors";
 import movieShape from "../../types/movie";
 
 
 const Main = (props) => {
-  const {promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreButtonClick, onChangeGenre, activeGenre} = props;
+  const {
+    promoMovie,
+    movies,
+    genres,
+    isVisibleShowMoreButton,
+    onShowMoreButtonClick,
+    onChangeGenre,
+    activeGenre,
+    isFetchingData,
+  } = props;
 
+  if (isFetchingData) {
+    return (`Please wait ...`);
+  }
+
+  const {backgroundColor} = promoMovie.backgroundColor;
   return (
+
     <React.Fragment>
-      <section className="movie-card">
+      <section className="movie-card" style={{backgroundColor}}>
 
         <MovieHeader movie={promoMovie}/>
 
@@ -70,7 +85,8 @@ Main.propTypes = {
   currentMovieListSize: PropTypes.number,
   isVisibleShowMoreButton: PropTypes.bool,
   onShowMoreButtonClick: PropTypes.func,
-  onChangeGenre: PropTypes.func
+  onChangeGenre: PropTypes.func,
+  isFetchingData: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => {
@@ -79,7 +95,8 @@ const mapStateToProps = (state) => {
     genres: getMoviesGenres(state),
     activeGenre: getActiveGenre(state),
     promoMovie: getPromoMovie(state),
-    isVisibleShowMoreButton: getVisibilityShowMoreButton(state)
+    isVisibleShowMoreButton: getVisibilityShowMoreButton(state),
+    isFetchingData: isFetchingMovies(state) || isFetchingPromoMovie(state),
   };
 };
 
@@ -89,7 +106,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onChangeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
-  }
+  },
 });
 
 export {Main};

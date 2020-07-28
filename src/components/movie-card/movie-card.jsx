@@ -1,10 +1,9 @@
-import MenuButton from "../menu-button/menu-button.jsx";
 import React from "react";
 import PropTypes from "prop-types";
 import movieShape from "../../types/movie";
 
 
-const MovieCard = ({movie, renderPoster, renderReviewButton}) => {
+const MovieCard = ({movie, renderPoster, children}) => {
 
   return (
     <div className="movie-card__wrap">
@@ -16,9 +15,7 @@ const MovieCard = ({movie, renderPoster, renderReviewButton}) => {
             <span className="movie-card__genre">{movie.genre}</span>
             <span className="movie-card__year">{movie.year}</span>
           </p>
-          <MenuButton>
-            {renderReviewButton && renderReviewButton()}
-          </MenuButton>
+          {children}
         </div>
       </div>
     </div>
@@ -28,7 +25,12 @@ const MovieCard = ({movie, renderPoster, renderReviewButton}) => {
 MovieCard.propTypes = {
   movie: movieShape,
   renderPoster: PropTypes.func,
-  renderReviewButton: PropTypes.func
+  children: PropTypes.oneOfType(
+    [
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ],
+  ),
 };
 
 export default MovieCard;

@@ -15,7 +15,10 @@ const movieShape = PropTypes.shape({
   director: PropTypes.string.isRequired,
   starring: PropTypes.arrayOf.string,
   duration: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(movieReviewShape)
+  reviews: PropTypes.arrayOf(movieReviewShape),
+  backgroundColor: PropTypes.string,
+  isFavorite: PropTypes.bool.isRequired,
+  background: PropTypes.string
 });
 
 export default movieShape;
