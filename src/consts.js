@@ -1,4 +1,6 @@
 
+export const ESC = `Escape`;
+
 export const DEFAULT_GENRE = `All genres`;
 export const MAX_GENRES_LIST_SIZE = 10;
 export const DEFAULT_MOVIE_LIST_SIZE = 8;

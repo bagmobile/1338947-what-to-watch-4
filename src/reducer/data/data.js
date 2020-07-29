@@ -129,8 +129,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.UPDATE_MOVIE:
       const movie = state.movies.find((targetMovie) => targetMovie.id === action.payload.id);
       movie.isFavorite = action.payload.isFavorite;
+      const promoMovie = state.promoMovie.id === movie.id ? action.payload : state.promoMovie;
       return extend(state, {
         movies: state.movies,
+        promoMovie
       });
   }
   return state;

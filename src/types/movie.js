@@ -18,7 +18,8 @@ const movieShape = PropTypes.shape({
   reviews: PropTypes.arrayOf(movieReviewShape),
   backgroundColor: PropTypes.string,
   isFavorite: PropTypes.bool.isRequired,
-  background: PropTypes.string
+  background: PropTypes.string,
+
 });
 
 export default movieShape;

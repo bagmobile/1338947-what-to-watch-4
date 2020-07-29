@@ -6,13 +6,13 @@ const MenuButton = ({isFavorite, movieId, children, toggleFavorite}) => {
 
   return (
     <div className="movie-card__buttons">
-      <Link to={`/player/`} className="btn btn--play movie-card__button" type="button">
+      <Link to={`/player/${movieId}`} className="btn btn--play movie-card__button" type="button">
         <svg viewBox="0 0 19 19" width="19" height="19">
           <use xlinkHref="#play-s"/>
         </svg>
         <span>Play</span>
       </Link>
-      <button onClick={()=>{toggleFavorite(movieId)}}
+      <button onClick={() => toggleFavorite(movieId)}
         className="btn btn--list movie-card__button" type="button">
         <svg viewBox="0 0 19 20" width="19" height="20">
           {isFavorite ? <use xlinkHref="#in-list"/> : <use xlinkHref="#add"/>}

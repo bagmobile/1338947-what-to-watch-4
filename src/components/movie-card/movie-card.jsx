@@ -26,11 +26,10 @@ MovieCard.propTypes = {
   movie: movieShape,
   renderPoster: PropTypes.func,
   children: PropTypes.oneOfType(
-    [
-      PropTypes.arrayOf(PropTypes.node),
-      PropTypes.node,
-    ],
-  ),
+      [
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+      ])
 };
 
 export default MovieCard;

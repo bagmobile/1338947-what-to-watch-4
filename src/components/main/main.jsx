@@ -18,6 +18,8 @@ import {
 } from "../../reducer/movies-list/selectors";
 import {getMoviesGenres, getPromoMovie, isFetchingMovies, isFetchingPromoMovie} from "../../reducer/data/selectors";
 import movieShape from "../../types/movie";
+import MenuButton from "../menu-button/menu-button.jsx";
+import {Operation} from "../../reducer/data/data";
 
 
 const Main = (props) => {
@@ -30,6 +32,7 @@ const Main = (props) => {
     onChangeGenre,
     activeGenre,
     isFetchingData,
+    toggleFavorite
   } = props;
 
   if (isFetchingData) {
@@ -52,7 +55,9 @@ const Main = (props) => {
         <MovieCard
           movie={promoMovie}
           renderPoster={() => <MoviePoster movie={promoMovie}/>}
-        />
+        >
+          <MenuButton movieId={promoMovie.id} isFavorite={promoMovie.isFavorite} toggleFavorite={toggleFavorite}/>
+        </MovieCard>
       </section>
 
       <div className="page-content">
@@ -87,6 +92,7 @@ Main.propTypes = {
   onShowMoreButtonClick: PropTypes.func,
   onChangeGenre: PropTypes.func,
   isFetchingData: PropTypes.bool,
+  toggleFavorite: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -107,6 +113,9 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
   },
+  toggleFavorite: (movieId) => {
+    dispatch(Operation.toggleFavorite(movieId));
+  }
 });
 
 export {Main};

@@ -8,10 +8,6 @@ export default class VideoPlayer extends PureComponent {
     this._videoRef = createRef();
   }
 
-  componentDidMount() {
-
-  }
-
   componentDidUpdate() {
     const video = this._videoRef.current;
     video.muted = true;
