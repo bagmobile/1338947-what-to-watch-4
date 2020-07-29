@@ -70,7 +70,7 @@ describe(`Reducer data component`, () => {
       movies: mockMovies,
       promoMovie,
     }, {
-      type: ActionType.UPDATE_MOVIE,
+      type: ActionType.UPDATE_FAVORITE_STATUS_MOVIE,
       payload: mockMovies[2],
     })).toEqual({
       movies: mockMovies,
@@ -166,4 +166,27 @@ describe(`Operation work correctly`, () => {
       });
   });
 
+  it(`Should make a correct API call to /favorite/:id/:status`, function () {
+    const movieId = 1;
+    const newStatus = 1;
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const toggleFavoriteChanger = Operation.toggleFavorite(mockMovies[0]);
+
+    const newMovie = Object.assign({}, mockMovies[0], {isFavorite: true});
+
+    apiMock
+      .onPost(`${APIPath.FAVORITE}/${movieId}/${newStatus}`)
+      .reply(200, newMovie);
+
+    return toggleFavoriteChanger(dispatch, () => {
+    }, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.UPDATE_FAVORITE_STATUS_MOVIE,
+          payload: MovieModel.parseMovie(newMovie),
+        });
+      });
+  });
 });

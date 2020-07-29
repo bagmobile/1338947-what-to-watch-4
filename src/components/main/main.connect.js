@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
   },
-  toggleFavorite: (movieId) => {
-    dispatch(Operation.toggleFavorite(movieId));
+  toggleFavorite: (movie) => {
+    dispatch(Operation.toggleFavorite(movie));
   }
 });
 

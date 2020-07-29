@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import MenuButton from "./menu-button.jsx";
 import {StaticRouter} from "react-router-dom";
+import {mockMovies} from "../../mocks/movies";
 
 describe(`MenuButton component`, () => {
 
@@ -11,8 +12,7 @@ describe(`MenuButton component`, () => {
       .create(
           <StaticRouter>
             <MenuButton
-              movieId={1}
-              isFavorite={true}
+              movie={mockMovies[0]}
               toggleFavorite={() => {}}
             />
           </StaticRouter>)

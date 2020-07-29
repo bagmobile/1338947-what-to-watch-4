@@ -48,7 +48,7 @@ const Main = (props) => {
           movie={promoMovie}
           renderPoster={() => <MoviePoster movie={promoMovie}/>}
         >
-          <MenuButton movieId={promoMovie.id} isFavorite={promoMovie.isFavorite} toggleFavorite={toggleFavorite}/>
+          <MenuButton movie={promoMovie} toggleFavorite={toggleFavorite}/>
         </MovieCard>
       </section>
 

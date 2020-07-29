@@ -26,8 +26,8 @@ const mapDispatchToProps = (dispatch) => ({
   loadMovies: () => {
     dispatch(Operation.loadMovies());
   },
-  toggleFavorite: (movieId) => {
-    dispatch(Operation.toggleFavorite(movieId));
+  toggleFavorite: (movie) => {
+    dispatch(Operation.toggleFavorite(movie));
   }
 });
 

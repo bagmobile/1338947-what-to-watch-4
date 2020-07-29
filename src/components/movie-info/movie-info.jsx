@@ -53,7 +53,7 @@ class MovieInfo extends PureComponent {
             </header>
 
             <MovieCard movie={movie}>
-              <MenuButton movieId={movie.id} isFavorite={movie.isFavorite} toggleFavorite={toggleFavorite}>
+              <MenuButton movie={movie} toggleFavorite={toggleFavorite}>
                 {isAuthorized && <a href="#" className="btn movie-card__button">Add review</a>}
               </MenuButton>
             </MovieCard>
