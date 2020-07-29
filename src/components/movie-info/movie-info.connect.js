@@ -6,7 +6,7 @@ import {connect} from "react-redux";
 import MovieInfo from "./movie-info.jsx";
 
 const mapStateToProps = (state, ownProps) => {
-  const id = Number(ownProps.match.params.id);
+  const id = ownProps.movieId || Number(ownProps.match.params.id);
   const movie = getMovieById(state, id);
 
   return {

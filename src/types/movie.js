@@ -1,25 +1,23 @@
 import PropTypes from "prop-types";
-import movieReviewShape from "./movie-review";
 
 const movieShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  img: PropTypes.string,
-  poster: PropTypes.string,
-  preview: PropTypes.string,
+  preview: PropTypes.string.isRequired,
+  video: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
-  ratingScore: PropTypes.number,
-  ratingCount: PropTypes.number,
-  text: PropTypes.arrayOf.string,
+  description: PropTypes.string.isRequired,
+  ratingScore: PropTypes.number.isRequired,
+  ratingCount: PropTypes.number.isRequired,
   director: PropTypes.string.isRequired,
-  starring: PropTypes.arrayOf.string,
+  starring: PropTypes.arrayOf(PropTypes.string),
   duration: PropTypes.number.isRequired,
-  reviews: PropTypes.arrayOf(movieReviewShape),
-  backgroundColor: PropTypes.string,
+  year: PropTypes.number.isRequired,
   isFavorite: PropTypes.bool.isRequired,
-  background: PropTypes.string,
-
+  backgroundColor: PropTypes.string.isRequired,
 });
 
 export default movieShape;

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
 import Logo from "../logo/logo.jsx";
 import UserBlock from "../user-block/user-block.connect";
 import MovieCard from "../movie-card/movie-card.jsx";
@@ -10,16 +9,8 @@ import Copyright from "../copyright/copyright.jsx";
 import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
 import MoviesList from "../movies-list/movies-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import {ActionCreator} from "../../reducer/movies-list/movies-list";
-import {
-  getActiveGenre,
-  getPartFilteredMoviesByGenre,
-  getVisibilityShowMoreButton,
-} from "../../reducer/movies-list/selectors";
-import {getMoviesGenres, getPromoMovie, isFetchingMovies, isFetchingPromoMovie} from "../../reducer/data/selectors";
 import movieShape from "../../types/movie";
 import MenuButton from "../menu-button/menu-button.jsx";
-import {Operation} from "../../reducer/data/data";
 
 
 const Main = (props) => {
@@ -32,7 +23,7 @@ const Main = (props) => {
     onChangeGenre,
     activeGenre,
     isFetchingData,
-    toggleFavorite
+    toggleFavorite,
   } = props;
 
   if (isFetchingData) {
@@ -40,6 +31,7 @@ const Main = (props) => {
   }
 
   const {backgroundColor} = promoMovie.backgroundColor;
+
   return (
 
     <React.Fragment>
@@ -95,29 +87,5 @@ Main.propTypes = {
   toggleFavorite: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    movies: getPartFilteredMoviesByGenre(state),
-    genres: getMoviesGenres(state),
-    activeGenre: getActiveGenre(state),
-    promoMovie: getPromoMovie(state),
-    isVisibleShowMoreButton: getVisibilityShowMoreButton(state),
-    isFetchingData: isFetchingMovies(state) || isFetchingPromoMovie(state),
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onShowMoreButtonClick() {
-    dispatch(ActionCreator.showMoreMovies());
-  },
-  onChangeGenre(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
-  },
-  toggleFavorite: (movieId) => {
-    dispatch(Operation.toggleFavorite(movieId));
-  }
-});
-
-export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
 

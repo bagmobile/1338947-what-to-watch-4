@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import PropTypes from "prop-types";
-import Main from "../main/main.jsx";
+import Main from "../main/main.connect";
 import MovieInfo from "../movie-info/movie-info.connect";
 import {LinkPath} from "../../consts";
 import SignIn from "../sign-in/sign-in.connect";

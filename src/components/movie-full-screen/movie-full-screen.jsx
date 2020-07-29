@@ -25,12 +25,10 @@ class MovieFullScreen extends React.Component {
   }
 
   render() {
-    const {movie} = this.props;
+    const {movie, history} = this.props;
 
     if (!movie) {
-      return (
-        <h2>Loading...</h2>
-      );
+      return (`Loading...`);
     }
     return (<>
         <div className="player">
@@ -38,14 +36,13 @@ class MovieFullScreen extends React.Component {
             className="player__video"
             autoPlay={true}
             loop={true}
-            src={movie.videoFull}
+            src={movie.video}
             poster={movie.src}
             muted={false}
             controls={true}
           />
-          <button type="button" className="player__exit" onClick={() => {
-            this.props.history.goBack();
-          }}>Exit
+          <button type="button" className="player__exit" onClick={() => history.goBack()}>
+            Exit
           </button>
         </div>
       </>
@@ -54,7 +51,8 @@ class MovieFullScreen extends React.Component {
 }
 
 MovieFullScreen.propTypes = {
-  movie: movieShape,
+  movieId: PropTypes.number,
+  movie: movieShape.isRequired,
   history: PropTypes.shape({
     goBack: PropTypes.func.isRequired,
   }).isRequired

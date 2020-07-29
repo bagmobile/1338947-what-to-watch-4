@@ -4,12 +4,18 @@ exports[`Main component Render 1`] = `
 Array [
   <section
     className="movie-card"
+    style={
+      Object {
+        "backgroundColor": undefined,
+      }
+    }
   >
     <div
       className="movie-card__bg"
     >
       <img
-        alt="Fantastic Beasts: The Crimes of Grindelwald"
+        alt="Bohemian Rhapsody"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
       />
     </div>
     <h1
@@ -67,9 +73,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald poster"
+            alt="Bohemian Rhapsody poster"
             height="327"
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="img/bohemian-rhapsody.jpg"
             width="218"
           />
         </div>
@@ -79,7 +85,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Fantastic Beasts: The Crimes of Grindelwald
+            Bohemian Rhapsody
           </h2>
           <p
             className="movie-card__meta"
@@ -92,14 +98,16 @@ Array [
             <span
               className="movie-card__year"
             >
-              2010
+              2011
             </span>
           </p>
           <div
             className="movie-card__buttons"
           >
-            <button
+            <a
               className="btn btn--play movie-card__button"
+              href="/player/1"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -114,9 +122,10 @@ Array [
               <span>
                 Play
               </span>
-            </button>
+            </a>
             <button
               className="btn btn--list movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -181,7 +190,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Documentary
+            Romance
           </a>
         </li>
         <li
@@ -203,28 +212,6 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Sci-Fi
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item false"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item false"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
             Dramas
           </a>
         </li>
@@ -232,34 +219,6 @@ Array [
       <div
         className="catalog__movies-list"
       >
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/movies/0"
-              onClick={[Function]}
-            >
-              Fantastic Beasts: The Crimes of Grindelwald
-            </a>
-          </h3>
-        </article>
         <article
           className="small-movie-card catalog__movies-card"
           onMouseEnter={[Function]}
@@ -299,7 +258,7 @@ Array [
             <video
               height="175"
               loop={true}
-              poster="img/macbeth.jpg"
+              poster="img/bohemian-rhapsody.jpg"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
@@ -312,7 +271,7 @@ Array [
               href="/movies/2"
               onClick={[Function]}
             >
-              Macbeth
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
@@ -327,7 +286,7 @@ Array [
             <video
               height="175"
               loop={true}
-              poster="img/aviator.jpg"
+              poster="img/bohemian-rhapsody.jpg"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
@@ -340,7 +299,7 @@ Array [
               href="/movies/3"
               onClick={[Function]}
             >
-              Aviator
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
@@ -355,7 +314,7 @@ Array [
             <video
               height="175"
               loop={true}
-              poster="img/we-need-to-talk-about-kevin.jpg"
+              poster="img/bohemian-rhapsody.jpg"
               src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
               width="280"
             />
@@ -368,105 +327,10 @@ Array [
               href="/movies/4"
               onClick={[Function]}
             >
-              We need to talk about Kevin
+              Bohemian Rhapsody
             </a>
           </h3>
         </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/johnny-english.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/movies/5"
-              onClick={[Function]}
-            >
-              Johnny English
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/what-we-do-in-the-shadows.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/movies/6"
-              onClick={[Function]}
-            >
-              What We Do in the Shadows
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseEnter={[Function]}
-          onMouseLeave={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <video
-              height="175"
-              loop={true}
-              poster="img/revenant.jpg"
-              src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-          >
-            <a
-              className="small-movie-card__link"
-              href="/movies/8"
-              onClick={[Function]}
-            >
-              Revenant
-            </a>
-          </h3>
-        </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          onClick={[Function]}
-          type="button"
-        >
-          Show more
-        </button>
       </div>
     </section>
     <footer

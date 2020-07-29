@@ -71,34 +71,6 @@ exports[`Should My List render correctly 1`] = `
           <video
             height="175"
             loop={true}
-            poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/movies/0"
-            onClick={[Function]}
-          >
-            Fantastic Beasts: The Crimes of Grindelwald
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <video
-            height="175"
-            loop={true}
             poster="img/bohemian-rhapsody.jpg"
             src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="280"
@@ -127,7 +99,7 @@ exports[`Should My List render correctly 1`] = `
           <video
             height="175"
             loop={true}
-            poster="img/macbeth.jpg"
+            poster="img/bohemian-rhapsody.jpg"
             src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="280"
           />
@@ -140,7 +112,7 @@ exports[`Should My List render correctly 1`] = `
             href="/movies/2"
             onClick={[Function]}
           >
-            Macbeth
+            Bohemian Rhapsody
           </a>
         </h3>
       </article>
@@ -155,7 +127,7 @@ exports[`Should My List render correctly 1`] = `
           <video
             height="175"
             loop={true}
-            poster="img/aviator.jpg"
+            poster="img/bohemian-rhapsody.jpg"
             src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="280"
           />
@@ -168,7 +140,7 @@ exports[`Should My List render correctly 1`] = `
             href="/movies/3"
             onClick={[Function]}
           >
-            Aviator
+            Bohemian Rhapsody
           </a>
         </h3>
       </article>
@@ -183,7 +155,7 @@ exports[`Should My List render correctly 1`] = `
           <video
             height="175"
             loop={true}
-            poster="img/we-need-to-talk-about-kevin.jpg"
+            poster="img/bohemian-rhapsody.jpg"
             src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
             width="280"
           />
@@ -196,119 +168,7 @@ exports[`Should My List render correctly 1`] = `
             href="/movies/4"
             onClick={[Function]}
           >
-            We need to talk about Kevin
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <video
-            height="175"
-            loop={true}
-            poster="img/johnny-english.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/movies/5"
-            onClick={[Function]}
-          >
-            Johnny English
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <video
-            height="175"
-            loop={true}
-            poster="img/what-we-do-in-the-shadows.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/movies/6"
-            onClick={[Function]}
-          >
-            What We Do in the Shadows
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <video
-            height="175"
-            loop={true}
-            poster="img/revenant.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/movies/8"
-            onClick={[Function]}
-          >
-            Revenant
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <video
-            height="175"
-            loop={true}
-            poster="img/revenant.jpg"
-            src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="/movies/9"
-            onClick={[Function]}
-          >
-            Movie
+            Bohemian Rhapsody
           </a>
         </h3>
       </article>

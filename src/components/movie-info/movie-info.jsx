@@ -25,6 +25,7 @@ class MovieInfo extends PureComponent {
 
   componentDidUpdate(prevProps) {
     const {loadReviews, movieId} = this.props;
+
     if (prevProps.movie && prevProps.movie.id !== movieId) {
       loadReviews(movieId);
     }

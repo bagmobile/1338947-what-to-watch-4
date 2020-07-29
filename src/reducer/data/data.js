@@ -77,8 +77,6 @@ const Operation = {
     return api.get(`${APIPath.PROMO}`)
       .then((response) => {
         dispatch(ActionCreator.loadPromoMovie(MovieModel.parseMovie(response.data)));
-      }).catch((err) => {
-        throw err;
       })
       .catch((err) => {
         throw err;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieFullScreen component Render 1`] = `
+<div
+  className="player"
+>
+  <video
+    autoPlay={true}
+    className="player__video"
+    controls={true}
+    loop={true}
+    muted={false}
+    src="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4\\""
+  />
+  <button
+    className="player__exit"
+    onClick={[Function]}
+    type="button"
+  >
+    Exit
+  </button>
+</div>
+`;

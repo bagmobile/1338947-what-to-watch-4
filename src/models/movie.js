@@ -4,10 +4,10 @@ export default class MovieModel {
     this.id = movie.id;
     this.title = movie.name;
     this.preview = movie.preview_video_link;
-    this.videoFull = movie.video_link;
+    this.video = movie.video_link;
     this.img = movie.preview_image;
     this.poster = movie.poster_image;
-    this.background = movie.background_image;
+    this.backgroundImage = movie.background_image;
     this.genre = movie.genre;
     this.description = movie.description;
     this.ratingScore = movie.rating;

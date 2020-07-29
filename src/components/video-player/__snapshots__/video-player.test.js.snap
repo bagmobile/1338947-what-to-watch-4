@@ -4,7 +4,7 @@ exports[`VideoPlayer component Render 1`] = `
 <video
   height="175"
   loop={true}
-  poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+  poster="img/bohemian-rhapsody.jpg"
   src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
   width="280"
 />
