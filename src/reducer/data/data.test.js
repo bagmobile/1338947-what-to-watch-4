@@ -7,7 +7,6 @@ import MovieModel from "../../models/movie";
 import ReviewModel from "../../models/review";
 import {mockReviews} from "../../mocks/movie-review";
 import {APIPath} from "../../consts";
-import {testStore} from "../../mocks/store";
 
 const api = createAPI(() => {
 });
@@ -167,26 +166,4 @@ describe(`Operation work correctly`, () => {
       });
   });
 
-  it(`Should make a correct API call to /favorite/:id/:status`, function () {
-    const movieId = 1;
-    const newStatus = 1;
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
-    const toggleFavoriteChanger = Operation.toggleFavorite(movieId);
-
-    const newMovie = Object.assign({}, mockMovies[0], {isFavorite: true});
-
-    apiMock
-      .onPost(`${APIPath.FAVORITE}/${movieId}/${newStatus}`)
-      .reply(200, newMovie);
-
-    return toggleFavoriteChanger(dispatch, () => testStore, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(1);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.UPDATE_MOVIE,
-          payload: MovieModel.parseMovie(newMovie),
-        });
-      });
-  });
 });
