@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Logo from "../logo/logo.jsx";
+import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block.connect";
-import MovieCard from "../movie-card/movie-card.jsx";
-import MovieHeader from "../movie-header/movie-header.jsx";
-import MoviePoster from "../movie-poster/movie-poster.jsx";
-import Copyright from "../copyright/copyright.jsx";
-import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
-import MoviesList from "../movies-list/movies-list.jsx";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
+import MovieCard from "../movie-card/movie-card";
+import MovieHeader from "../movie-header/movie-header";
+import MoviePoster from "../movie-poster/movie-poster";
+import Copyright from "../copyright/copyright";
+import MovieGenresList from "../movie-genres-list/movie-genres-list";
+import MoviesList from "../movies-list/movies-list";
+import ShowMoreButton from "../show-more-button/show-more-button";
 import movieShape from "../../types/movie";
-import MenuButton from "../menu-button/menu-button.jsx";
+import MenuButton from "../menu-button/menu-button";
+import Spinner from "react-spinner-material";
 
 
 const Main = (props) => {
@@ -23,14 +24,14 @@ const Main = (props) => {
     onChangeGenre,
     activeGenre,
     isFetchingData,
-    toggleFavorite,
+    onFavoriteToggle,
   } = props;
 
   if (isFetchingData) {
-    return (`Please wait ...`);
+    return (<Spinner/>);
   }
 
-  const {backgroundColor} = promoMovie.backgroundColor;
+  const backgroundColor = promoMovie.backgroundColor;
 
   return (
 
@@ -48,7 +49,7 @@ const Main = (props) => {
           movie={promoMovie}
           renderPoster={() => <MoviePoster movie={promoMovie}/>}
         >
-          <MenuButton movie={promoMovie} toggleFavorite={toggleFavorite}/>
+          <MenuButton movie={promoMovie} onFavoriteToggle={onFavoriteToggle}/>
         </MovieCard>
       </section>
 
@@ -84,7 +85,7 @@ Main.propTypes = {
   onShowMoreButtonClick: PropTypes.func,
   onChangeGenre: PropTypes.func,
   isFetchingData: PropTypes.bool,
-  toggleFavorite: PropTypes.func,
+  onFavoriteToggle: PropTypes.func,
 };
 
 export default Main;

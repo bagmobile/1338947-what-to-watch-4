@@ -1,41 +1,42 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import Logo from "../logo/logo.jsx";
+import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block.connect";
-import MovieCard from "../movie-card/movie-card.jsx";
-import MovieHeader from "../movie-header/movie-header.jsx";
-import MoviePoster from "../movie-poster/movie-poster.jsx";
-import Copyright from "../copyright/copyright.jsx";
+import MovieCard from "../movie-card/movie-card";
+import MovieHeader from "../movie-header/movie-header";
+import MoviePoster from "../movie-poster/movie-poster";
+import Copyright from "../copyright/copyright";
 import withActivePage from "../../hocs/with-active-page";
-import MoviePageDescription from "../movie-page-description/movie-page-description.jsx";
-import MoviesList from "../movies-list/movies-list.jsx";
+import MoviePageDescription from "../movie-page-description/movie-page-description";
+import MoviesList from "../movies-list/movies-list";
 import {Tab} from "../../consts";
 import movieShape from "../../types/movie";
 import movieReviewShape from "../../types/movie-review";
-import MenuButton from "../menu-button/menu-button.jsx";
+import MenuButton from "../menu-button/menu-button";
+import Spinner from "react-spinner-material";
 
 const MoviePageDescriptionWithActivePage = withActivePage(MoviePageDescription);
 
 class MovieInfo extends PureComponent {
 
   componentDidMount() {
-    const {loadReviews, movieId} = this.props;
-    loadReviews(movieId);
+    const {onReviewsLoad, movieId} = this.props;
+    onReviewsLoad(movieId);
   }
 
   componentDidUpdate(prevProps) {
-    const {loadReviews, movieId} = this.props;
+    const {onReviewsLoad, movieId} = this.props;
 
     if (prevProps.movie && prevProps.movie.id !== movieId) {
-      loadReviews(movieId);
+      onReviewsLoad(movieId);
     }
   }
 
   render() {
-    const {movies, movie, reviews, isAuthorized, isFetching, toggleFavorite} = this.props;
+    const {movies, movie, reviews, isAuthorized, isFetching, onFavoriteToggle} = this.props;
 
     if (isFetching) {
-      return (`Please wait ...`);
+      return (<Spinner/>);
     }
 
     const {backgroundColor} = movie;
@@ -53,7 +54,7 @@ class MovieInfo extends PureComponent {
             </header>
 
             <MovieCard movie={movie}>
-              <MenuButton movie={movie} toggleFavorite={toggleFavorite}>
+              <MenuButton movie={movie} onFavoriteToggle={onFavoriteToggle}>
                 {isAuthorized && <a href="#" className="btn movie-card__button">Add review</a>}
               </MenuButton>
             </MovieCard>
@@ -97,12 +98,12 @@ MovieInfo.propTypes = {
   movies: PropTypes.arrayOf(movieShape),
   movie: movieShape,
   reviews: PropTypes.arrayOf(movieReviewShape),
-  loadReviews: PropTypes.func,
+  onReviewsLoad: PropTypes.func,
   isAuthorized: PropTypes.bool,
-  loadMovies: PropTypes.func,
+  onMoviesLoad: PropTypes.func,
   isFetching: PropTypes.bool,
   movieId: PropTypes.number,
-  toggleFavorite: PropTypes.func,
+  onFavoriteToggle: PropTypes.func,
 };
 
 export default MovieInfo;

@@ -28,7 +28,6 @@ const ActionCreator = {
   },
   loadReviews: (reviews) => {
     return {
-
       type: ActionType.LOAD_REVIEWS,
       payload: reviews,
     };
@@ -95,9 +94,6 @@ const Operation = {
     return api.post(`${APIPath.FAVORITE}/${movie.id}/${movie.isFavorite ? 0 : 1}`)
       .then((response) => {
         dispatch(ActionCreator.updateFavoriteStatusMovie(MovieModel.parseMovie(response.data)));
-      })
-      .catch((err) => {
-        throw err;
       });
   },
 };
@@ -122,11 +118,13 @@ const reducer = (state = initialState, action) => {
         favoriteMovies: action.payload,
       });
     case ActionType.UPDATE_FAVORITE_STATUS_MOVIE:
-      const movie = state.movies.find((targetMovie) => targetMovie.id === action.payload.id);
-      movie.isFavorite = action.payload.isFavorite;
-      const promoMovie = state.promoMovie.id === movie.id ? action.payload : state.promoMovie;
+      const movies = state.movies.map((movie) =>
+        movie.id === action.payload.id
+          ? extend(movie, {isFavorite: action.payload.isFavorite}) : movie
+      );
+      const promoMovie = state.promoMovie.id === action.payload.id ? extend(state.promoMovie, {isFavorite: action.payload.isFavorite}) : state.promoMovie;
       return extend(state, {
-        movies: state.movies,
+        movies,
         promoMovie,
       });
   }

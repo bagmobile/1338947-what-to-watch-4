@@ -7,7 +7,7 @@ import {getMoviesGenres, getPromoMovie, isFetchingMovies, isFetchingPromoMovie} 
 import {ActionCreator} from "../../reducer/movies-list/movies-list";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
-import Main from "./main.jsx";
+import Main from "./main";
 
 const mapStateToProps = (state) => {
   return {
@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
   },
-  toggleFavorite: (movie) => {
+  onFavoriteToggle: (movie) => {
     dispatch(Operation.toggleFavorite(movie));
   }
 });

@@ -2,7 +2,7 @@ import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {mockMovies} from "../../mocks/movies.js";
-import SmallMovieCard from "./small-movie-card.jsx";
+import SmallMovieCard from "./small-movie-card";
 
 const movie = mockMovies[0];
 

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import Logo from "./logo.jsx";
+import Logo from "./logo";
 import {BrowserRouter, Route} from "react-router-dom";
 
 describe(`Logo component`, () => {

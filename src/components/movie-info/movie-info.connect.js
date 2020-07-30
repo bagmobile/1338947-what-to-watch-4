@@ -3,7 +3,7 @@ import {getMoviesLike} from "../../reducer/movies-list/selectors";
 import {isAuthorized} from "../../reducer/user/selectors";
 import {Operation} from "../../reducer/data/data";
 import {connect} from "react-redux";
-import MovieInfo from "./movie-info.jsx";
+import MovieInfo from "./movie-info";
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.movieId || Number(ownProps.match.params.id);
@@ -20,13 +20,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  loadReviews: (movieId) => {
+  onReviewsLoad: (movieId) => {
     dispatch(Operation.loadReviews(movieId));
   },
-  loadMovies: () => {
+  onMoviesLoad: () => {
     dispatch(Operation.loadMovies());
   },
-  toggleFavorite: (movie) => {
+  onFavoriteToggle: (movie) => {
     dispatch(Operation.toggleFavorite(movie));
   }
 });

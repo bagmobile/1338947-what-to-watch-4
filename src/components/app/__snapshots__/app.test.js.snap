@@ -6,7 +6,7 @@ Array [
     className="movie-card"
     style={
       Object {
-        "backgroundColor": undefined,
+        "backgroundColor": "#A6B7AC",
       }
     }
   >

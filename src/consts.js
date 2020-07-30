@@ -1,5 +1,7 @@
 
 export const ESC = `Escape`;
+export const MINUTES_IN_HOUR = 60;
+export const SECONDS_IN_MINUTE = 60;
 
 export const DEFAULT_GENRE = `All genres`;
 export const MAX_GENRES_LIST_SIZE = 10;
@@ -28,10 +30,10 @@ export const ErrorMessage = {
 
 export const LinkPath = {
   INDEX: `/`,
-  VIEW_MOVIE: `/movies/:id`,
+  VIEW_MOVIE: `/movies`,
   LOGIN: `/login`,
   FAVORITE_MOVIES: `/favorite-movies`,
-  PLAYER: `/player/:id`
+  PLAYER: `/player`
 };
 
 export const APIPath = {

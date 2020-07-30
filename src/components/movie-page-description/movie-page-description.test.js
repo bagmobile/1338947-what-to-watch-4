@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePageDescription from "./movie-page-description.jsx";
+import MoviePageDescription from "./movie-page-description";
 import {mockMovies} from "../../mocks/movies";
 import {Tab} from "../../consts";
 import {mockReviews} from "../../mocks/movie-review";

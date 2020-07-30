@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MovieReview from "../movie-review/movie-review.jsx";
+import MovieReview from "../movie-review/movie-review";
 import {sliceArrayToColumn} from "../../utils/util";
 import movieReviewShape from "../../types/movie-review";
 

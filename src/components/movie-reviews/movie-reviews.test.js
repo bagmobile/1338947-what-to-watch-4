@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieReviews from "./movie-reviews.jsx";
+import MovieReviews from "./movie-reviews";
 import {mockReviews} from "../../mocks/movie-review";
 
 const reviews = mockReviews;

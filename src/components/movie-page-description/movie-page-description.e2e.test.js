@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import MoviePageDescription from "./movie-page-description.jsx";
+import MoviePageDescription from "./movie-page-description";
 import {mockMovies} from "../../mocks/movies";
 import {Tab} from "../../consts";
 

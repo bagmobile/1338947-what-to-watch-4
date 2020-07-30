@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import MovieFullScreen from "../movie-full-screen/movie-full-screen.jsx";
+import MovieFullScreen from "../movie-full-screen/movie-full-screen";
 import {getMovieById} from "../../reducer/data/selectors";
 
 const mapStateToProps = (state, ownProps) => {

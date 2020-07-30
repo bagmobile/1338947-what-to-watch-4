@@ -1,61 +1,58 @@
-import {ESC} from "../../consts";
+import {ESC, LinkPath} from "../../consts";
 import React from "react";
-import PropTypes from "prop-types";
 import movieShape from "../../types/movie";
+import Spinner from "react-spinner-material";
+import withVideoPlayerControls from "../../hocs/with-video-player-controls";
+import VideoPlayerContainer from "../video-container/video-player-container/video-player-container";
+import history from "../../history";
+
+const WrappedVideoPlayerContainer = withVideoPlayerControls(VideoPlayerContainer);
 
 class MovieFullScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this._handlerEscClick = this._handlerEscClick.bind(this);
+    this.onEscClick = this.onEscClick.bind(this);
+    this.onExitButtonClickHandler = this.onExitButtonClickHandler.bind(this);
   }
 
   componentDidMount() {
-    document.addEventListener(`keydown`, this._handlerEscClick);
+    document.addEventListener(`keydown`, this.onEscClick);
   }
 
   componentWillUnmount() {
-    document.removeEventListener(`keydown`, this._handlerEscClick);
+    document.removeEventListener(`keydown`, this.onEscClick);
   }
 
-  _handlerEscClick(evt) {
+  goBack() {
+    return history.push(`${LinkPath.VIEW_MOVIE}/${this.props.movie.id}`);
+  }
+
+  onEscClick(evt) {
     if (evt.key === ESC) {
-      this.props.history.goBack();
+      this.goBack();
     }
+  }
+
+  onExitButtonClickHandler() {
+    this.goBack();
   }
 
   render() {
-    const {movie, history} = this.props;
-
+    const {movie} = this.props;
     if (!movie) {
-      return (`Loading...`);
+      return (<Spinner/>);
     }
-    return (<>
-        <div className="player">
-          <video
-            className="player__video"
-            autoPlay={true}
-            loop={true}
-            src={movie.video}
-            poster={movie.src}
-            muted={false}
-            controls={true}
-          />
-          <button type="button" className="player__exit" onClick={() => history.goBack()}>
-            Exit
-          </button>
-        </div>
-      </>
+    return (<WrappedVideoPlayerContainer
+      onExitButtonClickHandler={this.onExitButtonClickHandler}
+      movie={movie}
+    />
     );
   }
 }
 
 MovieFullScreen.propTypes = {
-  movieId: PropTypes.number,
-  movie: movieShape.isRequired,
-  history: PropTypes.shape({
-    goBack: PropTypes.func.isRequired,
-  }).isRequired
+  movie: movieShape,
 };
 
 export default MovieFullScreen;

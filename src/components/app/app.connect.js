@@ -1,7 +1,7 @@
 import {Operation as DataOperation} from "../../reducer/data/data";
 import {Operation as UserOperation} from "../../reducer/user/user";
 import {connect} from "react-redux";
-import App from "../../components/app/app.jsx";
+import App from "../../components/app/app";
 
 const mapDispatchToProps = (dispatch) => ({
   init: () => {
