@@ -8,7 +8,7 @@ export const getAuthorizationStatus = (state) => {
 };
 
 export const isAuthorized = (state) => {
-  return state[NAME_SPACE].authorizationStatus === AuthorizationStatus.AUTH;
+  return getAuthorizationStatus(state) === AuthorizationStatus.AUTH;
 };
 
 export const getAuthorizationErrorMessage = (state) => {

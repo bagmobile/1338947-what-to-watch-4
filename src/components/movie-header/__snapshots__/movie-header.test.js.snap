@@ -6,7 +6,8 @@ Array [
     className="movie-card__bg"
   >
     <img
-      alt="Fantastic Beasts: The Crimes of Grindelwald"
+      alt="Bohemian Rhapsody"
+      src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
     />
   </div>,
   <h1

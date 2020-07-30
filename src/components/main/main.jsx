@@ -1,31 +1,42 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {connect} from "react-redux";
-import Logo from "../logo/logo.jsx";
+import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block.connect";
-import MovieCard from "../movie-card/movie-card.jsx";
-import MovieHeader from "../movie-header/movie-header.jsx";
-import MoviePoster from "../movie-poster/movie-poster.jsx";
-import Copyright from "../copyright/copyright.jsx";
-import MovieGenresList from "../movie-genres-list/movie-genres-list.jsx";
-import MoviesList from "../movies-list/movies-list.jsx";
-import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import {ActionCreator} from "../../reducer/movies-list/movies-list";
-import {
-  getActiveGenre,
-  getPartFilteredMoviesByGenre,
-  getVisibilityShowMoreButton
-} from "../../reducer/movies-list/selectors";
-import {getMoviesGenres, getPromoMovie} from "../../reducer/data/selectors";
+import MovieCard from "../movie-card/movie-card";
+import MovieHeader from "../movie-header/movie-header";
+import MoviePoster from "../movie-poster/movie-poster";
+import Copyright from "../copyright/copyright";
+import MovieGenresList from "../movie-genres-list/movie-genres-list";
+import MoviesList from "../movies-list/movies-list";
+import ShowMoreButton from "../show-more-button/show-more-button";
 import movieShape from "../../types/movie";
+import MenuButton from "../menu-button/menu-button";
+import Spinner from "react-spinner-material";
 
 
 const Main = (props) => {
-  const {promoMovie, movies, genres, isVisibleShowMoreButton, onShowMoreButtonClick, onChangeGenre, activeGenre} = props;
+  const {
+    promoMovie,
+    movies,
+    genres,
+    isVisibleShowMoreButton,
+    onShowMoreButtonClick,
+    onChangeGenre,
+    activeGenre,
+    isFetchingData,
+    onFavoriteToggle,
+  } = props;
+
+  if (isFetchingData) {
+    return (<Spinner/>);
+  }
+
+  const backgroundColor = promoMovie.backgroundColor;
 
   return (
+
     <React.Fragment>
-      <section className="movie-card">
+      <section className="movie-card" style={{backgroundColor}}>
 
         <MovieHeader movie={promoMovie}/>
 
@@ -37,7 +48,9 @@ const Main = (props) => {
         <MovieCard
           movie={promoMovie}
           renderPoster={() => <MoviePoster movie={promoMovie}/>}
-        />
+        >
+          <MenuButton movie={promoMovie} onFavoriteToggle={onFavoriteToggle}/>
+        </MovieCard>
       </section>
 
       <div className="page-content">
@@ -70,28 +83,10 @@ Main.propTypes = {
   currentMovieListSize: PropTypes.number,
   isVisibleShowMoreButton: PropTypes.bool,
   onShowMoreButtonClick: PropTypes.func,
-  onChangeGenre: PropTypes.func
+  onChangeGenre: PropTypes.func,
+  isFetchingData: PropTypes.bool,
+  onFavoriteToggle: PropTypes.func,
 };
 
-const mapStateToProps = (state) => {
-  return {
-    movies: getPartFilteredMoviesByGenre(state),
-    genres: getMoviesGenres(state),
-    activeGenre: getActiveGenre(state),
-    promoMovie: getPromoMovie(state),
-    isVisibleShowMoreButton: getVisibilityShowMoreButton(state)
-  };
-};
-
-const mapDispatchToProps = (dispatch) => ({
-  onShowMoreButtonClick() {
-    dispatch(ActionCreator.showMoreMovies());
-  },
-  onChangeGenre(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
-  }
-});
-
-export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
 

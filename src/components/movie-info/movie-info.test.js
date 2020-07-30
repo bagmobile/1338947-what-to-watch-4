@@ -1,36 +1,33 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {mockMovies} from "../../mocks/movies.js";
-import {MovieInfo} from "./movie-info.jsx";
+import MovieInfo from "./movie-info.connect";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
+import thunk from "redux-thunk";
 import {BrowserRouter, Route} from "react-router-dom";
-import {mockReviews} from "../../mocks/movie-review";
 import {testStore} from "../../mocks/store";
+import {createAPI} from "../../api";
 
-const movie = mockMovies[0];
-const mockStore = configureStore([]);
+const api = createAPI(() => {});
+const mockStore = configureStore([thunk.withExtraArgument(api)]);
 const store = mockStore(testStore);
 
 
 describe(`MovieInfo component`, () => {
 
   it(`Render`, () => {
+
     const tree = renderer
       .create(
           <Provider store={store}>
             <BrowserRouter>
               <Route>
                 <MovieInfo
-                  movie={movie}
-                  reviews={mockReviews}
-                  loadReviews={() => {
-                  }}
+                  movieId={1}
                 />
               </Route>
             </BrowserRouter>
-          </Provider>
-      )
+          </Provider>)
       .toJSON();
 
     expect(tree).toMatchSnapshot();

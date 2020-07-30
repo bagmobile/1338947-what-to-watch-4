@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import SignIn from "./sign-in.jsx";
+import SignIn from "./sign-in";
 import {Operation as UserOperation} from "../../reducer/user/user";
 import {isAuthorized, getAuthorizationErrorMessage} from "../../reducer/user/selectors";
 

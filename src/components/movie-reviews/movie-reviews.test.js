@@ -1,16 +1,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {mockMovies} from "../../mocks/movies.js";
-import MovieReviews from "./movie-reviews.jsx";
+import MovieReviews from "./movie-reviews";
+import {mockReviews} from "../../mocks/movie-review";
 
-const movie = mockMovies[0];
+const reviews = mockReviews;
 
 describe(`MovieReviews component`, () => {
 
   it(`Render with column count 0`, () => {
     const tree = renderer
       .create(<MovieReviews
-        reviews={movie.reviews}
+        reviews={reviews}
         columns={0}
       />)
       .toJSON();
@@ -21,7 +21,7 @@ describe(`MovieReviews component`, () => {
   it(`Render with column count 2`, () => {
     const tree = renderer
       .create(<MovieReviews
-        reviews={movie.reviews}
+        reviews={reviews}
         columns={2}
       />)
       .toJSON();

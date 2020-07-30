@@ -81,7 +81,7 @@ exports[`MovieDetails component Render 1`] = `
       <span
         className="movie-card__details-value"
       >
-        134
+        54
       </span>
     </p>
     <p
@@ -109,7 +109,7 @@ exports[`MovieDetails component Render 1`] = `
       <span
         className="movie-card__details-value"
       >
-        2010
+        2011
       </span>
     </p>
   </div>

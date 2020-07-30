@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Logo from "../logo/logo.jsx";
+import Logo from "../logo/logo";
 import UserBlock from "../user-block/user-block.connect";
-import MoviesList from "../movies-list/movies-list.jsx";
+import MoviesList from "../movies-list/movies-list";
 import movieShape from "../../types/movie";
 
 class FavoriteMovies extends React.PureComponent {

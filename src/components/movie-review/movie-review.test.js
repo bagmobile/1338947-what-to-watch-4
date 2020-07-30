@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {mockMovies} from "../../mocks/movies.js";
-import MovieReview from "./movie-review.jsx";
+import MovieReview from "./movie-review";
+import {mockReviews} from "../../mocks/movie-review";
 
-const review = mockMovies[0].reviews[0];
+const review = mockReviews[0];
 
 describe(`MovieReview component`, () => {
 

@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {mockMovies} from "../../mocks/movies.js";
-import SmallMovieCard from "./small-movie-card.jsx";
+import SmallMovieCard from "./small-movie-card";
 import {StaticRouter} from "react-router-dom";
 
 const movie = mockMovies[0];

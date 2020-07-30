@@ -5,9 +5,9 @@ exports[`MovieOverview component Render 1`] = `
   className="movie-card__poster"
 >
   <img
-    alt="Fantastic Beasts: The Crimes of Grindelwald poster"
+    alt="Bohemian Rhapsody poster"
     height="327"
-    src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+    src="img/bohemian-rhapsody.jpg"
     width="218"
   />
 </div>

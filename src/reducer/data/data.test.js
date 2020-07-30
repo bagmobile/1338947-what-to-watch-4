@@ -6,6 +6,7 @@ import {PromoMovie} from "../../mocks/promo-movie";
 import MovieModel from "../../models/movie";
 import ReviewModel from "../../models/review";
 import {mockReviews} from "../../mocks/movie-review";
+import {APIPath} from "../../consts";
 
 const api = createAPI(() => {
 });
@@ -28,7 +29,7 @@ describe(`Reducer data component`, () => {
   });
 
   it(`Reducer should update movies by load reviews`, () => {
-    const reviews = mockMovies[0].reviews;
+    const reviews = mockReviews;
     expect(reducer({
       reviews: [],
     }, {
@@ -41,12 +42,39 @@ describe(`Reducer data component`, () => {
 
   it(`Reducer should update movies by load promo movie`, () => {
     expect(reducer({
-      promoMovie: {},
+      promoMovie: null,
     }, {
       type: ActionType.LOAD_PROMO_MOVIE,
       payload: PromoMovie,
     })).toEqual({
-      promoMovie: PromoMovie
+      promoMovie: PromoMovie,
+    });
+  });
+
+  it(`Reducer should update movies by load favorite movies`, () => {
+    expect(reducer({
+      favoriteMovies: [],
+    }, {
+      type: ActionType.LOAD_FAVORITE_MOVIES,
+      payload: mockMovies,
+    })).toEqual({
+      favoriteMovies: mockMovies,
+    });
+  });
+
+  it(`Reducer should update movie in movies`, () => {
+    const promoMovie = mockMovies[1];
+    mockMovies[0] = Object.assign({}, mockMovies[2]);
+
+    expect(reducer({
+      movies: mockMovies,
+      promoMovie,
+    }, {
+      type: ActionType.UPDATE_FAVORITE_STATUS_MOVIE,
+      payload: mockMovies[2],
+    })).toEqual({
+      movies: mockMovies,
+      promoMovie,
     });
   });
 
@@ -61,7 +89,7 @@ describe(`Operation work correctly`, () => {
     });
 
     apiMock
-      .onGet(`/films`)
+      .onGet(APIPath.MOVIES)
       .reply(200, mockMovies);
 
     return movieLoader(dispatch, () => {
@@ -76,12 +104,13 @@ describe(`Operation work correctly`, () => {
   });
 
   it(`Should make a correct API call to /comments`, function () {
+    const movieId = 1;
     const apiMock = new MockAdapter(api);
     const dispatch = jest.fn();
-    const reviewLoader = Operation.loadReviews(1);
+    const reviewLoader = Operation.loadReviews(movieId);
 
     apiMock
-      .onGet(`/comments/1`)
+      .onGet(`${APIPath.REVIEWS}/${movieId}`)
       .reply(200, mockReviews);
 
     return reviewLoader(dispatch, () => {
@@ -102,7 +131,7 @@ describe(`Operation work correctly`, () => {
     });
 
     apiMock
-      .onGet(`/films/promo`)
+      .onGet(APIPath.PROMO)
       .reply(200, mockMovies[0]);
 
     return promoMovieLoader(dispatch, () => {
@@ -115,4 +144,50 @@ describe(`Operation work correctly`, () => {
         });
       });
   });
+
+  it(`Should make a correct API call to /favorite`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const promoMovieLoader = Operation.loadFavoriteMovies(() => {
+    });
+
+    apiMock
+      .onGet(APIPath.FAVORITE)
+      .reply(200, mockMovies);
+
+    return promoMovieLoader(dispatch, () => {
+    }, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FAVORITE_MOVIES,
+          payload: MovieModel.parseMovies(mockMovies),
+        });
+      });
+  });
+
+  it(`Should make a correct API call to /favorite/:id/:status`, function () {
+    const movieId = mockMovies[0].id;
+    const newStatus = mockMovies[0].isFavorite ? 0 : 1;
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const toggleFavoriteChanger = Operation.toggleFavorite(mockMovies[0]);
+
+    const newMovie = Object.assign({}, mockMovies[0], {isFavorite: true});
+
+    apiMock
+      .onPost(`${APIPath.FAVORITE}/${movieId}/${newStatus}`)
+      .reply(200, newMovie);
+
+    return toggleFavoriteChanger(dispatch, () => {
+    }, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.UPDATE_FAVORITE_STATUS_MOVIE,
+          payload: MovieModel.parseMovie(newMovie),
+        });
+      });
+  });
+
 });

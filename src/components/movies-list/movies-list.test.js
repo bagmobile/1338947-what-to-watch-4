@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {mockMovies} from "../../mocks/movies.js";
-import MoviesList from "./movies-list.jsx";
+import MoviesList from "./movies-list";
 import configureStore from "redux-mock-store";
 import {Provider} from "react-redux";
 import {BrowserRouter, Route} from "react-router-dom";

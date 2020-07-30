@@ -5,7 +5,7 @@ const MovieHeader = ({movie}) => {
   return (
     <>
       <div className="movie-card__bg">
-        <img src={movie.background} alt={movie.title}/>
+        <img src={movie.backgroundImage} alt={movie.title}/>
       </div>
       <h1 className="visually-hidden">WTW</h1>
     </>
@@ -13,7 +13,7 @@ const MovieHeader = ({movie}) => {
 };
 
 MovieHeader.propTypes = {
-  movie: movieShape,
+  movie: movieShape.isRequired,
 };
 
 export default MovieHeader;

@@ -7,15 +7,16 @@ import {APIPath} from "../../consts";
 export const initialState = {
   movies: [],
   reviews: [],
-  promoMovie: {},
-  favoriteMovies: []
+  promoMovie: null,
+  favoriteMovies: [],
 };
 
 const ActionType = {
   LOAD_MOVIES: `LOAD_MOVIES`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_PROMO_MOVIE: `LOAD_PROMO_MOVIE`,
-  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`
+  LOAD_FAVORITE_MOVIES: `LOAD_FAVORITE_MOVIES`,
+  UPDATE_FAVORITE_STATUS_MOVIE: `UPDATE_FAVORITE_STATUS_MOVIE`,
 };
 
 const ActionCreator = {
@@ -28,21 +29,27 @@ const ActionCreator = {
   loadReviews: (reviews) => {
     return {
       type: ActionType.LOAD_REVIEWS,
-      payload: reviews
+      payload: reviews,
     };
   },
   loadPromoMovie: (promoMovie) => {
     return {
       type: ActionType.LOAD_PROMO_MOVIE,
-      payload: promoMovie
+      payload: promoMovie,
     };
   },
   loadFavoriteMovies: (movies) => {
     return {
       type: ActionType.LOAD_FAVORITE_MOVIES,
-      payload: movies
+      payload: movies,
     };
-  }
+  },
+  updateFavoriteStatusMovie: (movie) => {
+    return {
+      type: ActionType.UPDATE_FAVORITE_STATUS_MOVIE,
+      payload: movie,
+    };
+  },
 };
 
 const Operation = {
@@ -68,8 +75,6 @@ const Operation = {
     return api.get(`${APIPath.PROMO}`)
       .then((response) => {
         dispatch(ActionCreator.loadPromoMovie(MovieModel.parseMovie(response.data)));
-      }).catch((err) => {
-        throw err;
       })
       .catch((err) => {
         throw err;
@@ -83,7 +88,14 @@ const Operation = {
       .catch((err) => {
         throw err;
       });
-  }
+  },
+  toggleFavorite: (movie) => (dispatch, getState, api) => {
+
+    return api.post(`${APIPath.FAVORITE}/${movie.id}/${movie.isFavorite ? 0 : 1}`)
+      .then((response) => {
+        dispatch(ActionCreator.updateFavoriteStatusMovie(MovieModel.parseMovie(response.data)));
+      });
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -104,6 +116,16 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_FAVORITE_MOVIES:
       return extend(state, {
         favoriteMovies: action.payload,
+      });
+    case ActionType.UPDATE_FAVORITE_STATUS_MOVIE:
+      const movies = state.movies.map((movie) =>
+        movie.id === action.payload.id
+          ? extend(movie, {isFavorite: action.payload.isFavorite}) : movie
+      );
+      const promoMovie = state.promoMovie.id === action.payload.id ? extend(state.promoMovie, {isFavorite: action.payload.isFavorite}) : state.promoMovie;
+      return extend(state, {
+        movies,
+        promoMovie,
       });
   }
   return state;

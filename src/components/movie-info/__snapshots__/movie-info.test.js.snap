@@ -4,6 +4,11 @@ exports[`MovieInfo component Render 1`] = `
 Array [
   <section
     className="movie-card movie-card--full"
+    style={
+      Object {
+        "backgroundColor": "#A6B7AC",
+      }
+    }
   >
     <div
       className="movie-card__hero"
@@ -12,7 +17,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Fantastic Beasts: The Crimes of Grindelwald"
+          alt="Bohemian Rhapsody"
+          src="https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg"
         />
       </div>
       <h1
@@ -72,7 +78,7 @@ Array [
             <h2
               className="movie-card__title"
             >
-              Fantastic Beasts: The Crimes of Grindelwald
+              Bohemian Rhapsody
             </h2>
             <p
               className="movie-card__meta"
@@ -85,14 +91,16 @@ Array [
               <span
                 className="movie-card__year"
               >
-                2010
+                2011
               </span>
             </p>
             <div
               className="movie-card__buttons"
             >
-              <button
+              <a
                 className="btn btn--play movie-card__button"
+                href="/player/1"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -107,9 +115,10 @@ Array [
                 <span>
                   Play
                 </span>
-              </button>
+              </a>
               <button
                 className="btn btn--list movie-card__button"
+                onClick={[Function]}
                 type="button"
               >
                 <svg
@@ -125,12 +134,6 @@ Array [
                   My list
                 </span>
               </button>
-              <a
-                className="btn movie-card__button"
-                href="#"
-              >
-                Add review
-              </a>
             </div>
           </div>
         </div>
@@ -146,9 +149,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald poster"
+            alt="Bohemian Rhapsody poster"
             height="327"
-            src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+            src="img/bohemian-rhapsody.jpg"
             width="218"
           />
         </div>
@@ -202,7 +205,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              4
+              4.4
             </div>
             <p
               className="movie-rating__meta"
@@ -215,14 +218,16 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                100
+                200
               </span>
             </p>
           </div>
           <div
             className="movie-card__text"
           >
-            <p />
+            <p>
+              description
+            </p>
             <p
               className="movie-card__director"
             >

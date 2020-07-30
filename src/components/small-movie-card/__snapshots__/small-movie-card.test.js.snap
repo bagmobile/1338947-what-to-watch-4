@@ -12,7 +12,7 @@ exports[`SmallMovieCard component Render 1`] = `
     <video
       height="175"
       loop={true}
-      poster="img/fantastic-beasts-the-crimes-of-grindelwald.jpg"
+      poster="img/bohemian-rhapsody.jpg"
       src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
       width="280"
     />
@@ -22,10 +22,10 @@ exports[`SmallMovieCard component Render 1`] = `
   >
     <a
       className="small-movie-card__link"
-      href="/movies/0"
+      href="/movies/1"
       onClick={[Function]}
     >
-      Fantastic Beasts: The Crimes of Grindelwald
+      Bohemian Rhapsody
     </a>
   </h3>
 </article>

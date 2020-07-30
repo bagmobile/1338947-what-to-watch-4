@@ -1,7 +1,7 @@
 import {Redirect} from "react-router-dom";
 import React from "react";
 import PropTypes from "prop-types";
-import Logo from "../logo/logo.jsx";
+import Logo from "../logo/logo";
 import {LinkPath} from "../../consts";
 
 class SignIn extends React.PureComponent {
