@@ -48,7 +48,7 @@ exports[`Should render VideoPlayerPage propperly 1`] = `
       <div
         className="player__time-value"
       >
-        1:15:22
+        04:15:22
       </div>
     </div>
     <div

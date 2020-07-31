@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const sliceArrayToColumn = (data, columns) => {
   let result = [];
   let size = Math.ceil(data.length / columns);
@@ -15,4 +17,8 @@ export const formatDuration = (diff) => {
   return [`${diff.hours()}h`, `${diff.minutes()}m`]
     .filter((item) => !item.match(/^0\D/))
     .join(` `);
+};
+
+export const formatTime = (totalSeconds) => {
+  return moment(totalSeconds * 1000).format(`hh:mm:ss`);
 };

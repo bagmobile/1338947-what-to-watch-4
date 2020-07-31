@@ -5,7 +5,7 @@ import {getMoviesList} from "../data/selectors";
 
 const NAME_SPACE = NameSpace.MOVIES_LIST;
 
-const getCurrentMovieListSize = (state) => state[NAME_SPACE].currentMovieListSize;
+export const getCurrentMovieListSize = (state) => state[NAME_SPACE].currentMovieListSize;
 
 export const getActiveGenre = (state) => state[NAME_SPACE].activeGenre;
 

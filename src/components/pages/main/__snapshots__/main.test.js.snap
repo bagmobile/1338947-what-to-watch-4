@@ -190,17 +190,6 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Romance
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item false"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
             Comedies
           </a>
         </li>
