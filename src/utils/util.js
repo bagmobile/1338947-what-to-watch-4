@@ -10,3 +10,9 @@ export const sliceArrayToColumn = (data, columns) => {
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
+
+export const formatDuration = (diff) => {
+  return [`${diff.hours()}h`, `${diff.minutes()}m`]
+    .filter((item) => !item.match(/^0\D/))
+    .join(` `);
+};

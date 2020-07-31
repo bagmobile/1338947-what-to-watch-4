@@ -1,13 +1,13 @@
 import React, {PureComponent} from "react";
 import {Route, Router, Switch} from "react-router-dom";
 import PropTypes from "prop-types";
-import Main from "../main/main.connect";
-import MovieInfo from "../movie-info/movie-info.connect";
+import Main from "../pages/main/main.connect";
+import MovieInfo from "../pages/movie-info/movie-info.connect";
 import {LinkPath} from "../../consts";
-import SignIn from "../sign-in/sign-in.connect";
-import FavoriteMovies from "../favorite-movies/favorite-movies.connect";
+import SignIn from "../pages/sign-in/sign-in.connect";
+import FavoriteMovies from "../pages/favorite-movies/favorite-movies.connect";
 import PrivateRoute from "../private-route/private-route.connect";
-import MovieFullScreen from "../movie-full-screen/movie-full-screen.connect";
+import MovieFullScreen from "../pages/movie-full-screen/movie-full-screen.connect";
 import history from "../../history";
 
 class App extends PureComponent {
