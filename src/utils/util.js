@@ -14,12 +14,12 @@ export const extend = (a, b) => {
 };
 
 export const formatDuration = (minutes) => {
-  const diff = moment(minutes * 60 * 1000).utc(true);
+  const diff = moment(minutes * 60 * 1000).utc();
   return [`${diff.hours()}h`, `${diff.minutes()}m`]
     .filter((item) => !item.match(/^0\D/))
     .join(` `);
 };
 
 export const formatTime = (totalSeconds) => {
-  return moment(totalSeconds * 1000).utc(true).format(`hh:mm:ss`);
+  return moment(totalSeconds * 1000).utc().format(`hh:mm:ss`);
 };

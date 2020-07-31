@@ -48,7 +48,7 @@ exports[`MovieFullScreen component Render 1`] = `
       <div
         className="player__time-value"
       >
-        03:00:00
+        12:00:00
       </div>
     </div>
     <div

@@ -26,7 +26,7 @@ exports[`VideoPlayerTimeLine component Render 1`] = `
   <div
     className="player__time-value"
   >
-    03:06:40
+    12:06:40
   </div>
 </div>
 `;
