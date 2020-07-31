@@ -6,11 +6,13 @@ const NAME_SPACE = NameSpace.DATA;
 
 export const getMoviesList = (state) => state[NAME_SPACE].movies;
 
-export const getMovieById = (state, id) => getMoviesList(state).find((movie) => movie.id === id);
+export const getReviews = (state) => state[NAME_SPACE].reviews;
 
 export const getPromoMovie = (state) => state[NAME_SPACE].promoMovie;
 
 export const getFavoriteMovies = (state) => state[NAME_SPACE].favoriteMovies;
+
+export const getMovieById = (state, id) => getMoviesList(state).find((movie) => movie.id === id);
 
 export const getMoviesGenres = createSelector(
     getMoviesList,
@@ -19,8 +21,6 @@ export const getMoviesGenres = createSelector(
       return acc;
     }, new Set([DEFAULT_GENRE]))].slice(0, MAX_GENRES_LIST_SIZE)
 );
-
-export const getReviews = (state) => state[NAME_SPACE].reviews;
 
 export const isFetchingMovies = (state) => getMoviesList(state).length === 0;
 

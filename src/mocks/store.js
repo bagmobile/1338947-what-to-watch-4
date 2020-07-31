@@ -8,6 +8,7 @@ export const testStore = {
     movies: mockMovies,
     promoMovie: mockMovies[0],
     reviews: mockReviews,
+    favoriteMovies: mockMovies
   },
   [NameSpace.MOVIES_LIST]: {
     activeGenre: DEFAULT_GENRE,

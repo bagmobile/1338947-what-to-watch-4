@@ -1,7 +1,5 @@
 
 export const ESC = `Escape`;
-export const MINUTES_IN_HOUR = 60;
-export const SECONDS_IN_MINUTE = 60;
 
 export const DEFAULT_GENRE = `All genres`;
 export const MAX_GENRES_LIST_SIZE = 10;

@@ -11,10 +11,10 @@ import movieShape from "../../../types/movie";
 export default function VideoPlayerContainer(props) {
   const {
     movie, isPlaying, videoRef, progress, remaining,
-    onExitButtonClickHandler,
-    onPauseButtonClickHandler,
-    onPlayButtonClickHandler,
-    onFullscreenButtonClickHandler,
+    onExitButtonClick,
+    onPauseButtonClick,
+    onPlayButtonClick,
+    onFullscreenButtonClick,
   } = props;
   const {video, preview, title} = movie;
 
@@ -32,17 +32,17 @@ export default function VideoPlayerContainer(props) {
         controls={false}
       />
 
-      <VideoPlayerExitButton onClick={onExitButtonClickHandler}/>
+      <VideoPlayerExitButton onClick={onExitButtonClick}/>
 
       <div className="player__controls">
         <VideoPlayerTimeline progress={progress} remaining={remaining}/>
         <div className="player__controls-row">
           {isPlaying
-            ? <VideoPlayerPauseButton onClick={onPauseButtonClickHandler}/>
-            : <VideoPlayerPlayButton onClick={onPlayButtonClickHandler}/>
+            ? <VideoPlayerPauseButton onClick={onPauseButtonClick}/>
+            : <VideoPlayerPlayButton onClick={onPlayButtonClick}/>
           }
           <div className="player__name">{title}</div>
-          <VideoPlayerFullscreenButton onClick={onFullscreenButtonClickHandler}/>
+          <VideoPlayerFullscreenButton onClick={onFullscreenButtonClick}/>
 
         </div>
       </div>
@@ -56,8 +56,8 @@ VideoPlayerContainer.propTypes = {
   videoRef: PropTypes.object.isRequired,
   progress: PropTypes.number.isRequired,
   remaining: PropTypes.number.isRequired,
-  onExitButtonClickHandler: PropTypes.func.isRequired,
-  onPauseButtonClickHandler: PropTypes.func.isRequired,
-  onPlayButtonClickHandler: PropTypes.func.isRequired,
-  onFullscreenButtonClickHandler: PropTypes.func.isRequired,
+  onExitButtonClick: PropTypes.func.isRequired,
+  onPauseButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  onFullscreenButtonClick: PropTypes.func.isRequired,
 };

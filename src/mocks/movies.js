@@ -24,7 +24,7 @@ export const mockMovies = [
     img: `img/bohemian-rhapsody.jpg`,
     poster: `img/bohemian-rhapsody.jpg`,
     backgroundImage: `https://htmlacademy-react-3.appspot.com/wtw/static/film/background/gangs_of_new_york.jpg`,
-    genre: `Romance`,
+    genre: `Crime`,
     year: 2011,
     ratingScore: 4.4,
     ratingCount: 200,
