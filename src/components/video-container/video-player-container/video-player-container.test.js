@@ -16,10 +16,10 @@ it(`Should render VideoPlayerPage propperly`, () => {
         videoRef={mockRef}
         progress={55}
         remaining={4522}
-        onExitButtonClickHandler={()=>{}}
-        onPauseButtonClickHandler={()=>{}}
-        onPlayButtonClickHandler={()=>{}}
-        onFullscreenButtonClickHandler={()=>{}}
+        onExitButtonClick={()=>{}}
+        onPauseButtonClick={()=>{}}
+        onPlayButtonClick={()=>{}}
+        onFullscreenButtonClick={()=>{}}
       />
   );
   expect(tree).toMatchSnapshot();

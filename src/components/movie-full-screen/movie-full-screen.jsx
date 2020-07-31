@@ -13,7 +13,7 @@ class MovieFullScreen extends React.Component {
   constructor(props) {
     super(props);
     this.onEscClick = this.onEscClick.bind(this);
-    this.onExitButtonClickHandler = this.onExitButtonClickHandler.bind(this);
+    this.onExitButtonClick = this.onExitButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +34,7 @@ class MovieFullScreen extends React.Component {
     }
   }
 
-  onExitButtonClickHandler() {
+  onExitButtonClick() {
     this.goBack();
   }
 
@@ -44,7 +44,7 @@ class MovieFullScreen extends React.Component {
       return (<Spinner/>);
     }
     return (<WrappedVideoPlayerContainer
-      onExitButtonClickHandler={this.onExitButtonClickHandler}
+      onExitButtonClick={this.onExitButtonClick}
       movie={movie}
     />
     );

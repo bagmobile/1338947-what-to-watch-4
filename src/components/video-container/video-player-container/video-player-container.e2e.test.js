@@ -14,13 +14,13 @@ it(`VideoPlayerContainer should call every handler 1 time`, () => {
 
   const mockRef = React.createRef();
 
-  const playClickHandler = jest.fn(() => {
+  const handlePlayClick = jest.fn(() => {
   });
-  const pauseClickHandler = jest.fn(() => {
+  const handlePauseClick = jest.fn(() => {
   });
-  const fullScreenClickHandler = jest.fn(() => {
+  const handleFullScreenClick = jest.fn(() => {
   });
-  const exitClickHandler = jest.fn(() => {
+  const handleExitClick = jest.fn(() => {
   });
 
   const videoPlayerContainer = mount(
@@ -30,10 +30,10 @@ it(`VideoPlayerContainer should call every handler 1 time`, () => {
         videoRef={mockRef}
         progress={55}
         remaining={300}
-        onExitButtonClickHandler={exitClickHandler}
-        onPauseButtonClickHandler={pauseClickHandler}
-        onPlayButtonClickHandler={playClickHandler}
-        onFullscreenButtonClickHandler={fullScreenClickHandler}
+        onExitButtonClick={handleExitClick}
+        onPauseButtonClick={handlePauseClick}
+        onPlayButtonClick={handlePlayClick}
+        onFullscreenButtonClick={handleFullScreenClick}
       />
   );
 
@@ -46,8 +46,8 @@ it(`VideoPlayerContainer should call every handler 1 time`, () => {
   videoPlayerContainer.find(`.player__exit`).simulate(`click`);
   videoPlayerContainer.find(`.player__full-screen`).simulate(`click`);
 
-  expect(exitClickHandler).toHaveBeenCalledTimes(1);
-  expect(pauseClickHandler).toHaveBeenCalledTimes(1);
-  expect(playClickHandler).toHaveBeenCalledTimes(1);
-  expect(fullScreenClickHandler).toHaveBeenCalledTimes(1);
+  expect(handleExitClick).toHaveBeenCalledTimes(1);
+  expect(handlePauseClick).toHaveBeenCalledTimes(1);
+  expect(handlePlayClick).toHaveBeenCalledTimes(1);
+  expect(handleFullScreenClick).toHaveBeenCalledTimes(1);
 });

@@ -1,15 +1,5 @@
-import React, {PureComponent, createRef} from "react";
+import React, {createRef, PureComponent} from "react";
 import PropTypes from "prop-types";
-
-
-const calculateRemainingTime = (duration, currentTime) => {
-  return Math.floor(duration - currentTime);
-
-};
-
-const calculateProgress = (duration, currentTime) => {
-  return currentTime / duration * 100;
-};
 
 
 export default function withVideoPlayerControls(Component) {
@@ -28,29 +18,37 @@ export default function withVideoPlayerControls(Component) {
       this._duration = 0;
       this._video = null;
 
-      this._onPlayButtonClickHandler = this._onPlayButtonClickHandler.bind(this);
-      this._onPauseButtonClickHandler = this._onPauseButtonClickHandler.bind(this);
-      this._onFullscreenButtonClickHandler = this._onFullscreenButtonClickHandler.bind(this);
-      this._onExitButtonClickHandler = this._onExitButtonClickHandler.bind(this);
-
-      this._onCanPlayThroughHandler = this._onCanPlayThroughHandler.bind(this);
-      this._onTimeUpdateHandler = this._onTimeUpdateHandler.bind(this);
+      this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
+      this._onPauseButtonClick = this._onPauseButtonClick.bind(this);
+      this._onFullscreenButtonClick = this._onFullscreenButtonClick.bind(this);
+      this._onExitButtonClick = this._onExitButtonClick.bind(this);
+      this._onCanPlayThrough = this._onCanPlayThrough.bind(this);
+      this._onTimeUpdate = this._onTimeUpdate.bind(this);
     }
 
     componentDidMount() {
       this._video = this._videoRef.current;
 
-      this._video.addEventListener(`timeupdate`, this._onTimeUpdateHandler);
-      this._video.addEventListener(`canplaythrough`, this._onCanPlayThroughHandler);
+      this._video.addEventListener(`timeupdate`, this._onTimeUpdate);
+      this._video.addEventListener(`canplaythrough`, this._onCanPlayThrough);
     }
 
     componentWillUnmount() {
-      this._video.removeEventListener(`timeupdate`, this._onTimeUpdateHandler);
-      this._video.removeEventListener(`canplaythrough`, this._onCanPlayThroughHandler);
+      this._video.removeEventListener(`timeupdate`, this._onTimeUpdate);
+      this._video.removeEventListener(`canplaythrough`, this._onCanPlayThrough);
       this._videoRef = null;
     }
 
-    _onFullscreenButtonClickHandler() {
+    _calculateRemainingTime() {
+      return Math.floor(this._duration - this._video.currentTime);
+
+    }
+
+    _calculateProgress() {
+      return this._video.currentTime / this._duration * 100;
+    }
+
+    _onFullscreenButtonClick() {
 
       if (this._video.requestFullscreen) {
         this._video.requestFullscreen();
@@ -63,38 +61,38 @@ export default function withVideoPlayerControls(Component) {
       }
     }
 
-    _onCanPlayThroughHandler() {
+    _onCanPlayThrough() {
       this._duration = this._video.duration;
-      this._onTimeUpdateHandler();
-      this._onPlayButtonClickHandler();
+      this._onTimeUpdate();
+      this._onPlayButtonClick();
     }
 
-    _onPlayButtonClickHandler() {
+    _onPlayButtonClick() {
       this._video.play();
       this.setState({
-        isPlaying: true
+        isPlaying: true,
       });
     }
 
-    _onPauseButtonClickHandler() {
+    _onPauseButtonClick() {
       this._video.pause();
       this.setState({
-        isPlaying: false
+        isPlaying: false,
       });
     }
 
-    _onExitButtonClickHandler() {
+    _onExitButtonClick() {
       this._video.load();
       this.setState({
-        isPlaying: false
+        isPlaying: false,
       });
-      this.props.onExitButtonClickHandler();
+      this.props.onExitButtonClick();
     }
 
-    _onTimeUpdateHandler() {
+    _onTimeUpdate() {
       this.setState({
-        progress: calculateProgress(this._duration, this._video.currentTime),
-        remaining: calculateRemainingTime(this._duration, this._video.currentTime)
+        progress: this._calculateProgress(),
+        remaining: this._calculateRemainingTime(),
       });
     }
 
@@ -106,17 +104,17 @@ export default function withVideoPlayerControls(Component) {
           progress={this.state.progress}
           remaining={this.state.remaining}
           isPlaying={this.state.isPlaying}
-          onExitButtonClickHandler={this._onExitButtonClickHandler}
-          onPauseButtonClickHandler={this._onPauseButtonClickHandler}
-          onPlayButtonClickHandler={this._onPlayButtonClickHandler}
-          onFullscreenButtonClickHandler={this._onFullscreenButtonClickHandler}
+          onExitButtonClick={this._onExitButtonClick}
+          onPauseButtonClick={this._onPauseButtonClick}
+          onPlayButtonClick={this._onPlayButtonClick}
+          onFullscreenButtonClick={this._onFullscreenButtonClick}
         />
       );
     }
   }
 
   WithVideoPlayerControls.propTypes = {
-    onExitButtonClickHandler: PropTypes.func.isRequired,
+    onExitButtonClick: PropTypes.func.isRequired,
   };
 
   return WithVideoPlayerControls;
