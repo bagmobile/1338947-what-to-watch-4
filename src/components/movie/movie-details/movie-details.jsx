@@ -1,7 +1,6 @@
 import React from "react";
 import {EMPTY_FIELD_VALUE} from "../../../consts";
 import movieShape from "../../../types/movie";
-import * as moment from "moment";
 import {formatDuration} from "../../../utils/util";
 
 const MovieDetails = ({movie}) => {
@@ -25,7 +24,7 @@ const MovieDetails = ({movie}) => {
       <div className="movie-card__text-col">
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Run Time</strong>
-          <span className="movie-card__details-value">{formatDuration(moment.duration(duration, `minutes`))}</span>
+          <span className="movie-card__details-value">{formatDuration(duration)}</span>
         </p>
         <p className="movie-card__details-item">
           <strong className="movie-card__details-name">Genre</strong>
@@ -41,7 +40,7 @@ const MovieDetails = ({movie}) => {
 };
 
 MovieDetails.propTypes = {
-  movie: movieShape
+  movie: movieShape,
 };
 
 export default MovieDetails;

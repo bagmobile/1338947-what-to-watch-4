@@ -13,12 +13,13 @@ export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-export const formatDuration = (diff) => {
+export const formatDuration = (minutes) => {
+  const diff = moment(minutes * 60 * 1000).utc(true);
   return [`${diff.hours()}h`, `${diff.minutes()}m`]
     .filter((item) => !item.match(/^0\D/))
     .join(` `);
 };
 
 export const formatTime = (totalSeconds) => {
-  return moment(totalSeconds * 1000).format(`hh:mm:ss`);
+  return moment(totalSeconds * 1000).utc(true).format(`hh:mm:ss`);
 };
