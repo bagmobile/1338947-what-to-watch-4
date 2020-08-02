@@ -31,12 +31,10 @@ const Main = (props) => {
     return (<Spinner/>);
   }
 
-  const backgroundColor = promoMovie.backgroundColor;
-
   return (
 
     <React.Fragment>
-      <section className="movie-card" style={{backgroundColor}}>
+      <section className="movie-card" style={{backgroundColor: promoMovie.backgroundColor}}>
 
         <MovieHeader movie={promoMovie}/>
 

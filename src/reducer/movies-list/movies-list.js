@@ -1,5 +1,5 @@
 import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../../consts";
-import {extend} from "../../utils/util";
+import {extend} from "../../utils/common";
 
 const initialState = {
   activeGenre: DEFAULT_GENRE,

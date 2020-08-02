@@ -12,7 +12,7 @@ class FavoriteMovies extends React.PureComponent {
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, isLoadMoviesStatusFetching} = this.props;
 
     return (
       <div className="user-page">
@@ -23,7 +23,7 @@ class FavoriteMovies extends React.PureComponent {
         </header>
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <MoviesList movies={movies}/>
+          <MoviesList movies={movies} isLoadMoviesStatusFetching={isLoadMoviesStatusFetching}/>
         </section>
         <footer className="page-footer">
           <Logo isLight={true}/>
@@ -39,6 +39,7 @@ class FavoriteMovies extends React.PureComponent {
 FavoriteMovies.propTypes = {
   loadFavoriteMovies: PropTypes.func.isRequired,
   movies: PropTypes.arrayOf(movieShape).isRequired,
+  isLoadMoviesStatusFetching: PropTypes.bool
 };
 
 export default FavoriteMovies;

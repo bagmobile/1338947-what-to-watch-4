@@ -7,6 +7,7 @@ import thunk from "redux-thunk";
 import {BrowserRouter, Route} from "react-router-dom";
 import {testStore} from "../../../mocks/store";
 import {createAPI} from "../../../api";
+import {LinkPath} from "../../../consts";
 
 const api = createAPI(() => {});
 const mockStore = configureStore([thunk.withExtraArgument(api)]);
@@ -21,7 +22,7 @@ describe(`MovieInfo component`, () => {
       .create(
           <Provider store={store}>
             <BrowserRouter>
-              <Route path={`movies/1`}>
+              <Route path={`${LinkPath.VIEW_MOVIE}/1`}>
                 <MovieInfo/>
               </Route>
             </BrowserRouter>

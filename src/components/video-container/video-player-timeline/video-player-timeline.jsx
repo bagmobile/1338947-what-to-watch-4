@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {formatTime} from "../../../utils/util";
+import {formatTime} from "../../../utils/common";
 
 export default function VideoPlayerTimeline({progress, remaining}) {
 

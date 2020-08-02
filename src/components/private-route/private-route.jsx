@@ -4,7 +4,11 @@ import PropTypes from "prop-types";
 import {LinkPath} from "../../consts";
 
 const PrivateRoute = (props) => {
-  const {isAuthorized} = props;
+  const {isAuthorized, isFetching} = props;
+
+  if (isFetching) {
+    return ``;
+  }
 
   if (isAuthorized) {
     return <Route {...props}/>;
@@ -14,6 +18,7 @@ const PrivateRoute = (props) => {
 
 PrivateRoute.propTypes = {
   isAuthorized: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool.isRequired
 };
 
 export default PrivateRoute;

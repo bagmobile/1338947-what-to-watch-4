@@ -1,10 +1,11 @@
 import {Operation as DataOperation} from "../../../reducer/data/data";
 import {connect} from "react-redux";
 import FavoriteMovies from "./favorite-movies";
-import {getFavoriteMovies} from "../../../reducer/data/selectors";
+import {getFavoriteMovies, isFetchingMovies} from "../../../reducer/data/selectors";
 
 const mapStateToProps = (state) => ({
   movies: getFavoriteMovies(state),
+  isLoadMoviesStatusFetching: isFetchingMovies(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

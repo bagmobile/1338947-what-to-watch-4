@@ -6,27 +6,31 @@ exports[`MovieSmallCard component Render 1`] = `
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
-  <div
-    className="small-movie-card__image"
+  <a
+    className="small-movie-card__link"
+    href="/movies/1"
+    onClick={[Function]}
   >
-    <video
-      height="175"
-      loop={true}
-      poster="img/bohemian-rhapsody.jpg"
-      src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
-      width="280"
-    />
-  </div>
-  <h3
-    className="small-movie-card__title"
-  >
-    <a
-      className="small-movie-card__link"
-      href="/movies/1"
-      onClick={[Function]}
+    <div
+      className="small-movie-card__image"
     >
-      Bohemian Rhapsody
-    </a>
-  </h3>
+      <video
+        height="175"
+        loop={true}
+        poster="img/bohemian-rhapsody.jpg"
+        src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4"
+        width="280"
+      />
+    </div>
+    <h3
+      className="small-movie-card__title"
+    >
+      <span
+        className="small-movie-card__link"
+      >
+        Bohemian Rhapsody
+      </span>
+    </h3>
+  </a>
 </article>
 `;

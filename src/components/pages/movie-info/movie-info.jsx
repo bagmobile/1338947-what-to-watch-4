@@ -9,18 +9,21 @@ import Copyright from "../../copyright/copyright";
 import withActivePage from "../../../hocs/with-active-page";
 import MoviePageDescription from "../../movie/movie-page-description/movie-page-description";
 import MoviesList from "../../movie/movies-list/movies-list";
-import {Tab} from "../../../consts";
+import {LinkPath, Tab} from "../../../consts";
 import movieShape from "../../../types/movie";
 import movieReviewShape from "../../../types/movie-review";
 import MenuButton from "../../menu-button/menu-button";
 import Spinner from "react-spinner-material";
+import {Link} from "react-router-dom";
 
 const MoviePageDescriptionWithActivePage = withActivePage(MoviePageDescription);
 
 class MovieInfo extends PureComponent {
 
   componentDidMount() {
-    const {onReviewsLoad, movieId} = this.props;
+    const {onReviewsLoad, onResetReviewFetchingStatus, onResetAddReviewFetchingStatus, movieId} = this.props;
+    onResetReviewFetchingStatus();
+    onResetAddReviewFetchingStatus();
     onReviewsLoad(movieId);
   }
 
@@ -39,11 +42,9 @@ class MovieInfo extends PureComponent {
       return (<Spinner/>);
     }
 
-    const {backgroundColor} = movie;
-
     return (
       <React.Fragment>
-        <section className="movie-card movie-card--full" style={{backgroundColor}}>
+        <section className="movie-card movie-card--full" style={{backgroundColor: movie.background}}>
           <div className="movie-card__hero">
 
             <MovieHeader movie={movie}/>
@@ -55,7 +56,7 @@ class MovieInfo extends PureComponent {
 
             <MovieCard movie={movie}>
               <MenuButton movie={movie} onFavoriteToggle={onFavoriteToggle}>
-                {isAuthorized && <a href="#" className="btn movie-card__button">Add review</a>}
+                {isAuthorized && <Link to={`${LinkPath.REVIEW}/${movie.id}`} className="btn movie-card__button">Add review</Link>}
               </MenuButton>
             </MovieCard>
           </div>
@@ -104,6 +105,8 @@ MovieInfo.propTypes = {
   isFetching: PropTypes.bool,
   movieId: PropTypes.number,
   onFavoriteToggle: PropTypes.func,
+  onResetReviewFetchingStatus: PropTypes.func,
+  onResetAddReviewFetchingStatus: PropTypes.func
 };
 
 export default MovieInfo;

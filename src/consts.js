@@ -26,12 +26,23 @@ export const ErrorMessage = {
   INVALID_USER_DATA: `Invalid user data`,
 };
 
+export const SuccessMessage = {
+  ADD_REVIEW: `Review has committed`
+};
+
+export const FetchingStatus = {
+  IN_PROGRESS: `IN_PROGRESS`,
+  SUCCESS: `SUCCESS`,
+  ERROR: `ERROR`
+};
+
 export const LinkPath = {
   INDEX: `/`,
   VIEW_MOVIE: `/movies`,
   LOGIN: `/login`,
   FAVORITE_MOVIES: `/favorite-movies`,
-  PLAYER: `/player`
+  PLAYER: `/player`,
+  REVIEW: `/review`,
 };
 
 export const APIPath = {
@@ -40,4 +51,14 @@ export const APIPath = {
   FAVORITE: `/favorite`,
   PROMO: `/films/promo`,
   LOGIN: `/login`,
+};
+
+export const RatingLevel = {
+  MIN: 1,
+  MAX: 5
+};
+
+export const CommentLength = {
+  MIN: 50,
+  MAX: 400
 };

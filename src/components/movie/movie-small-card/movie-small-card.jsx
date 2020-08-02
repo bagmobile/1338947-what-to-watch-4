@@ -15,12 +15,14 @@ const MovieSmallCard = ({movie, isPlaying = false, onMouseHover}) => {
         onMouseHover(null);
       }}
       className="small-movie-card catalog__movies-card">
-      <div className="small-movie-card__image">
-        <VideoPlayer isPlaying={isPlaying} src={movie.preview} poster={movie.img}/>
-      </div>
-      <h3 className="small-movie-card__title">
-        <Link to={`/movies/${movie.id}`} className="small-movie-card__link">{movie.title}</Link>
-      </h3>
+      <Link to={`/movies/${movie.id}`} className="small-movie-card__link">
+        <div className="small-movie-card__image">
+          <VideoPlayer isPlaying={isPlaying} src={movie.preview} poster={movie.img}/>
+        </div>
+        <h3 className="small-movie-card__title">
+          <span className="small-movie-card__link">{movie.title}</span>
+        </h3>
+      </Link>
     </article>
   );
 };

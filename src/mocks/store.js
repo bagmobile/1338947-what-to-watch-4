@@ -7,7 +7,6 @@ export const testStore = {
   [NameSpace.DATA]: {
     movies: mockMovies,
     promoMovie: mockMovies[0],
-    reviews: mockReviews,
     favoriteMovies: mockMovies
   },
   [NameSpace.MOVIES_LIST]: {
@@ -19,4 +18,10 @@ export const testStore = {
     authorizationStatus: AuthorizationStatus.NO_AUTH,
     authorizationErrorMessage: ``,
   },
+  [NameSpace.REVIEW]: {
+    reviews: mockReviews,
+    message: ``,
+    reviewFetchingStatus: null,
+    addReviewFetchingStatus: null,
+  }
 };

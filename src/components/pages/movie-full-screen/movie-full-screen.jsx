@@ -12,30 +12,30 @@ class MovieFullScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onEscClick = this.onEscClick.bind(this);
-    this.onExitButtonClick = this.onExitButtonClick.bind(this);
+    this._handleEscClick = this._handleEscClick.bind(this);
+    this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
   }
 
-  componentDidMount() {
-    document.addEventListener(`keydown`, this.onEscClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener(`keydown`, this.onEscClick);
-  }
-
-  goBack() {
+  _goBack() {
     return history.push(`${LinkPath.VIEW_MOVIE}/${this.props.movie.id}`);
   }
 
-  onEscClick(evt) {
+  _handleEscClick(evt) {
     if (evt.key === ESC) {
-      this.goBack();
+      this._goBack();
     }
   }
 
-  onExitButtonClick() {
-    this.goBack();
+  _handleExitButtonClick() {
+    this._goBack();
+  }
+
+  componentDidMount() {
+    document.addEventListener(`keydown`, this._handleEscClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener(`keydown`, this._handleEscClick);
   }
 
   render() {
@@ -44,7 +44,7 @@ class MovieFullScreen extends React.Component {
       return (<Spinner/>);
     }
     return (<WrappedVideoPlayerContainer
-      onExitButtonClick={this.onExitButtonClick}
+      onExitButtonClick={this._handleExitButtonClick}
       movie={movie}
     />
     );

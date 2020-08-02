@@ -4,6 +4,7 @@ import MoviePageDescription from "./movie-page-description";
 import {mockMovies} from "../../../mocks/movies";
 import {Tab} from "../../../consts";
 import {mockReviews} from "../../../mocks/movie-review";
+import ReviewModel from "../../../models/review";
 
 const movie = mockMovies[0];
 
@@ -24,7 +25,7 @@ describe(`MoviePageDescription component`, () => {
       .create(<MoviePageDescription
         movie={movie}
         activePage={Tab.REVIEWS}
-        reviews={mockReviews}
+        reviews={ReviewModel.parseReviews(mockReviews)}
       />)
       .toJSON();
 
