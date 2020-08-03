@@ -35,12 +35,14 @@ class AddReview extends React.PureComponent {
 
     this.setState(newState);
 
-    this.submitRef.current.disabled = (
-      newState.rating < RatingLevel.MIN ||
-      newState.rating > RatingLevel.MAX ||
-      newState.review.length < CommentLength.MIN ||
-      newState.review.length > CommentLength.MAX
-    );
+    this.submitRef.current.disabled = this._isValidate();
+  }
+
+  _isValidate() {
+    return this.state.rating < RatingLevel.MIN ||
+      this.state.rating > RatingLevel.MAX ||
+      this.state.review.length < CommentLength.MIN ||
+      this.state.review.length > CommentLength.MAX;
   }
 
   render() {
@@ -91,7 +93,7 @@ class AddReview extends React.PureComponent {
           >
             <fieldset disabled={isFetching}>
               <div className="add-review__error-message">
-                <p>{isErrorFetching && message}</p>
+                <p>{(isErrorFetching || this._isValidate()) && message}</p>
               </div>
 
               <div className="rating">
