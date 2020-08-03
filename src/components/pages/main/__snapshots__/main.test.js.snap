@@ -70,7 +70,7 @@ Array [
         className="movie-card__info"
       >
         <div
-          className="movie-card__poster "
+          className="movie-card__poster undefined"
         >
           <img
             alt="Bohemian Rhapsody poster"
@@ -215,7 +215,7 @@ Array [
         >
           <a
             className="small-movie-card__link"
-            href="/movies/1"
+            href="/films/1"
             onClick={[Function]}
           >
             <div
@@ -247,7 +247,7 @@ Array [
         >
           <a
             className="small-movie-card__link"
-            href="/movies/2"
+            href="/films/2"
             onClick={[Function]}
           >
             <div
@@ -279,7 +279,7 @@ Array [
         >
           <a
             className="small-movie-card__link"
-            href="/movies/3"
+            href="/films/3"
             onClick={[Function]}
           >
             <div
@@ -311,7 +311,7 @@ Array [
         >
           <a
             className="small-movie-card__link"
-            href="/movies/4"
+            href="/films/4"
             onClick={[Function]}
           >
             <div

@@ -19,10 +19,6 @@ export const isFetching = (state) => {
   return state[NAME_SPACE].fetchingStatus === FetchingStatus.IN_PROGRESS;
 };
 
-export const isDefaultFetching = (state) => {
-  return state[NAME_SPACE].fetchingStatus === null;
-};
-
 export const getUserProfile = (state) => {
   return state[NAME_SPACE].userProfile;
 };

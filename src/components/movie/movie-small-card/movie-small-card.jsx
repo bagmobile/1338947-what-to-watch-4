@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import VideoPlayer from "../../video-player/video-player";
 import {Link} from "react-router-dom";
 import movieShape from "../../../types/movie";
+import {LinkPath} from "../../../consts";
 
 const MovieSmallCard = ({movie, isPlaying = false, onMouseHover}) => {
 
@@ -15,7 +16,7 @@ const MovieSmallCard = ({movie, isPlaying = false, onMouseHover}) => {
         onMouseHover(null);
       }}
       className="small-movie-card catalog__movies-card">
-      <Link to={`/movies/${movie.id}`} className="small-movie-card__link">
+      <Link to={`${LinkPath.MOVIES}/${movie.id}`} className="small-movie-card__link">
         <div className="small-movie-card__image">
           <VideoPlayer isPlaying={isPlaying} src={movie.preview} poster={movie.img}/>
         </div>

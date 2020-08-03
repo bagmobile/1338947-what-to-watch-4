@@ -22,7 +22,7 @@ describe(`MovieInfo component`, () => {
       .create(
           <Provider store={store}>
             <BrowserRouter>
-              <Route path={`${LinkPath.VIEW_MOVIE}/1`}>
+              <Route path={`${LinkPath.MOVIES}/1`}>
                 <MovieInfo/>
               </Route>
             </BrowserRouter>

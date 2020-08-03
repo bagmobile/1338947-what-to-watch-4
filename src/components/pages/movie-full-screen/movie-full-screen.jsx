@@ -1,4 +1,4 @@
-import {ESC, LinkPath} from "../../../consts";
+import {ESC} from "../../../consts";
 import React from "react";
 import movieShape from "../../../types/movie";
 import Spinner from "react-spinner-material";
@@ -16,18 +16,14 @@ class MovieFullScreen extends React.Component {
     this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
   }
 
-  _goBack() {
-    return history.push(`${LinkPath.VIEW_MOVIE}/${this.props.movie.id}`);
-  }
-
   _handleEscClick(evt) {
     if (evt.key === ESC) {
-      this._goBack();
+      history.goBack();
     }
   }
 
   _handleExitButtonClick() {
-    this._goBack();
+    history.goBack();
   }
 
   componentDidMount() {

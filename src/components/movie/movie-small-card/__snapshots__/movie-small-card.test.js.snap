@@ -8,7 +8,7 @@ exports[`MovieSmallCard component Render 1`] = `
 >
   <a
     className="small-movie-card__link"
-    href="/movies/1"
+    href="/films/1"
     onClick={[Function]}
   >
     <div

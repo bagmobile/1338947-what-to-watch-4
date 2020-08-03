@@ -44,7 +44,7 @@ describe(`ActionCreator works correctly`, () => {
     expect(ActionCreator.changeGenre(`genre`))
       .toEqual({
         type: ActionType.CHANGE_GENRE,
-        payload: `genre`
+        payload: {activeGenre: `genre`, currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE}
       });
   });
 

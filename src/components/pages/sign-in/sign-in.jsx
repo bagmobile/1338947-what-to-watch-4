@@ -3,6 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Logo from "../../logo/logo";
 import {LinkPath} from "../../../consts";
+import Spinner from "react-spinner-material";
 
 class SignIn extends React.PureComponent {
 
@@ -20,7 +21,11 @@ class SignIn extends React.PureComponent {
   }
 
   render() {
-    const {isAuthorized, errorMessage} = this.props;
+    const {isAuthorized, errorMessage, isFetching} = this.props;
+
+    if (isFetching) {
+      return (<Spinner/>);
+    }
 
     if (isAuthorized) {
       return <Redirect to={LinkPath.INDEX}/>;
@@ -75,6 +80,7 @@ SignIn.propTypes = {
   isAuthorized: PropTypes.bool.isRequired,
   errorMessage: PropTypes.string.isRequired,
   requireAuthorization: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool.isRequired,
 };
 
 export default SignIn;

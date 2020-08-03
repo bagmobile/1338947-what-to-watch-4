@@ -44,7 +44,7 @@ class MovieInfo extends PureComponent {
 
     return (
       <React.Fragment>
-        <section className="movie-card movie-card--full" style={{backgroundColor: movie.background}}>
+        <section className="movie-card movie-card--full" style={{backgroundColor: movie.backgroundColor}}>
           <div className="movie-card__hero">
 
             <MovieHeader movie={movie}/>
@@ -56,7 +56,7 @@ class MovieInfo extends PureComponent {
 
             <MovieCard movie={movie}>
               <MenuButton movie={movie} onFavoriteToggle={onFavoriteToggle}>
-                {isAuthorized && <Link to={`${LinkPath.REVIEW}/${movie.id}`} className="btn movie-card__button">Add review</Link>}
+                {isAuthorized && <Link to={`${LinkPath.MOVIES}/${movie.id}${LinkPath.REVIEW}`} className="btn movie-card__button">Add review</Link>}
               </MenuButton>
             </MovieCard>
           </div>

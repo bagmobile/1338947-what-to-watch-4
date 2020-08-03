@@ -10,6 +10,7 @@ import PrivateRoute from "../private-route/private-route.connect";
 import MovieFullScreen from "../pages/movie-full-screen/movie-full-screen.connect";
 import history from "../../history";
 import AddReview from "../add-review/add-review.connect";
+import withReviewForm from "../../hocs/with-review-form";
 
 class App extends PureComponent {
 
@@ -22,10 +23,10 @@ class App extends PureComponent {
       <Router history={history}>
         <Switch>
           <Route exact path={LinkPath.INDEX} component={Main}/>
-          <Route exact path={`${LinkPath.VIEW_MOVIE}/:id`} component={MovieInfo}/>
+          <Route exact path={`${LinkPath.MOVIES}/:id`} component={MovieInfo}/>
           <Route exact path={LinkPath.LOGIN} component={SignIn}/>
           <PrivateRoute exact path={LinkPath.FAVORITE_MOVIES} component={FavoriteMovies}/>
-          <PrivateRoute exact path={`${LinkPath.REVIEW}/:id`} component={AddReview}/>
+          <PrivateRoute exact path={`${LinkPath.MOVIES}/:id${LinkPath.REVIEW}`} component={withReviewForm(AddReview)}/>
           <Route exact path={`${LinkPath.PLAYER}/:id`} component={MovieFullScreen}/>
         </Switch>
       </Router>

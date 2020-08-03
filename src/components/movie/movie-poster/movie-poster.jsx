@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import movieShape from "../../../types/movie";
 
-const MoviePoster = ({movie, customClass = ``}) => {
+const MoviePoster = ({movie, className}) => {
   const altPoster = `${movie.title} poster`;
 
-  return (<div className={`movie-card__poster ${customClass}`}>
+  return (<div className={`movie-card__poster ${className}`}>
     <img src={movie.poster} alt={altPoster} width="218" height="327"/>
   </div>);
 
@@ -13,7 +13,7 @@ const MoviePoster = ({movie, customClass = ``}) => {
 
 MoviePoster.propTypes = {
   movie: movieShape,
-  customClass: PropTypes.string
+  className: PropTypes.string
 };
 
 export default MoviePoster;

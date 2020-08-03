@@ -8,7 +8,7 @@ exports[`UserBlock component Render if user authorized 1`] = `
     className="user-block__avatar"
   >
     <a
-      href="/favorite-movies"
+      href="/myList"
       onClick={[Function]}
     >
       <img
