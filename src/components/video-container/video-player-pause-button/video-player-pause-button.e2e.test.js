@@ -9,15 +9,15 @@ Enzyme.configure({
 
 it(`VideoPlayerPauseButton should call handler 1 time`, () => {
 
-  const onClick = jest.fn(() => {});
+  const handleClick = jest.fn(() => {});
 
   const pauseButton = mount(
       <VideoPlayerPauseButton
-        onClick={onClick}
+        onClick={handleClick}
       />
   );
 
   pauseButton.simulate(`click`);
 
-  expect(onClick).toHaveBeenCalledTimes(1);
+  expect(handleClick).toHaveBeenCalledTimes(1);
 });

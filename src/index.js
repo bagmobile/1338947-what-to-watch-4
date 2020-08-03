@@ -8,10 +8,14 @@ import {createAPI} from "./api";
 import thunk from "redux-thunk";
 import {ActionCreator} from "./reducer/user/user";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {AuthorizationStatus} from "./consts";
+import {APIPath, AuthorizationStatus} from "./consts";
+import history from "./history";
 
-const onUnauthorized = () => {
+const onUnauthorized = (error) => {
   store.dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
+  if (error.config.url !== APIPath.LOGIN) {
+    history.push(APIPath.LOGIN);
+  }
 };
 
 const api = createAPI(onUnauthorized);

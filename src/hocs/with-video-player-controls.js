@@ -18,24 +18,24 @@ export default function withVideoPlayerControls(Component) {
       this._duration = 0;
       this._video = null;
 
-      this._onPlayButtonClick = this._onPlayButtonClick.bind(this);
-      this._onPauseButtonClick = this._onPauseButtonClick.bind(this);
-      this._onFullscreenButtonClick = this._onFullscreenButtonClick.bind(this);
-      this._onExitButtonClick = this._onExitButtonClick.bind(this);
-      this._onCanPlayThrough = this._onCanPlayThrough.bind(this);
-      this._onTimeUpdate = this._onTimeUpdate.bind(this);
+      this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
+      this._handlePauseButtonClick = this._handlePauseButtonClick.bind(this);
+      this._handleFullscreenButtonClick = this._handleFullscreenButtonClick.bind(this);
+      this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
+      this._handleCanPlayThrough = this._handleCanPlayThrough.bind(this);
+      this.__handleTimeUpdate = this.__handleTimeUpdate.bind(this);
     }
 
     componentDidMount() {
       this._video = this._videoRef.current;
 
-      this._video.addEventListener(`timeupdate`, this._onTimeUpdate);
-      this._video.addEventListener(`canplaythrough`, this._onCanPlayThrough);
+      this._video.addEventListener(`timeupdate`, this.__handleTimeUpdate);
+      this._video.addEventListener(`canplaythrough`, this._handleCanPlayThrough);
     }
 
     componentWillUnmount() {
-      this._video.removeEventListener(`timeupdate`, this._onTimeUpdate);
-      this._video.removeEventListener(`canplaythrough`, this._onCanPlayThrough);
+      this._video.removeEventListener(`timeupdate`, this.__handleTimeUpdate);
+      this._video.removeEventListener(`canplaythrough`, this._handleCanPlayThrough);
       this._videoRef = null;
     }
 
@@ -48,7 +48,7 @@ export default function withVideoPlayerControls(Component) {
       return this._video.currentTime / this._duration * 100;
     }
 
-    _onFullscreenButtonClick() {
+    _handleFullscreenButtonClick() {
 
       if (this._video.requestFullscreen) {
         this._video.requestFullscreen();
@@ -61,27 +61,27 @@ export default function withVideoPlayerControls(Component) {
       }
     }
 
-    _onCanPlayThrough() {
+    _handleCanPlayThrough() {
       this._duration = this._video.duration;
-      this._onTimeUpdate();
-      this._onPlayButtonClick();
+      this.__handleTimeUpdate();
+      this._handlePlayButtonClick();
     }
 
-    _onPlayButtonClick() {
+    _handlePlayButtonClick() {
       this._video.play();
       this.setState({
         isPlaying: true,
       });
     }
 
-    _onPauseButtonClick() {
+    _handlePauseButtonClick() {
       this._video.pause();
       this.setState({
         isPlaying: false,
       });
     }
 
-    _onExitButtonClick() {
+    _handleExitButtonClick() {
       this._video.load();
       this.setState({
         isPlaying: false,
@@ -89,7 +89,7 @@ export default function withVideoPlayerControls(Component) {
       this.props.onExitButtonClick();
     }
 
-    _onTimeUpdate() {
+    __handleTimeUpdate() {
       this.setState({
         progress: this._calculateProgress(),
         remaining: this._calculateRemainingTime(),
@@ -104,10 +104,10 @@ export default function withVideoPlayerControls(Component) {
           progress={this.state.progress}
           remaining={this.state.remaining}
           isPlaying={this.state.isPlaying}
-          onExitButtonClick={this._onExitButtonClick}
-          onPauseButtonClick={this._onPauseButtonClick}
-          onPlayButtonClick={this._onPlayButtonClick}
-          onFullscreenButtonClick={this._onFullscreenButtonClick}
+          onExitButtonClick={this._handleExitButtonClick}
+          onPauseButtonClick={this._handlePauseButtonClick}
+          onPlayButtonClick={this._handlePlayButtonClick}
+          onFullscreenButtonClick={this._handleFullscreenButtonClick}
         />
       );
     }

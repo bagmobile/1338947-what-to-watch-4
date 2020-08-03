@@ -1,6 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserBlock component Render 1`] = `
+exports[`UserBlock component Render if user authorized 1`] = `
+<div
+  className="user-block"
+>
+  <div
+    className="user-block__avatar"
+  >
+    <a
+      href="/myList"
+      onClick={[Function]}
+    >
+      <img
+        alt="User avatar"
+        height="63"
+        src="https://htmlacademy-react-3.appspot.com/wtw/static/avatar/5.jpg"
+        width="63"
+      />
+    </a>
+  </div>
+</div>
+`;
+
+exports[`UserBlock component Render if user unauthorized 1`] = `
 <div
   className="user-block"
 >

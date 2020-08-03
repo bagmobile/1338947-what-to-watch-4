@@ -6,8 +6,6 @@ const NAME_SPACE = NameSpace.DATA;
 
 export const getMoviesList = (state) => state[NAME_SPACE].movies;
 
-export const getReviews = (state) => state[NAME_SPACE].reviews;
-
 export const getPromoMovie = (state) => state[NAME_SPACE].promoMovie;
 
 export const getFavoriteMovies = (state) => state[NAME_SPACE].favoriteMovies;

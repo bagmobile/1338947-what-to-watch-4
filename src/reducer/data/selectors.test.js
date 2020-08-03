@@ -1,15 +1,8 @@
-import {
-  getFavoriteMovies,
-  getMovieById,
-  getMoviesGenres,
-  getMoviesList,
-  getPromoMovie,
-  getReviews,
-} from "./selectors.js";
+import {getFavoriteMovies, getMovieById, getMoviesGenres, getMoviesList, getPromoMovie} from "./selectors.js";
 import {DEFAULT_GENRE} from "../../consts.js";
 import {testStore} from "../../mocks/store";
 import {mockMovies} from "../../mocks/movies";
-import {mockReviews} from "../../mocks/movie-review";
+import {isFetchingMovies, isFetchingPromoMovie} from "./selectors";
 
 describe(`Simple Selectors will return a value from state`, () => {
 
@@ -21,16 +14,24 @@ describe(`Simple Selectors will return a value from state`, () => {
     expect(getPromoMovie(testStore)).toEqual(mockMovies[0]);
   });
 
-  it(`getReviews will return comments from state`, () => {
-    expect(getReviews(testStore)).toEqual(mockReviews);
-  });
-
   it(`getFavoriteMovies will return a value from state`, () => {
-    expect(getFavoriteMovies(testStore)).toEqual(testStore.DATA.favoriteMovies);
+    expect(getFavoriteMovies(testStore)).toEqual(mockMovies);
   });
 
   it(`getMovieById will return a movie with MOCK_ID`, () => {
     expect(getMovieById(testStore, 1)).toEqual(mockMovies[0]);
+  });
+
+});
+
+describe(`isFetching group status will return status`, () => {
+
+  it(`isFetching movies return false`, () => {
+    expect(isFetchingMovies(testStore)).toEqual(false);
+  });
+
+  it(`isFetching promo movie return false`, () => {
+    expect(isFetchingPromoMovie(testStore)).toEqual(false);
   });
 
 });

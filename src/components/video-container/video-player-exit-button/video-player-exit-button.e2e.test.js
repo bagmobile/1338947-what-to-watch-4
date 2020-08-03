@@ -9,15 +9,15 @@ Enzyme.configure({
 
 it(`VideoPlayerExitButton should call handler 1 time`, () => {
 
-  const onClick = jest.fn(() => {});
+  const handleClick = jest.fn(() => {});
 
   const exitButton = mount(
       <VideoPlayerExitButton
-        onClick={onClick}
+        onClick={handleClick}
       />
   );
 
   exitButton.simulate(`click`);
 
-  expect(onClick).toHaveBeenCalledTimes(1);
+  expect(handleClick).toHaveBeenCalledTimes(1);
 });

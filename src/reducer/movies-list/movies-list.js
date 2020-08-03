@@ -1,5 +1,5 @@
 import {DEFAULT_GENRE, DEFAULT_MOVIE_LIST_SIZE} from "../../consts";
-import {extend} from "../../utils/util";
+import {extend} from "../../utils/common";
 
 const initialState = {
   activeGenre: DEFAULT_GENRE,
@@ -14,7 +14,7 @@ const ActionType = {
 const ActionCreator = {
   changeGenre: (genre) => ({
     type: ActionType.CHANGE_GENRE,
-    payload: genre
+    payload: {activeGenre: genre, currentMovieListSize: DEFAULT_MOVIE_LIST_SIZE}
   }),
   showMoreMovies: () => ({
     type: ActionType.SHOW_MORE_MOVIES,
@@ -27,8 +27,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
       return extend(state, {
-        activeGenre: action.payload,
-        currentMovieListSize: action.payload === DEFAULT_GENRE ? DEFAULT_MOVIE_LIST_SIZE : state.currentMovieListSize
+        activeGenre: action.payload.activeGenre,
+        currentMovieListSize: action.payload.currentMovieListSize
       });
     case ActionType.SHOW_MORE_MOVIES:
       return extend(state, {currentMovieListSize: state.currentMovieListSize + action.payload});

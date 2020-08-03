@@ -10,15 +10,15 @@ Enzyme.configure({
 
 it(`VideoPlayerFullScreenButton should call handler 1 time`, () => {
 
-  const onClick = jest.fn(() => {});
+  const handleClick = jest.fn(() => {});
 
   const fullscreenButton = mount(
       <VideoPlayerFullScreenButton
-        onClick={onClick}
+        onClick={handleClick}
       />
   );
 
   fullscreenButton.simulate(`click`);
 
-  expect(onClick).toHaveBeenCalledTimes(1);
+  expect(handleClick).toHaveBeenCalledTimes(1);
 });

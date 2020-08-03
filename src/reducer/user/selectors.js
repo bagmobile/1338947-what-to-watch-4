@@ -1,5 +1,5 @@
 import NameSpace from "../name-space.js";
-import {AuthorizationStatus} from "../../consts";
+import {AuthorizationStatus, FetchingStatus} from "../../consts";
 
 const NAME_SPACE = NameSpace.USER;
 
@@ -13,6 +13,10 @@ export const isAuthorized = (state) => {
 
 export const getAuthorizationErrorMessage = (state) => {
   return state[NAME_SPACE].authorizationErrorMessage;
+};
+
+export const isFetching = (state) => {
+  return state[NAME_SPACE].fetchingStatus === FetchingStatus.IN_PROGRESS;
 };
 
 export const getUserProfile = (state) => {

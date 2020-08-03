@@ -7,7 +7,7 @@ export default class UserProfile {
     this.name = profile.name;
   }
 
-  static parseProfile(profile) {
+  static parseUserProfile(profile) {
     return new UserProfile(profile);
   }
 }

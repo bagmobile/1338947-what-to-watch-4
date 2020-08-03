@@ -2,7 +2,7 @@
 
 exports[`MovieOverview component Render 1`] = `
 <div
-  className="movie-card__poster"
+  className="movie-card__poster undefined"
 >
   <img
     alt="Bohemian Rhapsody poster"
