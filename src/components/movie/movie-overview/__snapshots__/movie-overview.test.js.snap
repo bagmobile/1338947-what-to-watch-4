@@ -21,7 +21,7 @@ Array [
       <span
         className="movie-rating__count"
       >
-        200
+        200 ratings
       </span>
     </p>
   </div>,
@@ -35,14 +35,14 @@ Array [
       className="movie-card__director"
     >
       <strong>
-        Director
+        Director: Director
       </strong>
     </p>
     <p
       className="movie-card__starring"
     >
       <strong>
-        Star 1, Star 2, Star 3, Star 4, Star 5, Star 6, Star 7, Star 8
+        Starring: Star 1, Star 2, Star 3, Star 4, Star 5, Star 6, Star 7, Star 8
       </strong>
     </p>
   </div>,

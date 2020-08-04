@@ -22,6 +22,6 @@ export const testStore = {
     reviews: mockReviews,
     message: ``,
     reviewFetchingStatus: null,
-    addReviewFetchingStatus: null,
+    postedReviewFetchingStatus: null,
   }
 };

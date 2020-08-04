@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import SignIn from "./sign-in";
 import {Operation as UserOperation} from "../../../reducer/user/user";
-import {isAuthorized, getAuthorizationErrorMessage, isFetching} from "../../../reducer/user/selectors";
+import {getAuthorizationErrorMessage, isAuthorized, isFetching} from "../../../reducer/user/selectors";
 
 const mapStateToProps = (state) => ({
   errorMessage: getAuthorizationErrorMessage(state),
@@ -10,8 +10,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requireAuthorization: (email, password) => {
-    return dispatch(UserOperation.login({email, password}));
+  onAuthorizationRequire: (email, password) => {
+    dispatch(UserOperation.login({email, password}));
   },
 });
 

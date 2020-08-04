@@ -1,12 +1,12 @@
 import {extend} from "../../utils/common";
-import {APIPath, FetchingStatus, SuccessMessage} from "../../consts";
+import {APIPath, ErrorMessage, FetchingStatus, SuccessMessage} from "../../consts";
 import ReviewModel from "../../models/review";
 
 const initialState = {
   reviews: [],
   message: ``,
   reviewFetchingStatus: null,
-  addReviewFetchingStatus: null,
+  postedReviewFetchingStatus: null,
 };
 
 const ActionType = {
@@ -56,8 +56,10 @@ const Operation = {
         const {response} = err;
         if (response) {
           dispatch(ActionCreator.addReview(response.data.error));
-          dispatch(ActionCreator.setAddReviewFetchingStatus(FetchingStatus.ERROR));
+        } else {
+          dispatch(ActionCreator.addReview(ErrorMessage.UNKNOWN_NETWORK_ERROR));
         }
+        dispatch(ActionCreator.setAddReviewFetchingStatus(FetchingStatus.ERROR));
       });
   },
   loadReviews: (movieId) => (dispatch, getState, api) => {
@@ -86,7 +88,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SET_ADD_REVIEW_FETCHING_STATUS:
       return extend(state, {
-        addReviewFetchingStatus: action.payload,
+        postedReviewFetchingStatus: action.payload,
       });
     case ActionType.LOAD_REVIEWS:
       return extend(state, {

@@ -13,8 +13,11 @@ const withReviewForm = (Component) => {
         isValidate: false,
       };
 
-      this._submitRef = React.createRef();
       this._handleInputChange = this._handleInputChange.bind(this);
+    }
+
+    componentDidUpdate() {
+      this.setState({isValidate: this._isValidate()});
     }
 
     _handleField(type, value) {
@@ -30,7 +33,7 @@ const withReviewForm = (Component) => {
 
     _handleInputChange(evt) {
       this.setState(this._handleField(evt.target.type, evt.target.value));
-      this.setState({isValidate: this._isValidate()});
+
     }
 
     _isValidate() {
@@ -44,7 +47,6 @@ const withReviewForm = (Component) => {
       return (
         <Component
           {...this.props}
-          submitRef={this._submitRef}
           rating={this.state.rating}
           review={this.state.review}
           isValidate={this.state.isValidate}

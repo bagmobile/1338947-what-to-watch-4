@@ -47,7 +47,7 @@ const Operation = {
           dispatch(ActionCreator.setFetchingStatus(FetchingStatus.SUCCESS));
         } else {
           dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
-          dispatch(ActionCreator.setFetchingStatus(FetchingStatus.ERROR));
+          dispatch(ActionCreator.setAuthorizationError(ErrorMessage.INVALID_USER_DATA));
         }
       })
       .catch(() => {
@@ -67,8 +67,8 @@ const Operation = {
           dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH, userProfile));
           dispatch(ActionCreator.setFetchingStatus(FetchingStatus.SUCCESS));
         } else {
+          dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.NO_AUTH));
           dispatch(ActionCreator.setAuthorizationError(ErrorMessage.INVALID_USER_DATA));
-          dispatch(ActionCreator.setFetchingStatus(FetchingStatus.ERROR));
         }
       })
       .catch((err) => {

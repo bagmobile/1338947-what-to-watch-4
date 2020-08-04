@@ -16,6 +16,14 @@ class MovieFullScreen extends React.Component {
     this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
   }
 
+  componentDidMount() {
+    document.addEventListener(`keydown`, this._handleEscClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener(`keydown`, this._handleEscClick);
+  }
+
   _handleEscClick(evt) {
     if (evt.key === ESC) {
       history.goBack();
@@ -24,14 +32,6 @@ class MovieFullScreen extends React.Component {
 
   _handleExitButtonClick() {
     history.goBack();
-  }
-
-  componentDidMount() {
-    document.addEventListener(`keydown`, this._handleEscClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener(`keydown`, this._handleEscClick);
   }
 
   render() {

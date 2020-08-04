@@ -13,9 +13,9 @@ function MockComponent() {
 
 const WrappedMockComponent = withActivePage(MockComponent);
 
-describe(`WithTabs e2e component`, () => {
+describe(`WithActivePage e2e component`, () => {
 
-  it(`WithTabs component click`, () => {
+  it(`WithActivePage component click`, () => {
 
     const onClick = jest.fn();
 
