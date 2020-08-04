@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   requireAuthorization: (email, password) => {
-    return dispatch(UserOperation.login({email, password}));
+    dispatch(UserOperation.login({email, password}));
   },
 });
 
