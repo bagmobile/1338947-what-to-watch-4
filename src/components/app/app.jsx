@@ -13,6 +13,9 @@ import AddReview from "../add-review/add-review.connect";
 import withReviewForm from "../../hocs/with-review-form";
 import withSignInForm from "../../hocs/with-sign-in-form";
 
+const WIthSignInForm = withSignInForm(SignIn);
+const WithReviewForm = withReviewForm(AddReview);
+
 class App extends PureComponent {
 
   componentDidMount() {
@@ -25,9 +28,9 @@ class App extends PureComponent {
         <Switch>
           <Route exact path={LinkPath.INDEX} component={Main}/>
           <Route exact path={`${LinkPath.MOVIES}/:id`} component={MovieInfo}/>
-          <Route exact path={LinkPath.LOGIN} component={withSignInForm(SignIn)}/>
+          <Route exact path={LinkPath.LOGIN} component={WIthSignInForm}/>
           <PrivateRoute exact path={LinkPath.FAVORITE_MOVIES} component={FavoriteMovies}/>
-          <PrivateRoute exact path={`${LinkPath.MOVIES}/:id${LinkPath.REVIEW}`} component={withReviewForm(AddReview)}/>
+          <PrivateRoute exact path={`${LinkPath.MOVIES}/:id${LinkPath.REVIEW}`} component={WithReviewForm}/>
           <Route exact path={`${LinkPath.PLAYER}/:id`} component={MovieFullScreen}/>
         </Switch>
       </Router>

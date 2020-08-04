@@ -38,7 +38,8 @@ describe(`WithReviewForm e2e component`, () => {
     );
 
     wrappedComponent.find(MockComponent).prop(`onChange`)(mockEventRadio);
-    expect(wrappedComponent.state(`rating`)).toEqual(3);
+    wrappedComponent.update();
+    expect(wrappedComponent.find(MockComponent).prop(`rating`)).toEqual(3);
 
   });
 
@@ -54,7 +55,8 @@ describe(`WithReviewForm e2e component`, () => {
     );
 
     wrappedComponent.find(MockComponent).prop(`onChange`)(mockEventTextArea);
-    expect(wrappedComponent.state(`review`)).toEqual(`testtest`);
+    wrappedComponent.update();
+    expect(wrappedComponent.find(MockComponent).prop(`review`)).toEqual(`testtest`);
 
   });
 
@@ -69,10 +71,12 @@ describe(`WithReviewForm e2e component`, () => {
     );
 
     wrappedComponent.find(MockComponent).prop(`onChange`)(mockEventRadio);
-    expect(wrappedComponent.state(`isValidate`)).toEqual(false);
+    wrappedComponent.update();
+    expect(wrappedComponent.find(MockComponent).prop(`isValidate`)).toEqual(false);
 
     wrappedComponent.find(MockComponent).prop(`onChange`)(mockEventTextArea);
-    expect(wrappedComponent.state(`isValidate`)).toEqual(false);
+    wrappedComponent.update();
+    expect(wrappedComponent.find(MockComponent).prop(`isValidate`)).toEqual(false);
 
   });
 
@@ -89,7 +93,8 @@ describe(`WithReviewForm e2e component`, () => {
     wrappedComponent.find(MockComponent).prop(`onChange`)(mockEventRadio);
     mockEventTextArea.target.value = `testtesttesttesttesttesttesttesttesttestteststtesttsttestt`;
     wrappedComponent.find(MockComponent).prop(`onChange`)(mockEventTextArea);
-    expect(wrappedComponent.state(`isValidate`)).toEqual(true);
+    wrappedComponent.update();
+    expect(wrappedComponent.find(MockComponent).prop(`isValidate`)).toEqual(true);
   });
 
 });

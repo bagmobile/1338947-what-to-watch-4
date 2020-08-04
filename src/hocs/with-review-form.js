@@ -16,6 +16,10 @@ const withReviewForm = (Component) => {
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
+    componentDidUpdate() {
+      this.setState({isValidate: this._isValidate()});
+    }
+
     _handleField(type, value) {
       switch (type) {
         case `radio`:
@@ -29,7 +33,7 @@ const withReviewForm = (Component) => {
 
     _handleInputChange(evt) {
       this.setState(this._handleField(evt.target.type, evt.target.value));
-      this.setState({isValidate: this._isValidate()});
+
     }
 
     _isValidate() {

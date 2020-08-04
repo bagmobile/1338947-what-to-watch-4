@@ -57,24 +57,24 @@ describe(`Reducer review component`, () => {
   it(`Reducer should update reviewAddFetchingStatus to getting value`, () => {
 
     expect(reducer({
-      addReviewFetchingStatus: null,
+      postedReviewFetchingStatus: null,
     }, ActionCreator.setAddReviewFetchingStatus(FetchingStatus.IN_PROGRESS)))
-      .toEqual({addReviewFetchingStatus: FetchingStatus.IN_PROGRESS});
+      .toEqual({postedReviewFetchingStatus: FetchingStatus.IN_PROGRESS});
 
     expect(reducer({
-      addReviewFetchingStatus: null,
+      postedReviewFetchingStatus: null,
     }, ActionCreator.setAddReviewFetchingStatus(FetchingStatus.SUCCESS)))
-      .toEqual({addReviewFetchingStatus: FetchingStatus.SUCCESS});
+      .toEqual({postedReviewFetchingStatus: FetchingStatus.SUCCESS});
 
     expect(reducer({
-      addReviewFetchingStatus: null,
+      postedReviewFetchingStatus: null,
     }, ActionCreator.setAddReviewFetchingStatus(FetchingStatus.ERROR)))
-      .toEqual({addReviewFetchingStatus: FetchingStatus.ERROR});
+      .toEqual({postedReviewFetchingStatus: FetchingStatus.ERROR});
 
     expect(reducer({
-      addReviewFetchingStatus: FetchingStatus.SUCCESS,
+      postedReviewFetchingStatus: FetchingStatus.SUCCESS,
     }, ActionCreator.setAddReviewFetchingStatus(null)))
-      .toEqual({addReviewFetchingStatus: null});
+      .toEqual({postedReviewFetchingStatus: null});
 
   });
 });

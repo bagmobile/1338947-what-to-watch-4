@@ -13,8 +13,8 @@ export const isSuccessReviewsFetching = (state) => state[NAME_SPACE].reviewFetch
 
 export const isErrorReviewFetching = (state) => state[NAME_SPACE].reviewFetchingStatus === FetchingStatus.ERROR;
 
-export const isAddReviewFetching = (state) => state[NAME_SPACE].addReviewFetchingStatus === FetchingStatus.IN_PROGRESS;
+export const isAddReviewFetching = (state) => state[NAME_SPACE].postedReviewFetchingStatus === FetchingStatus.IN_PROGRESS;
 
-export const isSuccessAddReviewsFetching = (state) => state[NAME_SPACE].addReviewFetchingStatus === FetchingStatus.SUCCESS;
+export const isSuccessAddReviewsFetching = (state) => state[NAME_SPACE].postedReviewFetchingStatus === FetchingStatus.SUCCESS;
 
-export const isErrorAddReviewFetching = (state) => state[NAME_SPACE].addReviewFetchingStatus === FetchingStatus.ERROR;
+export const isErrorAddReviewFetching = (state) => state[NAME_SPACE].postedReviewFetchingStatus === FetchingStatus.ERROR;

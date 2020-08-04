@@ -25,6 +25,7 @@ export const ErrorMessage = {
   INVALID_EMAIL: `Invalid email`,
   INVALID_PASSWORD: `Invalid password`,
   INVALID_USER_DATA: `Invalid user data`,
+  UNKNOWN_NETWORK_ERROR: `Unknown network error. Please, try later.`,
 };
 
 export const SuccessMessage = {

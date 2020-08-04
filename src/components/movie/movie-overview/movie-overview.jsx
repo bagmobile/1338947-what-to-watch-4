@@ -25,18 +25,18 @@ const MovieOverview = ({movie}) => {
   return (
     <React.Fragment>
       <div className="movie-rating">
-        <div className="movie-rating__score">{movie.ratingScore}</div>
+        <div className="movie-rating__score">{movie.ratingScore.toFixed(1)}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{getRatingLevel(movie.ratingScore)}</span>
-          <span className="movie-rating__count">{movie.ratingCount}</span>
+          <span className="movie-rating__count">{`${movie.ratingCount} ratings`}</span>
         </p>
       </div>
 
       <div className="movie-card__text">
         <p>{movie.description}</p>
-        <p className="movie-card__director"><strong>{movie.director}</strong></p>
+        <p className="movie-card__director"><strong>{`Director: ${movie.director}`}</strong></p>
         <p className="movie-card__starring"><strong>
-          {movie.starring.join(`, `)}
+          {`Starring: ${movie.starring.join(`, `)}`}
         </strong></p>
       </div>
     </React.Fragment>

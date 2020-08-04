@@ -6,7 +6,7 @@ import {LinkPath} from "../../../consts";
 import Spinner from "react-spinner-material";
 
 const SignIn = (props) => {
-  const {isAuthorized, errorMessage, isFetching, requireAuthorization, emailRef, passwordRef, onSubmit} = props;
+  const {isAuthorized, errorMessage, isFetching, onAuthorizationRequire, emailRef, passwordRef, onSubmit} = props;
 
   if (isFetching) {
     return (<Spinner/>);
@@ -28,7 +28,7 @@ const SignIn = (props) => {
           action="#"
           className="sign-in__form"
           onSubmit={(evt) => {
-            onSubmit(evt, requireAuthorization);
+            onSubmit(evt, onAuthorizationRequire);
           }
           }>
           <div className="sign-in__message">
@@ -71,7 +71,7 @@ const SignIn = (props) => {
 SignIn.propTypes = {
   isAuthorized: PropTypes.bool,
   errorMessage: PropTypes.string,
-  requireAuthorization: PropTypes.func,
+  onAuthorizationRequire: PropTypes.func,
   isFetching: PropTypes.bool,
   emailRef: PropTypes.object,
   passwordRef: PropTypes.object,
