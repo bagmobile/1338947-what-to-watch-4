@@ -13,7 +13,6 @@ const withReviewForm = (Component) => {
         isValidate: false,
       };
 
-      this._submitRef = React.createRef();
       this._handleInputChange = this._handleInputChange.bind(this);
     }
 
@@ -44,7 +43,6 @@ const withReviewForm = (Component) => {
       return (
         <Component
           {...this.props}
-          submitRef={this._submitRef}
           rating={this.state.rating}
           review={this.state.review}
           isValidate={this.state.isValidate}

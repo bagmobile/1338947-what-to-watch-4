@@ -19,7 +19,6 @@ const AddReview = (props) => {
     isSuccessFetching,
     isErrorFetching,
     isLoadMoviesStatusFetching,
-    submitRef,
     onChange,
     rating,
     review,
@@ -86,7 +85,7 @@ const AddReview = (props) => {
                   className="add-review__btn"
                   type="submit"
                   disabled={!isValidate}
-                  ref={submitRef}>Post
+                >Post
                 </button>
               </div>
             </div>
@@ -99,13 +98,12 @@ const AddReview = (props) => {
 
 AddReview.propTypes = {
   movie: movieShape,
-  isFetching: PropTypes.bool.isRequired,
-  isSuccessFetching: PropTypes.bool.isRequired,
-  isErrorFetching: PropTypes.bool.isRequired,
+  isFetching: PropTypes.bool,
+  isSuccessFetching: PropTypes.bool,
+  isErrorFetching: PropTypes.bool,
   message: PropTypes.string,
   addReview: PropTypes.func.isRequired,
-  isLoadMoviesStatusFetching: PropTypes.bool.isRequired,
-  submitRef: PropTypes.object,
+  isLoadMoviesStatusFetching: PropTypes.bool,
   onChange: PropTypes.func,
   rating: PropTypes.number,
   review: PropTypes.string,
